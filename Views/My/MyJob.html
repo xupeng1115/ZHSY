@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>智慧生涯--我的投递</title>
+
+    <!-- Public Header -->
+	<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../Content/lib/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../Content/css/Template.css?v=20180122"/>
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>
+
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+	<script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+	<script src="../../Scripts/js/Template.js?v=20180301"></script>
+	<script src="../../Scripts/lib/babel.min.js"></script>
+
+	<!--[if lt IE 9]>
+	    <script src="../../Scripts/lib/html5shiv.min.js"></script>
+	    <script src="../../Scripts/lib/respond.min.js"></script>
+	<![endif]-->
+
+    <!-- Private Header -->
+    
+    <link rel="stylesheet" href="../../Content/css/MyBackstage.css?v=20180206" />
+    <link rel="stylesheet" href="../../Content/css/MyJob.css?v=20180206" />
+
+</head>
+<body>
+    <!--Page Public -->
+	<div class="container-fluid" id="app">
+       <!-- Top -->
+		<header class="row">
+			<div class="row top-box top-width">
+				<div class="top-logo"><a href="../Home/Index.html"></a></div>
+				<ul class="top-nav clearbox">
+					<li class="top-nav-item"><a href="../Assessment/Index.html">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List.html">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Serve.html">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About.html">关于我们</a></li>
+                        <li class="top-nav-item lr-success">
+                            <a href="../Resume/Index.html">
+                            <img src="/UserPhoto/aa1517577133806.png" class="success-img" onerror="nofind();"/>
+                            </a>
+                            <div class="backstage-entrance-container">
+							    <div class="backstage-entrance">
+								    <div class="entrance-wrapper">
+									    <div class="entrance-top clearbox">
+										    <img src="/UserPhoto/aa1517577133806.png" class="entrance-img" onerror="nofind();"/>
+										    <div class="entrance-name overflow-text">13761646494</div>
+										    <div class="entrance-edit-btn"><a href="../Resume/Index.html" id="entrance-edit-href">修改资料</a></div>
+									    </div>
+									    <ul class="entrance-href-box clearbox">
+										    <li class="entrance-href-item"><a href="../My/MyCollection.html">收藏职位</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyJob.html">投递职位</a></li>
+										    <li class="entrance-href-item"><a href="../Resume/Index.html">我的简历</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyAssessment.html">我的测评</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyOrder.html">我的订单</a></li>
+									    </ul>
+									    <div class="entrance-back-btn login-exit">安全退出</div>
+								    </div>
+							    </div>
+						    </div>
+                        </li>
+                    <li class="top-nav-item top-nav-call" style="display:block;">
+						<div class="top-call-msg top-call-text">求职小助手</div>
+						<div class="top-call-num top-call-text">+86 400 123 4567</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+        <!--********************************************Page Private************************************-->
+        
+
+<!-- Banner-->
+<div class="row top-banner">
+	<div class="banner-head-box">
+		<img class="banner-head" src="/UserPhoto/aa1517577133806.png" onerror="nofind();"/>
+	</div>
+	<div class="banner-name" v-html="userName"></div>
+	<div class="banner-tag-box clearbox">
+		<div class="banner-tag-content clearbox">
+		    <ul class="banner-tag clearbox user-title-list" style="display:none;" v-show="userTags.length>0">
+		        <li class="tag-item" v-for="(item,index) in userTags" v-bind:key="item.ID" v-bind:index="item.ID" v-html="item.TitleName"><!--测试工程师--></li>
+		    </ul>
+		    <div class="add-tag-btn" v-on:click="addTags"></div>
+		</div>
+	</div>
+</div>
+<!-- Content -->
+<section class="row">
+	<div class="nav-content">
+		<ul class="nav-box clearbox">
+			<li class="nav-item">
+				<a href="MyCollection.html" class="nav-text">收藏职位</a>
+			</li>
+			<li class="nav-item nav-item-active">
+				<a href="MyJob.html" class="nav-text">投递职位</a>
+			</li>
+			<li class="nav-item">
+				<a href="../Resume/Index.html" class="nav-text">我的简历</a>
+			</li>
+			<li class="nav-item">
+				<a href="MyAssessment.html" class="nav-text">我的测评</a>
+			</li>
+            <li class="nav-item">
+				<a href="MyOrder.html" class="nav-text">我的订单</a>
+			</li>
+		</ul>
+	</div>
+	<div class="content-box clearbox">
+				
+		<!--投递职位-->
+		<div class="send-module-container position-module-container backstage-module">
+			<div class="send-empty-content empty-content" style="display:none;" v-show="positionList.length===0">
+				<div class="empty-img"></div>
+				<div class="empty-msg">你还没有投递职位，职位职位职位职位职位宣传语，快去寻找适合的岗位吧</div>
+				<div class="empty-btn send-empty-btn"><a href="../Job/List.html">去职位看看</a></div>
+			</div>
+			<ul class="position-list clearbox" style="display:none;" v-show="positionList.length>0">
+				<li class="position-item" v-for="(item,index) in positionList" v-bind:key="index" v-bind:index="item.ID">
+					<div class="position-img-box"><img v-bind:src="item.ImgUrl" onerror="nofind();"/></div>
+					<div class="position-name-box overflow-text">
+						<a class="position-msg-href" v-bind:href="'../Job/Index.html?ID='+item.ID+'&Match='+item.Match"><span class="position-name" v-html="item.Name"><!--新媒体运营--></span></a>
+						<span class="position-company" v-html="item.Company"><!--有鱼金融科技--></span>
+					</div>
+					<div class="position-demand" v-html="item.Experience+(item.Education?'/'+item.Education:'')+(item.Area?'/'+item.Area:'')"><!--经验3-5年/本科/北京-丰台区--></div>
+					<ul class="position-tag-list clearbox">
+						<li class="tag-item" v-for="(tag,num) in item.Tag" v-bind:key="num" v-bind:num="num" v-html="tag.TagName"><!--运营--></li>
+					</ul>
+					<div class="position-like" v-bind:title="item.IsLike==1?'取消收藏':'收藏职位'">
+						<span class="like-icon" v-on:click="cancelCollect(item.ID,item.IsLike,index)">
+							<i class="material-icons" v-bind:class="{'cancel-like':!item.IsLike}">&#xE87D;</i>
+						</span>
+						<span class="like-num" v-html="item.Like" v-bind:class="{'cancel-like-num':!item.IsLike}"><!--78867--></span>
+					</div>
+					<div class="position-date">2017/10/10 14:34</div>
+				</li>
+			</ul>
+			<div class="tcdPageCode tcdPageCode2" style="display:none;" v-show="positionList.length>0"></div>
+		</div>
+	</div>
+</section>
+<!-- Tag Dialog -->
+<div class="flo-box" v-show="tagBoxShow" style="display:none;">
+	<div class="tag-select-box">
+		<div class="tag-cancel-btn" v-on:click="tagCancel"></div>
+		<div class="select-title">
+			<span class="title-text">标签选择</span>
+			<span class="title-dec">最多选择5个标签</span>
+			<span class="tag-num-box" v-html="'共'+totalTags.length+'个标签'"></span>
+		</div>
+		<ul class="select-list clearbox">
+			<li class="select-item" v-for="(item,index) in totalTags" v-bind:key="item.ID" v-bind:index="item.ID" v-on:click="tagClick(item,$event)" v-html="item.TitleName"></li>
+		</ul>
+		<div class="select-btn-box clearbox">
+			<div class="select-btn select-confirm-btn" v-on:click="tagConfirm">
+				<span class="select-icon"><i class="material-icons">&#xE5CA;</i></span>
+				<span class="btn-text">确定</span>
+			</div>
+			<div class="select-btn select-reset-btn" v-on:click="tagReset">
+				<span class="select-icon"><i class="material-icons">&#xE5D5;</i></span>
+				<span class="btn-text">重置</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+        <!--********************************************Page Private End*********************************-->
+        
+        <!-- aside -->
+		<aside>
+			<div class="aside-container">
+				<div class="aside-back-top aside-item">TOP</div>
+				<div class="aside-call aside-item">
+					<i class="material-icons">&#xE0B0;</i>
+				</div>
+				<div class="aside-weixin aside-item">
+					<i class="fa fa-weixin" aria-hidden="true"></i>
+				</div>
+				<div class="aside-share aside-item">
+					<i class="material-icons">&#xE80D;</i>
+				</div>
+			</div>
+		</aside>
+
+        <!-- Login and Register Dialog -->
+		<div class="lr-container">
+			<div class="lr-wrapper">
+				<div class="lr-box">
+					<div class="lr-cancel"></div>
+					<div class="lr-btn-box clearbox">
+						<div class="login-btn lr-btn">
+							登录
+							<div class="btn-line"></div>
+						</div>
+						<div class="register-btn lr-btn">
+							注册
+							<div class="btn-line"></div>
+						</div>
+					</div>
+					<div class="login-box">
+						<div class="login-title">欢迎登录Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item login-phone" placeholder="请输入登录手机号" maxlength="11"/>
+							</div>
+							<div class="login-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item login-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="28"/>
+							</div>
+							<div class="login-password-tips lr-tips"></div>
+							<div class="rf-box clearbox">
+								<div class="remember-password-box lr-checkbox-box">
+									<div class="yes rp-yes lr-checkbox"></div>
+									<div class="no rp-no lr-checkbox"></div>
+									<div class="rp-text lr-text">记住密码</div>
+								</div>
+								<div class="forget-password-box lr-text">忘记密码？</div>
+							</div>
+							<div class="lr-login-btn lr-confirm-btn">登录</div>
+						</div>
+					</div>
+					<div class="register-box">
+						<div class="register-title">欢迎注册Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item register-username" placeholder="请输入用户名" maxlength="20"/>
+							</div>
+							<div class="register-username-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item register-phone" placeholder="请输入注册手机号" maxlength="11"/>
+							</div>
+							<div class="register-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item test-code" placeholder="请输入您收到的验证码" maxlength="6"/>
+								<div class="get-code-btn">获取验证码</div>
+							</div>
+							<div class="code-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item register-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="20"/>
+							</div>
+							<div class="register-password-tips lr-tips"></div>
+							<div class="protocol-box lr-checkbox-box">
+								<div class="yes protocol-yes lr-checkbox"></div>
+								<div class="no protocol-no lr-checkbox"></div>
+								<div class="lr-text">同意《<a href="../../Registration.html" target="_blank">Career Success注册协议</a>》</div>
+							</div>
+                            <div class="register-protocol-tips lr-tips"></div>
+							<div class="lr-register-btn-box clearbox">
+								<div class="complate-msg-btn">注册</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+		<!-- Bottom -->
+		<footer class="row">
+			<div class="foot-box">
+				<div class="foot-left">
+					<ul class="foot-href">
+						<li class="foot-href-item"><a href="">网站首页</a></li>
+						<li class="foot-href-item"><a href="">企业合作</a></li>
+						<li class="foot-href-item"><a href="">人才招聘</a></li>
+						<li class="foot-href-item"><a href="">联系我们</a></li>
+						<li class="foot-href-item"><a href="">讲师招募</a></li>
+						<li class="foot-href-item"><a href="">常见问题</a></li>
+						<li class="foot-href-item"><a href="">意见反馈</a></li>
+						<li class="foot-href-item"><a href="">友情链接</a></li>
+					</ul>
+					<div class="about-other">©肯耐珂萨 2018 | 沪ICP备09051952号-2</div>
+				</div>
+				<ul class="foot-right">
+					<li class="foot-right-item foot-weixin">
+						<i class="fa fa-weixin" aria-hidden="true"></i>
+					</li>
+					<li class="foot-right-item foot-recommend">
+						<i class="material-icons">&#xE0BF;</i>
+					</li>
+					<li class="foot-right-item foot-call">
+						<i class="material-icons">&#xE0B0;</i>
+					</li>
+				</ul>
+			</div>
+		</footer>   
+	</div>
+    <!-- Public JS -->
+    <script type="text/javascript">
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+    </script>
+	
+    <!-- Private JS -->
+    
+	<script type="text/javascript">
+	    var UserResumeMailngList = JSON.parse('{"Data":[{"Tag":[{"ID":2,"PositionID":2,"TagName":"实习生"}],"Like":1,"Company":"阿里巴巴.阿里云金牌服务商","ImgUrl":"/PositionLogo/阿里巴巴.jpg","Name":"实习生（周末双休，可开实习证明）","Address":null,"Demand":null,"Dec":null,"Match":0,"IsLike":0,"IsMailings":0,"ID":2,"Title":null,"PositionName":"实习生","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":"南京-建邺区2","AddressInfo":"广州","Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"互联网/电子商务,计算机服务(系统、数据服务、维修)","CompanySize":"50-150人","Salary":"2-3千/月","RecruitNumber":"招若干人","Description":null,"Email":null,"Education":"","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"2018-01-31T20:00:58.193"},{"Tag":[{"ID":692,"PositionID":579,"TagName":"保险经纪人"},{"ID":693,"PositionID":579,"TagName":"保险代理"}],"Like":0,"Company":"中国人寿保险股份有限公司西安分公司经济技术开发区营销服务部","ImgUrl":"/PositionLogo/中国人寿保险.jpg","Name":"中国人寿直招大学生团队储备干部/实习生","Address":null,"Demand":null,"Dec":null,"Match":0,"IsLike":0,"IsMailings":0,"ID":579,"Title":null,"PositionName":"储备经理人","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":null,"AddressInfo":"西安-未央区","Experience":"无工作经验","Advantage":null,"Industry":"保险","CompanySize":"10000人以上","Salary":"4.5-6千/月","RecruitNumber":"招10人","Description":null,"Email":null,"Education":"大专","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"2018-02-01T09:41:00.29"},{"Tag":[{"ID":6,"PositionID":8,"TagName":"人事专员"}],"Like":2,"Company":"北京外企德科人力资源服务深圳有限公司","ImgUrl":"/PositionLogo/德科.jpg","Name":"人事实习生（教育咨询项目）","Address":null,"Demand":null,"Dec":null,"Match":0,"IsLike":1,"IsMailings":0,"ID":8,"Title":null,"PositionName":"人事助理","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":"深圳-南山区5","AddressInfo":"深圳-南山区","Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"专业服务(咨询、人力资源、财会)","CompanySize":"150-500人","Salary":"2-2.2千/月","RecruitNumber":"招1人","Description":null,"Email":null,"Education":"本科","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"2018-02-01T11:00:53.857"},{"Tag":[{"ID":1,"PositionID":1,"TagName":"助理"}],"Like":2,"Company":"上海航阳国际旅行社有限公司","ImgUrl":"/PositionLogo/海航.jpg","Name":"行政助理兼前台-实习生","Address":null,"Demand":null,"Dec":null,"Match":0,"IsLike":1,"IsMailings":0,"ID":1,"Title":null,"PositionName":"前台接待/总机/接待生","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":"南京-建邺区1","AddressInfo":"上海-普陀区","Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"酒店/旅游,航天/航空","CompanySize":"少于50人","Salary":"2-3千/月","RecruitNumber":"招1人","Description":null,"Email":null,"Education":"中专","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"2018-02-06T14:11:28.353"},{"Tag":[{"ID":502,"PositionID":427,"TagName":"客服专员"},{"ID":503,"PositionID":427,"TagName":"助理"}],"Like":0,"Company":"江西太古可口可乐饮料有限公司","ImgUrl":"/PositionLogo/可口可乐.jpg","Name":"客服实习生","Address":null,"Demand":null,"Dec":null,"Match":0,"IsLike":0,"IsMailings":0,"ID":427,"Title":null,"PositionName":"客服专员/助理","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":null,"AddressInfo":"南昌-南昌县","Experience":"无工作经验","Advantage":null,"Industry":"快速消费品(食品、饮料、化妆品)","CompanySize":"500-1000人","Salary":"1.8-2.5千/月","RecruitNumber":"招2人","Description":null,"Email":null,"Education":"高中","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"2018-02-06T17:57:21.1"},{"Tag":[{"ID":3,"PositionID":3,"TagName":"其他"}],"Like":1,"Company":"招商期货有限公司","ImgUrl":"/PositionLogo/招商.jpg","Name":"研究所实习生","Address":null,"Demand":null,"Dec":null,"Match":0,"IsLike":0,"IsMailings":0,"ID":3,"Title":null,"PositionName":"其他","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":"南京-建邺区3","AddressInfo":"深圳","Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"金融/投资/证券","CompanySize":"50-150人","Salary":"2-3千/月","RecruitNumber":"招10人","Description":null,"Email":null,"Education":"","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"2018-02-06T18:11:38.777"}],"RecordCount":25,"PageCount":5}');
+	    var UserTitleList = JSON.parse('[{"ID":242,"TitleName":"互联网/电子商务","TitleID":1,"Remarks":"","UserID":5},{"ID":243,"TitleName":"Java开发","TitleID":2,"Remarks":"","UserID":5},{"ID":244,"TitleName":"网络推广","TitleID":4,"Remarks":"","UserID":5},{"ID":245,"TitleName":"测试工程师","TitleID":3,"Remarks":"","UserID":5}]');
+	    var UserName = 'Lee li';
+	    var pageSize = 6;
+	</script>
+    <script src="../../Scripts/lib/jquery.page.js"></script>
+    <script src="../../Scripts/js/MyJob.js?v=20180206" type="text/babel"></script>
+    
+
+
+</body>
+</html>

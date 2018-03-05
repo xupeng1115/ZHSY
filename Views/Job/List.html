@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>智慧生涯--职位列表</title>
+
+    <!-- Public Header -->
+	<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../Content/lib/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../Content/css/Template.css?v=20180122"/>
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>
+
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+	<script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+	<script src="../../Scripts/js/Template.js?v=20180301"></script>
+	<script src="../../Scripts/lib/babel.min.js"></script>
+
+	<!--[if lt IE 9]>
+	    <script src="../../Scripts/lib/html5shiv.min.js"></script>
+	    <script src="../../Scripts/lib/respond.min.js"></script>
+	<![endif]-->
+
+    <!-- Private Header -->
+    
+	<link rel="stylesheet" href="../../Content/css/JobList.css?v=20180131"/>
+
+</head>
+<body>
+    <!--Page Public -->
+	<div class="container-fluid" id="app">
+        <!-- Top -->
+		<header class="row">
+			<div class="row top-box top-width">
+				<div class="top-logo"><a href="../Home/Index.html"></a></div>
+				<ul class="top-nav clearbox">
+					<li class="top-nav-item"><a href="../Assessment/Index.html">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List.html">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Serve.html">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About.html">关于我们</a></li>
+                        <li class="top-nav-item lr-success">
+                            <a href="../Resume/Index.html">
+                            <img src="/UserPhoto/aa1517577133806.png" class="success-img" onerror="nofind();"/>
+                            </a>
+                            <div class="backstage-entrance-container">
+							    <div class="backstage-entrance">
+								    <div class="entrance-wrapper">
+									    <div class="entrance-top clearbox">
+										    <img src="/UserPhoto/aa1517577133806.png" class="entrance-img" onerror="nofind();"/>
+										    <div class="entrance-name overflow-text">13761646494</div>
+										    <div class="entrance-edit-btn"><a href="../Resume/Index.html" id="entrance-edit-href">修改资料</a></div>
+									    </div>
+									    <ul class="entrance-href-box clearbox">
+										    <li class="entrance-href-item"><a href="../My/MyCollection.html">收藏职位</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyJob.html">投递职位</a></li>
+										    <li class="entrance-href-item"><a href="../Resume/Index.html">我的简历</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyAssessment.html">我的测评</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyOrder.html">我的订单</a></li>
+									    </ul>
+									    <div class="entrance-back-btn login-exit">安全退出</div>
+								    </div>
+							    </div>
+						    </div>
+                        </li>
+                    <li class="top-nav-item top-nav-call" style="display:block;">
+						<div class="top-call-msg top-call-text">求职小助手</div>
+						<div class="top-call-num top-call-text">+86 400 123 4567</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+        <!--********************************************Page Private************************************-->
+        
+
+<!-- Banner-->
+<div class="row top-banner"></div>
+<!-- Content -->
+<section class="row">
+			
+	<div class="row position clearbox">
+		<!-- 搜索框 -->
+		<div class="search-box">
+			<input type="text" class="search-input" placeholder="请输入您想要的职位" v-model="positionName"/>
+			<div class="search-btn" v-on:click="searchBtn">搜索</div>
+		</div>
+		<!-- 搜索选项 -->
+		<div class="position-search">
+			<div class="search-name overflow-text" v-html="positionName!==''?positionName:'搜索职位'"><!--研发工程师--></div>
+			<div class="search-title">
+				<span class="search-title-left">筛选</span>
+				<span class="search-clear-btn" v-on:click="clearSelect">清空选择</span>
+			</div>
+			<div class="search-type search-item">
+				<div class="search-item-title search-type-title">工作类型</div>
+				<input type="radio" class="select-radio select-practice" name="radio" value="实习" v-model="searchObj.selectType"/>
+                <div class="select-radio-text">实习</div>
+				<input type="radio" class="select-radio select-full" name="radio" value="全职" v-model="searchObj.selectType"/>
+                <div class="select-radio-text">全职</div>
+			</div>
+			<div class="search-area search-item">
+				<div class="search-item-title search-area-title">选择城市</div>
+				<div class="search-area-box search-select">
+					<div class="search-select-value search-area-value" v-html="searchObj.areaValue!==''?searchObj.areaValue:'请选择'" v-on:click="searchArea" v-bind:class="{searched:areaKey}"><!--深圳--></div>
+					<ul class="search-select-list clearbox" style="display:none;" v-show="areaKey">
+						<li class="search-select-item search-area" v-for='(item,index) in areaList' v-bind:key="index" v-html="item.Name" v-on:click="areaItem(item)"><!--上海--></li>
+					</ul>
+				</div>
+			</div>
+			<div class="search-item search-pay">
+				<div class="search-item-title search-area-title">期望薪资</div>
+				<div class="search-pay-box">
+					<input id="range" style="display:none;"/>
+				</div>
+			</div>
+			<div class="search-industry search-item">
+				<div class="search-item-title search-a-title">选择行业</div>
+				<div class="search-industry-box search-select">
+					<div class="search-select-value search-industry-value overflow-text" v-html="searchObj.industryValue!==''?searchObj.industryValue:'请选择'" v-on:click="searchIndustry" v-bind:class="{searched:industryKey}"><!--半导体--></div>
+					<ul class="search-select-list clearbox" style="display:none;" v-show="industryKey">
+						<li class="search-select-item search-industry overflow-text" v-for='(item,index) in industryList' v-bind:key="index" v-html="item.Name" v-on:click="industryItem(item)"><!--IT互联网--></li>
+					</ul>
+				</div>
+			</div>
+			<div class="search-position search-item">
+				<div class="search-item-title search-position-title">职位</div>
+				<div class="search-position-box search-select">
+					<div class="search-select-value search-position-value overflow-text" v-html="searchObj.positionValue!==''?searchObj.positionValue:'请选择'" v-on:click="searchPosition" v-bind:class="{searched:positionKey}"><!--开发--></div>
+					<ul class="search-select-list clearbox" style="display:none;" v-show="positionKey">
+						<li class="search-select-item search-position overflow-text" v-for='(item,index) in PostList' v-bind:key="index" v-html="item.Name" v-on:click="positionItem(item)"><!--法律--></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+				
+		<!-- 搜素职位 -->
+		<div class="position-box">
+			<ul class="position-list clearbox">
+				<li class="position-item clearbox" v-for="(item,index) in positionList" v-bind:key="index" v-on:index="item.ID">
+					<div class="position-img-box">
+                        <img class="position-company-img" v-bind:src="item.ImgUrl!==''?item.ImgUrl:'../../Content/img/job_list_company03.png'" onerror="noFindLogo();"/>
+                    </div>
+                    <div class="position-right-box">
+					    <div class="position-msg-box">
+						    <a class="position-msg-href" v-bind:href="'Index.html?ID='+item.ID+'&Match='+item.Match"><span class="position-name overflow-text" v-html="item.Name" v-bind:index="item.ID"><!--新媒体运营--></span></a>
+						    <div class="position-company overflow-text" v-html="item.Company"><!--有鱼金融科技--></div>
+						    <div class="position-demand overflow-text">
+							    <span class="demand-experience" v-html="item.Experience"><!--经验3-5年--></span>
+							    <span class="demand-education" v-html="item.Education?'/'+item.Education:''"><!--/本科--></span>
+							    <span class="demand-area" v-html="item.Area?'/'+item.Area:''"><!--/北京-丰台区--></span>
+						    </div>
+						    <ul class="position-tag-list clearbox">
+							    <li class="tag-item" v-for="(tag,index) in item.Tag" v-bind:key="index" v-bind:index="tag.ID" v-html="tag.TagName"><!--运营--></li>
+						    </ul>
+						    <div class="position-star-box">
+							    <span class="position-star">
+								    <i class="fa fa-star" aria-hidden="true" style="display:none;" v-show="item.Star>=1"></i>
+								    <i class="fa fa-star" aria-hidden="true" style="display:none;" v-show="item.Star>=2"></i>
+								    <i class="fa fa-star" aria-hidden="true" style="display:none;" v-show="item.Star>=3"></i>
+								    <i class="fa fa-star" aria-hidden="true" style="display:none;" v-show="item.Star>=4"></i>
+								    <i class="fa fa-star" aria-hidden="true" style="display:none;" v-show="item.Star>=5"></i>
+							    </span>
+							    <!--<span class="position-commend" v-html="item.Comment+'已学习'">24324人已学习</span>-->
+						    </div>
+						    <div class="position-like" v-bind:title="item.IsLike==1?'取消收藏':'收藏职位'">
+							    <span class="like-icon" v-bind:class="{'yes-like':item.IsLike==1,'no-like':item.IsLike==0}" v-bind:index="item.ID" v-on:click="likeCut(item.ID,item.IsLike,index,$event)"></span>
+							    <span class="like-num" v-html="item.Like"><!--78867--></span>
+						    </div>
+					    </div>
+					    <div class="position-resume-box">
+						    <div class="position-match" style="display:none;" v-bind:id="'indicatorContainer'+item.ID" v-show="loginKey"></div>
+						    <div class="position-empty-match" style="display:none;" v-show="!loginKey">
+							    <div class="position-empty-login-btn" v-bind:index="item.ID" v-on:click="viewMatch(item.ID)">登录查看匹配度</div>
+						    </div>
+
+						    <div class="position-resume-btn" v-bind:index="item.ID" ><a class="position-resume-href" href="javascript:void(0)" v-on:click="Mailing(item.ID,item.IsMailings,index)" v-bind:class="{'position-resume-sended':item.IsMailings!==0,'position-resume-send':item.IsMailings===0}" v-html="item.IsMailings===0?'投递简历':'已投递'"><!--投递简历--></a></div>
+					    </div>
+                    </div>
+				</li>
+			</ul>
+            <div class="position-empty-box" style="display:none;" v-show="positionList.length===0">
+				<div class="empty-img"></div>
+				<div class="empty-msg">暂无职位搜索数据，试试其他的搜索方式</div>
+			</div>
+			<div class="tcdPageCode" style="display:none;" v-show="positionList.length>0"></div>
+		</div>
+				
+		<!-- 推荐职位 -->
+		<div class="position-recommend">
+			<div class="recommend-top" style="display:none;" v-show="loginKey">
+				<div class="recommend-title">
+					<i class="material-icons recommend-title-icon">&#xE80E;</i>
+					<span class="recommend-title-text">推荐职位</span>
+				</div>
+				<div class="recommend-msg">根据您的测评和简历进行大数据分析推荐更适合您的职位</div>
+			</div>
+			<ul class="recommend-list" style="display:none;" v-show="loginKey">
+				<li class="recommend-item clearbox" v-for="(item,index) in recommendList" v-bind:key="index" v-bind:index="item.ID">
+					<div class="recommend-img-box">
+                        <img class="recommend-company-img" v-bind:src="item.ImgUrl!==''?item.ImgUrl:'../../Content/img/job_list_company03.png'" onerror="noFindLogo();"/>
+					</div>
+                    <div class="recommend-name overflow-text" v-html="item.Name"><!--海外广告投放--></div>
+					<div class="recommend-company overflow-text" v-html="item.Company"><!--洋葱数学--></div>
+					<div class="recommend-msg">
+						<span class="demand-experience" v-html="item.Experience"><!--经验3-5年--></span>
+						<span class="demand-education" v-html="item.Education?'/'+item.Education:''"><!--/本科--></span>
+						<span class="demand-area" v-html="item.Area?'/'+item.Area:''"><!--/北京-丰台区--></span>
+					</div>
+					<div class="recommend-operation clearbox">
+						<div class="recommend-detail-btn recommend-btn" v-bind:index="item.ID"><a class="position-detail-href" v-bind:href="'Index.html?ID='+item.ID+'&Match='+item.Match">查看详情</a></div>
+								<div class="recommend-resume-btn recommend-btn" v-bind:index="item.ID"><a class="position-recommend-href" href="javascript:void(0)" v-on:click="recommendMailing(item.ID,item.IsMailings,index)" v-bind:class="{'position-recommend-sended':item.IsMailings!==0,'position-recommend-send':item.IsMailings===0}" v-html="item.IsMailings===0?'投递简历':'已投递'"><!--投递简历--></a></div>
+					</div>
+				</li>
+			</ul>
+			<div class="recommend-empty" style="display:none;" v-show="!loginKey">
+				<div class="empty-top">登陆后根据您的测评和简历进行大数据分析推荐更适合您的职位。</div>
+				<div class="empty-msg">登录并完成测评，可根据您的大数据分析推荐职位，匹配率最高可达</div>
+				<div class="empty-degree">99%</div>
+				<div class="empty-login-btn" v-on:click="emptyLogin">立即登录</div>
+			</div>
+			<div class="recommend-contact clearbox">
+				<img src="../../Content/img/erwei.png"/>
+				<div class="recommend-contact-text">有问题？码上就问</div>
+				<div class="recommend-contact-call recommend-contact-item">
+					<i class="material-icons">&#xE0B0;</i>
+					<span>(+86) 021-31336975</span>
+				</div>
+				<div class="recommend-contact-email recommend-contact-item">
+					<i class="fa fa-envelope" aria-hidden="true"></i>
+					<span>mickeyge@knx.com.cn</span>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+</section>
+<!-- 投递成功弹窗 -->
+<div class="send-success" style="display:none;" v-show="sendKey">
+    <div class="send-wrapper">
+        <div class="send-box">
+            <div class="send-cancel" v-on:click="colseSend"></div>
+            <div class="send-img"></div>
+            <div class="send-title">简历投递成功！</div>
+            <div class="send-msg">你可以购买我们的服务，我们将有专业的指导老师帮你职业规划和辅导，让你的前程无忧。</div>
+            <div class="send-btn-box">
+                <div class="send-serve-btn send-btn"><a href="../Home/Serve.html">查看服务详情</a></div>
+                <div class="send-back-btn send-btn" v-on:click="colseSend">返回</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+        <!--********************************************Page Private End*********************************-->
+        
+        <!-- aside -->
+		<aside>
+			<div class="aside-container">
+				<div class="aside-back-top aside-item">TOP</div>
+				<div class="aside-call aside-item">
+					<i class="material-icons">&#xE0B0;</i>
+				</div>
+				<div class="aside-weixin aside-item">
+					<i class="fa fa-weixin" aria-hidden="true"></i>
+				</div>
+				<div class="aside-share aside-item">
+					<i class="material-icons">&#xE80D;</i>
+				</div>
+			</div>
+		</aside>
+
+        <!-- Login and Register Dialog -->
+		<div class="lr-container">
+			<div class="lr-wrapper">
+				<div class="lr-box">
+					<div class="lr-cancel"></div>
+					<div class="lr-btn-box clearbox">
+						<div class="login-btn lr-btn">
+							登录
+							<div class="btn-line"></div>
+						</div>
+						<div class="register-btn lr-btn">
+							注册
+							<div class="btn-line"></div>
+						</div>
+					</div>
+					<div class="login-box">
+						<div class="login-title">欢迎登录Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item login-phone" placeholder="请输入登录手机号" maxlength="11"/>
+							</div>
+							<div class="login-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item login-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="28"/>
+							</div>
+							<div class="login-password-tips lr-tips"></div>
+							<div class="rf-box clearbox">
+								<div class="remember-password-box lr-checkbox-box">
+									<div class="yes rp-yes lr-checkbox"></div>
+									<div class="no rp-no lr-checkbox"></div>
+									<div class="rp-text lr-text">记住密码</div>
+								</div>
+								<div class="forget-password-box lr-text">忘记密码？</div>
+							</div>
+							<div class="lr-login-btn lr-confirm-btn">登录</div>
+						</div>
+					</div>
+					<div class="register-box">
+						<div class="register-title">欢迎注册Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item register-username" placeholder="请输入用户名" maxlength="20"/>
+							</div>
+							<div class="register-username-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item register-phone" placeholder="请输入注册手机号" maxlength="11"/>
+							</div>
+							<div class="register-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item test-code" placeholder="请输入您收到的验证码" maxlength="6"/>
+								<div class="get-code-btn">获取验证码</div>
+							</div>
+							<div class="code-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item register-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="20"/>
+							</div>
+							<div class="register-password-tips lr-tips"></div>
+							<div class="protocol-box lr-checkbox-box">
+								<div class="yes protocol-yes lr-checkbox"></div>
+								<div class="no protocol-no lr-checkbox"></div>
+								<div class="lr-text">同意《<a href="../../Registration.html" target="_blank">Career Success注册协议</a>》</div>
+							</div>
+                            <div class="register-protocol-tips lr-tips"></div>
+							<div class="lr-register-btn-box clearbox">
+								<div class="complate-msg-btn">注册</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+		<!-- Bottom -->
+		<footer class="row">
+			<div class="foot-box">
+				<div class="foot-left">
+					<ul class="foot-href">
+						<li class="foot-href-item"><a href="">网站首页</a></li>
+						<li class="foot-href-item"><a href="">企业合作</a></li>
+						<li class="foot-href-item"><a href="">人才招聘</a></li>
+						<li class="foot-href-item"><a href="">联系我们</a></li>
+						<li class="foot-href-item"><a href="">讲师招募</a></li>
+						<li class="foot-href-item"><a href="">常见问题</a></li>
+						<li class="foot-href-item"><a href="">意见反馈</a></li>
+						<li class="foot-href-item"><a href="">友情链接</a></li>
+					</ul>
+					<div class="about-other">©肯耐珂萨 2018 | 沪ICP备09051952号-2</div>
+				</div>
+				<ul class="foot-right">
+					<li class="foot-right-item foot-weixin">
+						<i class="fa fa-weixin" aria-hidden="true"></i>
+					</li>
+					<li class="foot-right-item foot-recommend">
+						<i class="material-icons">&#xE0BF;</i>
+					</li>
+					<li class="foot-right-item foot-call">
+						<i class="material-icons">&#xE0B0;</i>
+					</li>
+				</ul>
+			</div>
+		</footer>   
+	</div>
+    <!-- Public JS -->
+    <script type="text/javascript">
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+    </script>
+	
+    <!-- Private JS -->
+    
+	<script>
+	var positionData = JSON.parse('{"Data":[{"Tag":[{"ID":1,"PositionID":1,"TagName":"助理"}],"Like":2,"Company":"上海航阳国际旅行社有限公司","ImgUrl":"/PositionLogo/海航.jpg","Name":"行政助理兼前台-实习生","Address":null,"Demand":null,"Dec":null,"Match":37,"IsLike":1,"IsMailings":1,"ID":1,"Title":null,"PositionName":"前台接待/总机/接待生","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":"南京-建邺区1","AddressInfo":"上海-普陀区","Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"酒店/旅游,航天/航空","CompanySize":"少于50人","Salary":"2-3千/月","RecruitNumber":"招1人","Description":"能力要求：1、*声音甜美，形象气质佳。 <br/>2、1年以上前台工作经验 <br/>3、较强沟通、协调、执行能力，具团队合作精神 <br/>4、思维灵活，处事变通，工作态度积极 <br/>5、熟练操作各样办公室设备 <br/>6、熟悉Word Excel等办公Office软件操作和应用 <br/>7、能承受一定的工作压力。<br/>职位描述：1，记载员工出勤情况 2，记载工作时间和加班时间 3，考核计算扣假工资和加班工资等 4、处理和维护主管日程，准备和完成各类文件报表 5、阅读和分析各类信息，制定工作计划，做好时间分配 6、协助审核、修订行政管理规章制度，执行日常行政工作 7、传达通知、分发文件 8、安排公司各种会务和组织员工各种活动 9、接待访客并决定是否让主管或其他工作人员与之会谈 10、对公司各种文件和档案进行整理、归档 11、履行办公日常职责，如办公用品采买、管理和分发，维护记录管理系统和执行基本的簿记工作等 12、办理各种行政事务和手续，比如填报报表、公司年检、复印打印等<br/><br/>   职能类别： 前台接待/总机/接待生 行政专员/助理   关键字： 行政助理 前台 助理    分享   微信 邮件","Email":null,"Education":"中专","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"},{"Tag":[{"ID":2,"PositionID":2,"TagName":"实习生"}],"Like":1,"Company":"阿里巴巴.阿里云金牌服务商","ImgUrl":"/PositionLogo/阿里巴巴.jpg","Name":"实习生（周末双休，可开实习证明）","Address":null,"Demand":null,"Dec":null,"Match":12,"IsLike":0,"IsMailings":1,"ID":2,"Title":null,"PositionName":"实习生","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":"南京-建邺区2","AddressInfo":"广州","Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"互联网/电子商务,计算机服务(系统、数据服务、维修)","CompanySize":"50-150人","Salary":"2-3千/月","RecruitNumber":"招若干人","Description":"岗位职责：<br/>1、负责协助运营、销售完成助理工作<br/>2、协助处理阿里云、猪八戒平台上的后台工作<br/>4、学习网站建设、电商平台相关知识，了解公司运作<br/>3、完成上级安排的其它相关工作。<br/><br/>任职要求：<br/>1、大学专科以上学历，2018年2019年应届毕业生<br/>2、具备较强的学习能力和适应性，善于解决问题。<br/>3、有校园社团工作经验或社会实践经验者优先<br/><br/>福利待遇<br/>1、无责任底薪2000+奖金<br/>2、每周水果派送，不定时下午茶享受<br/>3、表现优异者，可转为正式员工<br/><br/>联系方式<br/>公司地址：天河区林乐路中旅商务大厦西塔24F（地铁站林和西）<br/>联系电话：020-22099695   职能类别： 实习生 大学/大专应届毕业生   关键字： 运营实习生 网络实习生 实习生    分享   微信 邮件","Email":null,"Education":"","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"},{"Tag":[{"ID":2,"PositionID":2,"TagName":"实习生"}],"Like":1,"Company":"阿里巴巴.阿里云金牌服务商","ImgUrl":"/PositionLogo/阿里巴巴.jpg","Name":"实习生（周末双休，可开实习证明）","Address":null,"Demand":null,"Dec":null,"Match":87,"IsLike":0,"IsMailings":1,"ID":2,"Title":null,"PositionName":"实习生","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":"南京-建邺区2","AddressInfo":"广州","Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"互联网/电子商务,计算机服务(系统、数据服务、维修)","CompanySize":"50-150人","Salary":"2-3千/月","RecruitNumber":"招若干人","Description":"岗位职责：<br/>1、负责协助运营、销售完成助理工作<br/>2、协助处理阿里云、猪八戒平台上的后台工作<br/>4、学习网站建设、电商平台相关知识，了解公司运作<br/>3、完成上级安排的其它相关工作。<br/><br/>任职要求：<br/>1、大学专科以上学历，2018年2019年应届毕业生<br/>2、具备较强的学习能力和适应性，善于解决问题。<br/>3、有校园社团工作经验或社会实践经验者优先<br/><br/>福利待遇<br/>1、无责任底薪2000+奖金<br/>2、每周水果派送，不定时下午茶享受<br/>3、表现优异者，可转为正式员工<br/><br/>联系方式<br/>公司地址：天河区林乐路中旅商务大厦西塔24F（地铁站林和西）<br/>联系电话：020-22099695   职能类别： 实习生 大学/大专应届毕业生   关键字： 运营实习生 网络实习生 实习生    分享   微信 邮件","Email":null,"Education":"","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"},{"Tag":[{"ID":2,"PositionID":2,"TagName":"实习生"}],"Like":1,"Company":"阿里巴巴.阿里云金牌服务商","ImgUrl":"/PositionLogo/阿里巴巴.jpg","Name":"实习生（周末双休，可开实习证明）","Address":null,"Demand":null,"Dec":null,"Match":62,"IsLike":0,"IsMailings":1,"ID":2,"Title":null,"PositionName":"实习生","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":"南京-建邺区2","AddressInfo":"广州","Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"互联网/电子商务,计算机服务(系统、数据服务、维修)","CompanySize":"50-150人","Salary":"2-3千/月","RecruitNumber":"招若干人","Description":"岗位职责：<br/>1、负责协助运营、销售完成助理工作<br/>2、协助处理阿里云、猪八戒平台上的后台工作<br/>4、学习网站建设、电商平台相关知识，了解公司运作<br/>3、完成上级安排的其它相关工作。<br/><br/>任职要求：<br/>1、大学专科以上学历，2018年2019年应届毕业生<br/>2、具备较强的学习能力和适应性，善于解决问题。<br/>3、有校园社团工作经验或社会实践经验者优先<br/><br/>福利待遇<br/>1、无责任底薪2000+奖金<br/>2、每周水果派送，不定时下午茶享受<br/>3、表现优异者，可转为正式员工<br/><br/>联系方式<br/>公司地址：天河区林乐路中旅商务大厦西塔24F（地铁站林和西）<br/>联系电话：020-22099695   职能类别： 实习生 大学/大专应届毕业生   关键字： 运营实习生 网络实习生 实习生    分享   微信 邮件","Email":null,"Education":"","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"},{"Tag":[{"ID":3,"PositionID":3,"TagName":"其他"}],"Like":1,"Company":"招商期货有限公司","ImgUrl":"/PositionLogo/招商.jpg","Name":"研究所实习生","Address":null,"Demand":null,"Dec":null,"Match":37,"IsLike":0,"IsMailings":1,"ID":3,"Title":null,"PositionName":"其他","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":"南京-建邺区3","AddressInfo":"深圳","Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"金融/投资/证券","CompanySize":"50-150人","Salary":"2-3千/月","RecruitNumber":"招10人","Description":"任职要求：<br/>?1.在读研究生；<br/>?2.每周三天及以上，实习期三个月以上（没办法保证请不用投递~）；<br/>?3.性格中性偏外向；<br/>?4.经管类及相关产业类，如学炼油的、化工的、金属冶炼的等，有相关经历优先。   职能类别： 其他    分享   微信 邮件","Email":null,"Education":"","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"},{"Tag":[{"ID":4,"PositionID":4,"TagName":"研究生"}],"Like":2,"Company":"博世汽车系统（无锡）有限公司","ImgUrl":"/PositionLogo/博世.jpg","Name":"48V电池测试实习生","Address":null,"Demand":null,"Dec":null,"Match":28,"IsLike":1,"IsMailings":1,"ID":4,"Title":null,"PositionName":"研究生","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":"南京-建邺区4","AddressInfo":"无锡","Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"汽车及零配件","CompanySize":"150-500人","Salary":"3-4.5千/月","RecruitNumber":"招1人","Description":"1、负责混合动力系统电池研发阶段的分析测试，如高温、低温测试，信号测试、控制方面的测试<br/>2、电池性能分析，包括电芯、主电路、控制器<br/>3. 电池实验室的日常工作，包括样件制备，实验台架调试，测试结果分析。<br/><br/>要求：<br/>1、对电池系统有基本了解，对整车系统有基本了解，熟悉电力电子电路，熟悉Matlab等工程软件，熟悉电池控制基本策略，熟悉CAN报文及CAN电路结构<br/>2、控制工程、电气自动化、车辆工程、机电一体化专业优先，硕士优先<br/>3、英语听说读写流利<br/>4、实习期6个月，每周4天   职能类别： 研究生    分享   微信 邮件","Email":null,"Education":"本科","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"}],"RecordCount":2013,"PageCount":336}'); 
+	var recommendData = JSON.parse('[{"Tag":[{"ID":1375,"PositionID":1191,"TagName":"实习生"}],"Like":0,"Company":"中国人寿保险股份有限公司郑州市东大街营销服务部","ImgUrl":"/PositionLogo/中国人寿保险.jpg","Name":"央企直招毕业大学生待遇从优","Address":null,"Demand":null,"Dec":null,"Match":83,"IsLike":0,"IsMailings":0,"ID":1191,"Title":null,"PositionName":"实习生","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":null,"AddressInfo":"郑州","Experience":"无工作经验","Advantage":null,"Industry":"金融/投资/证券,保险","CompanySize":"1000-5000人","Salary":"4.5-6千/月","RecruitNumber":"招若干人","Description":"[岗位职责]：<br/>1、大力宣扬“中国人寿”这个世界级品牌、传播保险理念，为民生保障做基础性的服务，贡献绵薄之力，传递社会正能量；<br/>2、在工作过程中，认真学习保险相关知识，对保险这门社会性、科学性、实用性、互助性的学科有深刻的体悟；<br/>3、跟随主管去充分体验市场环境,协助主管收集新老客户资料,建立客户数据库,分析客户需求,并逐步有能力独立为客户提出解决方案；<br/>4、协助主管定期做好客户回访，老客户维护和再开发，为客户提供保障计划；<br/>5、通过市场活动、产品推介会、金融展会等活动有效挖掘潜在客户；<br/>6、协助主管完成其他各项工作安排。<br/><br/>[岗位要求]：<br/>1、应届毕业生，大专（含）以上学历，专业不限，金融、保险、市场营销、经济学等专业优先录用；<br/>2、具备诚实信用、客户至上、勤勉尽责、守法遵规、保守秘密等道德素质<br/>3、具备良好的学习能力、自我管理能力、表达能力、沟通能力、团队合作能力等<br/>4、熟悉常用的办公软件；<br/>5、每月保证90%出勤率<br/>6、实习期间表现优秀者，公司提供转正机会。<br/><br/>[岗位待遇]：<br/>1、在中国人寿这样的国家副部级央企里面，你能收获的不仅仅是金钱方面的有形财富，更是知识能力等方面的无形财富，公司在国家的大力感召下将砸下大量人力、物力和财力，致力于打造一支高素质，高文化，高能力的综合性人才队伍<br/>2、不定期地享受公司系统的保险基础知识、销售技能等各类带薪培训；<br/>3、享受主管“摩天轮”全能力培养，帮助缺乏行业知识的新人迅速成长；<br/>4、 提供充足的优质客户资源；<br/>5、 签约后享受公司缴纳的养老金及医疗金。<br/>6、当成长为能够独立开发客户之时，可以享受以下待遇<br/>无责任底薪＋金融业极高的佣金提成+职务津贴+管理津贴+推荐奖+伯乐奖<br/>7、当你具备一定业务能力之时，可以享受公司各项旅游、物资、金钱、荣誉等丰厚奖励<br/>8、一旦被录用，公司公开透明的考核机制和通畅的晋升制度，为有能力者提供充分的施展空间；<br/>晋升之路：实习生——收展员——筹备组经理——组经理——处经理——区经理……<br/>9、人性化的管理，团结向上的工作氛围，期待您的加入！<br/><br/>公司地址：郑州市管城区西大街205号7楼<br/>联系电话：崔经理 17752545216<br/>注:请勿重复投递简历，以免影响您的应聘形象！   职能类别： 实习生    分享   微信 邮件","Email":null,"Education":"大专","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"},{"Tag":[{"ID":1590,"PositionID":1407,"TagName":"稳定"}],"Like":0,"Company":"中国人寿保险股份有限公司成都市分公司滨江营销服务部","ImgUrl":"/PositionLogo/中国人寿保险.jpg","Name":"国企诚聘人事助理（周末双休+稳定+不涉及保险销售）","Address":null,"Demand":null,"Dec":null,"Match":98,"IsLike":0,"IsMailings":0,"ID":1407,"Title":null,"PositionName":"招聘专员/助理","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":null,"AddressInfo":"成都","Experience":"无工作经验","Advantage":null,"Industry":"保险","CompanySize":"10000人以上","Salary":"4.5-6千/月","RecruitNumber":"招3人","Description":"岗位职责：<br/>1.接受公司一系列相关培训，学习金融、保险、管理、投资理财等知识(此岗位不涉及保险销售)；2.参与公司人事招募工作，并协助功能组对新员工进行相关的基础培训；3.发布招聘广告，开扩和维护各招聘渠道；<br/>4.负责面试人员的面试及后续追踪，完成月度招聘考核；<br/>5.应聘人员的简历筛选并建立人才库； <br/>6.协助主管做好团队管理相关工作。 <br/>岗位要求： 1.年龄20岁及以上；2.大专及以上学历；<br/>2.能熟练使用office办公软件； <br/>3.有良好的人际交往能力和沟通技巧，思维敏捷； <br/>4.知识结构较全面，学习能力强，能够迅速掌握与公司业务有关的各种知识； <br/>5.工作认真负责，积极主动，性格开朗，学习能力强；<br/>6.条理性强，善于思考，具备良好的分析能力； <br/>7.有人事招募，销售或管理经验优先考虑；<br/>8.可接受学习，沟通能力比较强的应届毕业生。<br/>福利待遇： <br/>1.薪酬结构：底薪2400元+全勤津贴+新人津贴+管理津贴+辅导津贴+节日礼品+活动方案+优秀员工奖（具体面议） <br/>2.工作时间:周末双休+ 国家法定节假日 <br/>3.央企平台+全方位专业化+系统化的培训体系，帮助你快速成长，提升自己各方面能力 <br/>4.全方位个人保险（医疗、意外、养老........）+独立账户养老金+公开透明的发展晋升机制 <br/>收入、福利待遇及晋升： <br/>1、训练津贴、业务提成、达标津贴、续年度服务津贴、持续率奖金、增员奖励，养老金等； <br/>2、享有意外保险、定期寿险和住院医疗保险等综合保障； <br/>3、绩优人员享有特别养老补贴； <br/>4、参加公司的管理团队，晋升主任/高级主任/经理 <br/>5,、团队建设 公司免费提供职场办公设施 <br/>6、可成为国寿的专职培训讲师、可成为国寿保险理财规划师 <br/>7、享受国寿终身免费金融理财培训，全心打造职业经理人 <br/>发展方向：人事助理-人事主任-人事主管-人事总监<br/>联系人：王纯 联系电话：15281087200（为保证招聘质量，有意者在一条招聘信息上投递一份简历即可，人力资源部会统一安排。请勿在中国人寿多个招聘信息上重复投递，谢谢！）工作地点:成都市青羊区忠烈祠西街99号绿洲大酒店写字楼12楼   职能类别： 招聘专员/助理 人事助理   关键字： 保险 人事 行政 招聘 文职 高薪 专业培训 实习生 周末双休 稳定    分享   微信 邮件","Email":null,"Education":"","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"},{"Tag":[{"ID":1688,"PositionID":1500,"TagName":"主管"}],"Like":0,"Company":"中国人寿保险股份有限公司郑州市东大街营销服务部","ImgUrl":"/PositionLogo/中国人寿保险.jpg","Name":"储备主管（人寿部门经理方向）","Address":null,"Demand":null,"Dec":null,"Match":96,"IsLike":0,"IsMailings":0,"ID":1500,"Title":null,"PositionName":"储备经理人","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":null,"AddressInfo":"郑州-管城回族区","Experience":"1年经验","Advantage":null,"Industry":"保险,银行","CompanySize":"1000-5000人","Salary":"6-8千/月","RecruitNumber":"招5人","Description":"1、不可错过的黄金十年<br/>2006-2015年中国保险理财市场进入黄金十年。<br/>在国内跨行业理财报告《2007年中国金融理财报告》中，国务院发展研究中心金融研究所副所长巴曙松博士提出，从2006年开始，中国理财市场的发展已经进入黄金十年。保险、银行、证劵、基金等作为理财市场的主体，他们的春天已经到来。<br/>中金公司首席保险分析周光表示，欧美保险市场目前已处于支付状态，保险公司需要为此承担大量的后期给付。相比之下，中国的寿险市场刚刚起步，正迈入黄金期。根据保险深度进行测算，这一阶段将持续10到15年。<br/><br/>2、中国人寿致力于在全国建立高素质，高标准年轻化的的主管队伍，现在4大直辖市上海，北京，天津，重庆做为全国试点单位进行招聘储备主管，团队规模种子主管300人，50人以成长为正式主管，平均年龄25岁，现已在各个岗位上发挥着他们的领导才能，中国人寿诚至欢迎您的加入。<br/>为了建立和完善公司人才培养机制，通过制定有效的管理岗位继任者和后备人才甄选计划，<br/>合理地挖掘、培养后备人才队伍，建立公司的人才梯队，<br/>为实现公司的“三高战略目标”提供可持续发展的动力！<br/><br/>3、理想的职业是怎样的？<br/>职业特征：<br/>1. 晋升的机会可以把握<br/>2. 不需要本金的大生意<br/>3. 随着工作年资的增加，市场身价不断提高<br/>4. 不断学习新知识、不断接触新事物<br/>5. 工作中可以有更多的自主性和创造性<br/>6. 工作中能够结识更多的朋友<br/>7. 能帮助别人，成就自己，赢得尊重和感动<br/><br/>选择大于努力，选对事业是关键<br/>有这样一份事业，你会选择吗？<br/>前途性——行业未来具有良好的发展潜力<br/>晋升性——个人的晋升在于自己的表现，不受人际关系、学历和年资的影响<br/>收入性——个人能力、工作时间的投入与实际的薪资成正比<br/>成长性——能接受完整的教育训练，并不断地激发自身的潜能<br/>快乐性——工作有意义，乐在其中，并能兼顾家庭<br/><br/>基本要求：<br/>1、21至35周岁；<br/>2、本科及以上，高学历者优先；<br/>3、热情积极，正能量，有责任感，学习能力强；<br/>4、具有良好的心理素质及沟通能力；<br/>5、具有金融、管理、保险、经济、医学、法律和人力资源等行业从业经验者优先。<br/>职业定位：<br/>未来市场需要的是一种综合性金融服务，即专业理财人员通过分析和评估客户财务状况和生活状况，明确客户的理财目标，帮助客户制定出合理的，可操作的理财方案，使其能满足客户人生不同阶段的需求，最终协助客户实现财务上的自由，自主和自在。<br/>本岗位是国寿公司为人才储备而设，旨在寻求愿意与公司共成长的青年才俊，通过公司的一系列培训，使培训生掌握保险的有关知识，根据自身特长和兴趣定岗于合适的职位，承担门店店长、人力资源、职场导师、行政管理、团队主管、VIP理财规划师等工作。<br/><br/>公司培训：<br/>1、职前培训：从业资格培训、岗前培训、衔接训练和新人成长培训等；<br/>2、转正培训：专题培训、提升培训、拓展培训和讲师培训等；<br/>3、晋升培训：经营管理技能训练和团队管理培训等；<br/>4、中国人寿金融学院终身免费金融培训和管理培训，全力打造职业经理人。<br/><br/>收入及福利待遇：<br/>1、入司即可享有基本工资、培训津贴、年度展业奖、转正津贴、新人卓越奖、续年度服务津贴和增才奖金等；<br/>2、享有人生意外保险、定期寿险和住院医疗保险；<br/>3、绩优人员享有基本养老补贴、重大疾病补助和子女高考补助等；<br/>4、入司两周年开始享有长期养老津贴；<br/>5、入司人员有小孩在上海上学的可以享受公司政策支持。<br/><br/>面试地点：管城区西大街中国人寿大厦五楼<br/>联系人：赵经理<br/>联系方式：13223011395<br/>由于面试人员较多，若想快速得到面试机会，可提前致电！！请勿重复投递简历！   职能类别： 储备经理人 实习生   关键字： 储备经理人 保险业务经理 主管    分享   微信 邮件","Email":null,"Education":"大专","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"},{"Tag":[{"ID":1572,"PositionID":1389,"TagName":"汽车修理工"}],"Like":0,"Company":"安盛天平财产保险股份有限公司四川分公司","ImgUrl":"/PositionLogo/安盛.jpg","Name":"月薪7000急聘电话车险销售人员+双休","Address":null,"Demand":null,"Dec":null,"Match":88,"IsLike":0,"IsMailings":0,"ID":1389,"Title":null,"PositionName":"保险电销","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":null,"AddressInfo":"成都","Experience":"无工作经验","Advantage":null,"Industry":"保险,金融/投资/证券","CompanySize":"10000人以上","Salary":"4.5-6千/月","RecruitNumber":"招10人","Description":"职位亮点：系统的培训、结构化思维训练、高成长空间、无发展瓶颈、和谐的工作氛围<br/><br/>工作职责：<br/>1、根据公司提供的汽车用户资源，与客户电话沟通，通过电脑和电话，完成车险产品的介绍、推荐和销售流程；<br/>2、对公司老客户进行电话回访和跟踪服务。<br/>（车险是汽车用户每年必须要购买的产品、市场潜力巨大）<br/><br/>任职要求：<br/>1、大专以上学历，年龄18―30周岁，条件优秀者者可适当放宽学历要求；<br/>2、标准普通话，声音甜美，表达能力强，熟练电脑操作技能；<br/>3、个性开朗、反应敏捷，具有较强的事业心与团队协作精神；<br/>4、喜欢销售工作，能够承受压力；<br/><br/>薪资福利<br/>1、实习生入职签订实习协议，待毕业证书取得后转为正式劳动合同；<br/>2、稳定的薪酬体系：基本工资+绩效+餐补+岗位津贴+季度奖金+年度奖金+长期服务奖+各项福利；<br/>3. 五天八小时工作制， 周末双休，国家法定节假日，每年带薪年假等所有假期均正常享受放假；<br/><br/>联 系 人：任经理<br/>联系方式：15879403317（微信同号）<br/><br/>短信预约面试，姓名+性别+年龄+学历+职位名称+工作地点+电子邮箱（如：张三+性别+23+大专+车险销售+洪山区+邮箱）   职能类别： 保险电销 电话销售   关键字： 电话销售 淘宝运营 汽车销售 酒店管理 周末双休 淘宝客服 五险一金 包吃包住 会计助理 汽车修理工    分享   微信 邮件","Email":null,"Education":"大专","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"},{"Tag":[{"ID":1648,"PositionID":1462,"TagName":"渠道销售"}],"Like":0,"Company":"中国人寿保险股份有限公司沈阳市沈河区支公司","ImgUrl":"/PositionLogo/中国人寿保险.jpg","Name":"双休销售代表","Address":null,"Demand":null,"Dec":null,"Match":83,"IsLike":0,"IsMailings":0,"ID":1462,"Title":null,"PositionName":"销售代表","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":null,"AddressInfo":"沈阳","Experience":"无工作经验","Advantage":null,"Industry":"保险","CompanySize":"500-1000人","Salary":"6-8千/月","RecruitNumber":"招2人","Description":"我: <br/>岗位职责： <br/>1，负责保险相关业务，为客户制定计划，完成业绩目标。 <br/>2，定期与老客户维护和沟通，达到二次销售。 <br/>3，擅长团队管理及业务辅导和培训，有一定抗压能力，愿意挑战高薪 <br/>4，擅长团队管理及业务辅导和培训,热爱金融营销括展性工作 <br/><br/>任职要求： <br/>1、具有丰富的人力资源，扎实努力； <br/>2、具备较强的人际沟通、协调能力，分析和解决问题的能力。 <br/>3、有较强的事业心，责任心，和一定的领导能力。 <br/>薪酬福利： <br/>1.基本工资+奖金+免费培训+晋升空间=平均每月8000-10000以上 <br/>2.提供定期培训，坚持一流的培训，3.提拔晋升空间大，为员工提供良好的职业发展平台； <br/>4.工作时间：早八点半晚五，双休，法定节假日休息，午休两个小时 <br/>郑重承诺：公司直招，不收任何费用，实行带薪实习和培训，一经录用为员工提供很好的发展平台与晋升机会。薪资待遇： <br/>底薪+服务津贴、职务津贴、续期服务津贴、管理津贴等； <br/>公司提供个人意外保险、定期寿险、住院医疗险及补充养老等完善的个人保障体系； <br/>入司即享有专业系统化的入职培训，长期享有团队管理、营销知识、法律知识、专业金融知识、社交礼仪等专业培训及免费国内各地学习分享旅游机遇！ <br/>工作地址： <br/>沈河区十一纬路与三经街交汇处中国人寿大楼A座6楼 <br/>咨询电话：02467767796   职能类别： 销售代表   关键字： 直销销售 渠道销售    分享   微信 邮件","Email":null,"Education":"","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"},{"Tag":[{"ID":1830,"PositionID":1640,"TagName":"行政文员"}],"Like":0,"Company":"安盛天平财产保险股份有限公司","ImgUrl":"/PositionLogo/安盛.jpg","Name":"外企高端私家车车险销售急聘","Address":null,"Demand":null,"Dec":null,"Match":81,"IsLike":0,"IsMailings":0,"ID":1640,"Title":null,"PositionName":"保险电销","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":null,"AddressInfo":"武汉-洪山区","Experience":"无工作经验","Advantage":null,"Industry":"保险,金融/投资/证券","CompanySize":"10000人以上","Salary":"0.8-1万/月","RecruitNumber":"招20人","Description":"工作职责:<br/>1、依托公司汽车用户资源，通过先进的电话系统，用标准的话术，向客户提供专业的咨询服务；<br/>2、了解和发掘客户需求及购买愿望，介绍产品的优点和特色；<br/>3、跟进意向客户，定期回访、维护已有客户，提高客户满意度；<br/><br/>任职资格：<br/>1、18—32周岁，高中以上学历；<br/>2、具备较强的学习能力和优秀的沟通能力；<br/>3、自信、乐观、学习能力强,有良好的抗压能力，勇于挑战高薪；<br/><br/>福利待遇：<br/>1、享受国家法定休息日、带薪年假、病假、产假等一系列正常假期；<br/>2、员工每年免费体检，免费旅游、各项节日费补贴、激励丰富员工的业务生活；<br/>3、无责底薪+高额提成+奖金+节日费+降温取暖费，月均5000左右；<br/><br/>工作时间：<br/>? 五天八小时工作制，周末双休，享受国家法定节假日，免费带薪年假；<br/>? 正常的工作时间为9:30-12:30, 14:00-18:30，午间休息1.5小时。<br/><br/>联 系 人：李经理<br/>招聘热线：18771130151（微信同号）<br/>上班地点：武汉市洪山区光谷软件园<br/><br/>短信预约面试，姓名+性别+年龄+学历+职位名称+工作地点+电子邮箱（如：张三+性别+23+大专+车险销售+洪山区+邮箱）   职能类别： 保险电销 保险内勤   关键字： 销售代表 呼叫中心 客服代表 应届生 实习生 客户代表 五险一金 年终奖 周末双休 行政文员    分享   微信 邮件","Email":null,"Education":"高中","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"}]'); 
+	var PositionTitle = '';
+	var pageSize= 6;
+
+	</script>
+    <script src="../../Scripts/mock/jobList_mock.js"></script>
+	<script src="../../Scripts/lib/job_radialIndicator.js"></script>
+	<script src="../../Scripts/lib/jquery.page.js"></script>
+	<script src="../../Scripts/lib/ion.rangeSlider.min.js"></script>
+	<script src="../../Scripts/js/JobList.js?v=20180119" type="text/babel"></script>
+	
+
+
+</body>
+</html>

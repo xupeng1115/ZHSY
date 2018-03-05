@@ -1,0 +1,119 @@
+@charset "utf-8";
+/*********************************我的测评**************************************/
+.content-box .evaluation-module-container{
+	display:block;
+	position:relative;
+	width:100%;
+}
+
+/*************************************测评列表**********************************/
+.evaluation-module-container .evaluation-list{
+	padding:60px 1px 130px 1px;
+}
+
+.evaluation-list .evaluation-item{
+	position:relative;
+	float:left;
+	margin:0 26px 30px 0;
+	width: 280px;
+  	height: 315px;
+  	border-radius: 4px;
+  	background-color: #ffffff;
+  	box-shadow: 0 2px 7px 0 rgba(212, 212, 212, 0.5);
+	overflow:hidden;
+}
+
+.evaluation-list .evaluation-item:nth-of-type(4n+0){
+	margin-right:0;
+}
+
+.evaluation-item img{
+	display:block;
+	width:280px;
+	height:100px;
+}
+
+.evaluation-item .img-flo{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	padding-top:35px;
+	width: 280px;
+  	height: 100px;
+  	background:rgba(0,0,0,0.3);
+  	font-size:20px;
+  	font-weight:500;
+  	color:#fff;
+}
+
+.evaluation-item .item-msg{
+	padding:17px 20px 10px 20px;
+	font-size:15px;
+	color:#333;
+	text-align:left;
+}
+
+.evaluation-item .item-text{
+	padding:0 20px 5px 20px;
+	line-height:20px;
+	font-size:14px;
+	color:#6d6d6d;
+	text-align:left;
+}
+
+.evaluation-item .item-stars{
+	position:absolute;
+	bottom:55px;
+	left:0;
+	z-index:10;
+	height:20px;
+	line-height:20px;
+	font-size:12px;
+	text-align:left;
+	color:#6d6d6d;
+	padding:0 20px;
+}
+
+.item-stars span{
+	display:inline-block;
+	float:left;
+	line-height:20px;
+}
+
+.item-stars .stars{
+	margin-right:3px;
+	font-size:15px;
+	color:#ffbf00;
+}
+
+.item-stars .stars-num{
+	padding-left:10px;
+}
+
+.evaluation-item .report-btn{
+	position:absolute;
+	bottom:0;
+	left:0;
+	z-index:10;
+	width:100%;
+	height:45px;
+	line-height:45px;
+	border-top:1px solid #ededed;
+	font-size:14px;
+	color:#0099e5;
+	text-align:center;
+	cursor:pointer;
+}
+
+.evaluation-item .report-btn a{
+    display:block;
+    font-size:14px;
+	color:#0099e5;
+	text-align:center;
+}
+
+.evaluation-item .report-btn a:hover{
+    color:#1594d3;
+}
+

@@ -1,0 +1,290 @@
+@charset "utf-8";
+/******************************Banner****************************/
+.top-banner {
+	position:relative;
+	width:100%;
+	height:276px;
+	background:url(../img/pay_index_banner.png)no-repeat center center;
+	background-size:cover;
+}
+
+.top-banner .banner-content{
+	position:relative;
+	margin:0 auto;
+	width:1200px;
+	height:100%;
+}
+
+.banner-content .banner-title{
+	padding-top:70px;;
+  	font-size: 38px;
+  	letter-spacing: 1.6px;
+  	text-align: left;
+  	color: #ffffff;
+}
+
+.banner-content .banner-msg{
+	padding-top:15px;;
+  	font-size: 14px;
+  	text-align: left;
+  	color: #ffffff;
+}
+
+.banner-content .pay-serve-btn{
+	margin-top:25px;
+	width: 154px;
+  	height: 45px;
+  	line-height:45px;
+  	background-color: #0099e5;
+  	font-size: 14px;
+  	text-align: center;
+  	color: #fff;
+  	cursor:pointer;
+  	
+  	transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
+}
+
+.banner-content .pay-serve-btn:hover{
+	background-color:#0099ff;
+}
+
+/**********************理想工作************************/
+section{
+	position:relative;
+	background:#fff;
+}
+
+section .work-box{
+	width:100%;
+	background:#fff;
+	box-shadow: 0 2px 4px 0 rgba(240, 240, 240, 0.5);;
+}
+
+.work-box .work-container{
+	margin:0 auto;
+	padding:45px 0;
+	width:1010px;
+}
+
+.work-container .work-item{
+	float:left;
+	padding-left:50px;
+	margin-right:40px;
+	position:relative;
+	width:310px;
+}
+
+.work-container .work-item:last-child{
+	margin-right:0;
+}
+
+.work-item .work-item-title{
+	font-size:16px;
+	color:#333;
+	font-weight:500;
+	text-align:left;
+}
+
+.work-item .work-item-msg{
+	padding-top:10px;
+	line-height:20px;
+	font-size:14px;
+	color:#6d6d6d;
+	text-align:left;
+}
+
+.work-container .work-item:nth-child(1):before{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	content:"";
+	width:40px;
+	height:40px;
+	background:url(../img/pay_index_icon01.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.work-container .work-item:nth-child(2):before{
+	position:absolute;
+	top:0;
+	left:5px;
+	z-index:10;
+	content:"";
+	width:33px;
+	height:40px;
+	background:url(../img/pay_index_icon02.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.work-container .work-item:nth-child(3):before{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	content:"";
+	width:40px;
+	height:40px;
+	background:url(../img/pay_index_icon03.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+/*****************************服务内容****************************/
+section .serve-box{
+	position:relative;
+	padding-top:45px;
+	padding-bottom:125px;
+	width:100%;
+	background:#f5f5f5;
+}
+
+.serve-box .serve-container{
+	margin:0 auto;
+	width:1130px;
+	height:100px;
+	color:#fff;
+}
+
+.serve-container .serve-item{
+	float:left;
+	margin-right:30px;
+	width:260px;
+	height:540px;
+	background:#fff;
+}
+
+.serve-container .serve-item:hover{
+	box-shadow: 0 2px 14px 0 rgba(202, 202, 202, 0.5);
+}
+
+.serve-container .serve-item:last-child{
+	margin-right:0;
+}
+
+.serve-item .serve-item-top{
+	position:relative;
+	width:100%;
+	height: 67px;
+  	background-color: rgba(0, 0, 0, 0.67);
+  	
+  	transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
+}
+
+.serve-item-top .serve-item-title{
+	padding-top:18px;
+	width:100%;
+	height:30px;
+	line-height:30px;
+	font-size:20px;
+	color:#fff;
+	text-align:center;
+	
+	transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
+}
+
+.serve-item-top .serve-item-price{
+	position:absolute;
+	top:25px;
+	left:0;
+	width:100%;
+	height:20px;
+	line-height:20px;
+	font-size:14px;
+	font-weight:500;
+	color:#fff;
+	text-align:center;
+	opacity:0;
+	
+	transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
+}
+
+.serve-item:hover .serve-item-top{
+	background:#ffbf00;
+}
+
+.serve-item:hover .serve-item-top .serve-item-title{	
+	font-size:14px;
+	padding-top:5px;
+}
+
+.serve-item:hover .serve-item-top .serve-item-price{
+	font-size:26px;
+	top:37px;
+	opacity:1;
+}
+
+.serve-item .serve-list{
+	padding:33px 5px 20px 40px;
+	width:100%;
+	height:400px;
+}
+
+.serve-list .serve-list-item{
+	position:relative;
+	padding-bottom:12px;
+	font-size:14px;
+	letter-spacing:1.14px;
+	color:#7a7a7a;
+	text-align:left;
+}
+
+.serve-list .serve-list-item:before{
+	position:absolute;
+	top: 6px;
+    left: -20px;
+    content: "";
+    width: 11px;
+    height: 7px;
+	border-left:3px solid #7ed321;
+	border-bottom:3px solid #7ed321;
+	
+	transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg); 	/* IE 9 */
+	-moz-transform:rotate(-45deg); 	/* Firefox */
+	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(-45deg); 	/* Opera */
+}
+
+.serve-item .serve-btn{
+	margin:0 auto;
+	width:188px;
+  	height:50px;
+  	line-height:50px;
+  	border-radius: 2px;
+  	background-color: #0099e5;
+  	font-size:14px;
+  	font-weight:500;
+  	color:#fff;
+  	text-align:center;
+  	cursor:pointer;
+}
+
+.serve-item .serve-btn a{
+    display: block;
+    background-color: #0099e5;
+  	font-size:14px;
+  	font-weight:500;
+  	color:#fff;
+  	text-align:center;
+    
+    transition: all 0.2s;
+	-moz-transition:all 0.2s; /* Firefox 4 */
+	-webkit-transition:all 0.2s; /* Safari 和 Chrome */
+	-o-transition:all 0.2s; /* Opera */
+}
+.serve-item .serve-btn a:hover{
+	background:#0099ff;
+}
+

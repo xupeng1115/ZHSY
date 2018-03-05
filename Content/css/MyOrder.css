@@ -1,0 +1,189 @@
+@charset "utf-8";
+/*********************************我的测评**************************************/
+.content-box .order-module-container{
+	display:block;
+	position:relative;
+	width:100%;
+}
+
+/*************************************测评列表**********************************/
+.order-module-container .order-content{
+	margin:60px 1px 130px 1px;
+	border-bottom:3px solid #ececec;
+	box-shadow: 0 2px 7px 0 rgba(212, 212, 212, 0.5);
+	border-radius:4px;
+}
+
+.order-content .order-title{
+    width:100%;
+    height:40px;
+    line-height:40px;
+    padding-left:20px;
+    background:#ffbf00;
+    font-size:14px;
+    color:#fff;
+    border-radius:4px 4px 0 0;
+}
+
+.order-content .order-list-title{
+    width:100%;
+    height:48px;
+    line-height:48px;
+    font-size:14px;
+    font-weight:bold;
+    text-align:center;
+    color:#333;
+}
+
+.order-content .order-list-title span{
+    display:inline-block;
+    padding:0 5px;
+    float:left;
+    height:48px;
+    line-height:48px;
+    text-align:center;
+    color:#6F6F6F;
+    background:#fff;
+    border-right:1px solid #ececec;
+}
+
+.order-content .order-list-title span:last-child{
+    border-right:none;
+}
+
+.order-content .order-index{
+    width:68px;
+}
+
+.order-content .order-num{
+    width:130px;
+}
+
+.order-content .order-name{
+    width:200px;
+}
+
+.order-content .order-contacts{
+    width:130px;
+}
+
+.order-content .order-tel{
+    width:180px;
+}
+
+.order-content .order-email{
+    width:180px;
+}
+
+.order-content .order-price{
+    width:130px;
+}
+
+.order-content .order-time{
+    width:180px;
+    border-right:none;
+}
+
+.order-content .order-list{
+    position:relative;
+    width:100%;
+}
+
+.order-content .order-list .order-item{
+    position:relative;
+    width:100%;
+    height:38px;
+    line-height:37px;
+    border-top:1px solid #ececec;
+}
+
+.order-content .order-list .order-item span{
+    display:inline-block;
+    padding:0 5px;
+    float:left;
+    height:37px;
+    line-height:37px;
+    font-size:13px;
+    text-align:center;
+    color:#6F6F6F;
+    background:#fff;
+    border-right:1px solid #ececec;
+}
+
+.order-content .order-list .order-item:nth-child(2n+0) span{
+    background:#f9f9f9
+}
+
+.order-content .order-list .order-item span:last-child{
+    border-right:none;
+}
+
+
+/***************************分页**************************/
+.tcdPageCode{
+	display:inline-block;
+	padding: 15px 20px;
+	text-align: left;
+	color: #ccc;
+	text-align:center;
+}
+
+.tcdPageCode a{
+	display: inline-block;
+	padding: 0 10px;
+	margin: 0 5px;
+	height: 35px;
+	line-height: 35px;
+	background-color: #ffffff;
+  	border: solid 1px #e5e5e5;
+  	font-size: 16px;
+  	letter-spacing: 1px;
+  	text-align: center;
+  	color: #6d6d6d;
+	vertical-align: middle;
+}
+
+.tcdPageCode a:hover{
+	text-decoration: none;
+	border: 1px solid #ffbf00;
+}
+
+.tcdPageCode span.current{
+	display: inline-block;
+	padding: 0 10px;
+	margin: 0 5px;
+	height: 35px;
+	line-height: 35px;
+	background-color: #ffbf00;
+  	border: solid 1px #ffbf00;
+  	font-size: 16px;
+  	letter-spacing: 1px;
+  	text-align: center;
+  	color: #fff;
+	vertical-align: middle;
+}
+
+.tcdPageCode span.disabled{	
+	display: inline-block;
+	padding: 0 10px;
+	margin: 0 5px;
+	height: 35px;
+	line-height: 35px;
+  	font-size: 16px;
+  	letter-spacing: 1px;
+  	text-align: center;
+  	color: #fff;
+	color: #bfbfbf;
+	background: #f2f2f2;
+	border: 1px solid #bfbfbf;
+	vertical-align: middle;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>MyOrder</title>
+
+    <!-- Public Header -->
+	<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../Content/lib/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../Content/css/Template.css?v=20180122"/>
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>
+
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+	<script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+	<script src="../../Scripts/js/Template.js?v=20180301"></script>
+	<script src="../../Scripts/lib/babel.min.js"></script>
+
+	<!--[if lt IE 9]>
+	    <script src="../../Scripts/lib/html5shiv.min.js"></script>
+	    <script src="../../Scripts/lib/respond.min.js"></script>
+	<![endif]-->
+
+    <!-- Private Header -->
+    
+    <link rel="stylesheet" href="../../Content/css/MyBackstage.css?v=20180206" />
+    <link rel="stylesheet" href="../../Content/css/MyOrder.css?v=20180206" />
+
+</head>
+<body>
+    <!--Page Public -->
+	<div class="container-fluid" id="app">
+        <!-- Top -->
+		<header class="row">
+			<div class="row top-box top-width">
+				<div class="top-logo"><a href="../Home/Index.html"></a></div>
+				<ul class="top-nav clearbox">
+					<li class="top-nav-item"><a href="../Assessment/Index.html">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List.html">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Serve.html">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About.html">关于我们</a></li>
+                        <li class="top-nav-item lr-success">
+                            <a href="../Resume/Index.html">
+                            <img src="/UserPhoto/aa1517577133806.png" class="success-img" onerror="nofind();"/>
+                            </a>
+                            <div class="backstage-entrance-container">
+							    <div class="backstage-entrance">
+								    <div class="entrance-wrapper">
+									    <div class="entrance-top clearbox">
+										    <img src="/UserPhoto/aa1517577133806.png" class="entrance-img" onerror="nofind();"/>
+										    <div class="entrance-name overflow-text">13761646494</div>
+										    <div class="entrance-edit-btn"><a href="../Resume/Index.html" id="entrance-edit-href">修改资料</a></div>
+									    </div>
+									    <ul class="entrance-href-box clearbox">
+										    <li class="entrance-href-item"><a href="../My/MyCollection.html">收藏职位</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyJob.html">投递职位</a></li>
+										    <li class="entrance-href-item"><a href="../Resume/Index.html">我的简历</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyAssessment.html">我的测评</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyOrder.html">我的订单</a></li>
+									    </ul>
+									    <div class="entrance-back-btn login-exit">安全退出</div>
+								    </div>
+							    </div>
+						    </div>
+                        </li>
+                    <li class="top-nav-item top-nav-call" style="display:block;">
+						<div class="top-call-msg top-call-text">求职小助手</div>
+						<div class="top-call-num top-call-text">+86 400 123 4567</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+        <!--********************************************Page Private************************************-->
+        
+
+<!-- Banner-->
+<div class="row top-banner">
+	<div class="banner-head-box">
+		<img class="banner-head" src="/UserPhoto/aa1517577133806.png" onerror="nofind();"/>
+	</div>
+	<div class="banner-name" v-html="userName"></div>
+	<div class="banner-tag-box clearbox">
+		<div class="banner-tag-content clearbox">
+		    <ul class="banner-tag clearbox user-title-list" style="display:none;" v-show="userTags.length>0">
+		        <li class="tag-item" v-for="(item,index) in userTags" v-bind:key="item.ID" v-bind:index="item.ID" v-html="item.TitleName"><!--测试工程师--></li>
+		    </ul>
+		    <div class="add-tag-btn" v-on:click="addTags"></div>
+		</div>
+	</div>
+</div>
+<!-- Content -->
+<section class="row">
+	<div class="nav-content">
+		<ul class="nav-box clearbox">
+			<li class="nav-item">
+				<a href="MyCollection.html" class="nav-text">收藏职位</a>
+			</li>
+			<li class="nav-item">
+				<a href="MyJob.html" class="nav-text">投递职位</a>
+			</li>
+			<li class="nav-item">
+				<a href="../Resume/Index.html" class="nav-text">我的简历</a>
+			</li>
+			<li class="nav-item">
+				<a href="MyAssessment.html" class="nav-text">我的测评</a>
+			</li>
+            <li class="nav-item nav-item-active">
+				<a href="MyOrder.html" class="nav-text">我的订单</a>
+			</li>
+		</ul>
+	</div>
+	<div class="content-box clearbox">
+				
+		<!--我的订单-->
+		<div class="order-module-container backstage-module" num="5">
+			<div class="order-empty-content empty-content" style="display:none;" v-show="isShow!=='True'">
+				<div class="empty-img"></div>
+				<div class="empty-msg">你还没有订单，快去寻找喜欢和需要的服务!</div>
+				<div class="empty-btn order-empty-btn"><a href="../Home/Serve.html">去服务看看</a></div>
+			</div>
+            <div class="order-content" style="display:none;" v-show="isShow==='True'">
+                <div class="order-title">我的订单</div>
+                <div class="order-list-title">
+                    <span class="order-index">序号</span>
+                    <span class="order-num">订单号</span>
+                    <span class="order-name">产品名称</span>
+                    <span class="order-contacts">姓名</span>
+                    <span class="order-tel">电话</span>
+                    <span class="order-email">邮箱</span>
+                    <span class="order-price">价格</span>
+                    <span class="order-time">购买时间</span>
+                </div>
+			    <ul class="order-list clearbox" style="display:none;" v-show="isShow==='True'">
+                    <li class="order-item" v-for="(item,index) in orderList" v-bind:key="index" v-bind:index="item.ID">
+				        <span class="order-index overflow-text" v-html="index+1"></span>
+                        <span class="order-num overflow-text" v-html="item.OrderNo" v-bind:title="item.OrderNo"></span>
+                        <span class="order-name overflow-text" v-html="item.ProductName" v-bind:title="item.ProductName"></span>
+                        <span class="order-contacts overflow-text" v-html="item.Contacts" v-bind:title="item.Contacts"></span>
+                        <span class="order-tel overflow-text" v-html="item.Tel" v-bind:title="item.Tel"></span>
+                        <span class="order-email overflow-text" v-html="item.Email" v-bind:title="item.Email"></span>
+                        <span class="order-price overflow-text" v-html="item.Price+' ¥'" v-bind:title="item.Price"></span>
+                        <span class="order-time overflow-text" v-html="item.CreatedTime" v-bind:title="item.CreatedTime"></span>
+				    </li>
+			    </ul>
+            </div>
+		</div>
+	</div>
+</section>
+<!-- Tag Dialog -->
+<div class="flo-box" v-show="tagBoxShow" style="display:none;">
+	<div class="tag-select-box">
+		<div class="tag-cancel-btn" v-on:click="tagCancel"></div>
+		<div class="select-title">
+			<span class="title-text">标签选择</span>
+			<span class="title-dec">最多选择5个标签</span>
+			<span class="tag-num-box" v-html="'共'+totalTags.length+'个标签'"></span>
+		</div>
+		<ul class="select-list clearbox">
+			<li class="select-item" v-for="(item,index) in totalTags" v-bind:key="item.ID" v-bind:index="item.ID" v-on:click="tagClick(item,$event)" v-html="item.TitleName"></li>
+		</ul>
+		<div class="select-btn-box clearbox">
+			<div class="select-btn select-confirm-btn" v-on:click="tagConfirm">
+				<span class="select-icon"><i class="material-icons">&#xE5CA;</i></span>
+				<span class="btn-text">确定</span>
+			</div>
+			<div class="select-btn select-reset-btn" v-on:click="tagReset">
+				<span class="select-icon"><i class="material-icons">&#xE5D5;</i></span>
+				<span class="btn-text">重置</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+        <!--********************************************Page Private End*********************************-->
+        
+        <!-- aside -->
+		<aside>
+			<div class="aside-container">
+				<div class="aside-back-top aside-item">TOP</div>
+				<div class="aside-call aside-item">
+					<i class="material-icons">&#xE0B0;</i>
+				</div>
+				<div class="aside-weixin aside-item">
+					<i class="fa fa-weixin" aria-hidden="true"></i>
+				</div>
+				<div class="aside-share aside-item">
+					<i class="material-icons">&#xE80D;</i>
+				</div>
+			</div>
+		</aside>
+
+        <!-- Login and Register Dialog -->
+		<div class="lr-container">
+			<div class="lr-wrapper">
+				<div class="lr-box">
+					<div class="lr-cancel"></div>
+					<div class="lr-btn-box clearbox">
+						<div class="login-btn lr-btn">
+							登录
+							<div class="btn-line"></div>
+						</div>
+						<div class="register-btn lr-btn">
+							注册
+							<div class="btn-line"></div>
+						</div>
+					</div>
+					<div class="login-box">
+						<div class="login-title">欢迎登录Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item login-phone" placeholder="请输入登录手机号" maxlength="11"/>
+							</div>
+							<div class="login-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item login-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="28"/>
+							</div>
+							<div class="login-password-tips lr-tips"></div>
+							<div class="rf-box clearbox">
+								<div class="remember-password-box lr-checkbox-box">
+									<div class="yes rp-yes lr-checkbox"></div>
+									<div class="no rp-no lr-checkbox"></div>
+									<div class="rp-text lr-text">记住密码</div>
+								</div>
+								<div class="forget-password-box lr-text">忘记密码？</div>
+							</div>
+							<div class="lr-login-btn lr-confirm-btn">登录</div>
+						</div>
+					</div>
+					<div class="register-box">
+						<div class="register-title">欢迎注册Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item register-username" placeholder="请输入用户名" maxlength="20"/>
+							</div>
+							<div class="register-username-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item register-phone" placeholder="请输入注册手机号" maxlength="11"/>
+							</div>
+							<div class="register-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item test-code" placeholder="请输入您收到的验证码" maxlength="6"/>
+								<div class="get-code-btn">获取验证码</div>
+							</div>
+							<div class="code-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item register-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="20"/>
+							</div>
+							<div class="register-password-tips lr-tips"></div>
+							<div class="protocol-box lr-checkbox-box">
+								<div class="yes protocol-yes lr-checkbox"></div>
+								<div class="no protocol-no lr-checkbox"></div>
+								<div class="lr-text">同意《<a href="../../Registration.html" target="_blank">Career Success注册协议</a>》</div>
+							</div>
+                            <div class="register-protocol-tips lr-tips"></div>
+							<div class="lr-register-btn-box clearbox">
+								<div class="complate-msg-btn">注册</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+		<!-- Bottom -->
+		<footer class="row">
+			<div class="foot-box">
+				<div class="foot-left">
+					<ul class="foot-href">
+						<li class="foot-href-item"><a href="">网站首页</a></li>
+						<li class="foot-href-item"><a href="">企业合作</a></li>
+						<li class="foot-href-item"><a href="">人才招聘</a></li>
+						<li class="foot-href-item"><a href="">联系我们</a></li>
+						<li class="foot-href-item"><a href="">讲师招募</a></li>
+						<li class="foot-href-item"><a href="">常见问题</a></li>
+						<li class="foot-href-item"><a href="">意见反馈</a></li>
+						<li class="foot-href-item"><a href="">友情链接</a></li>
+					</ul>
+					<div class="about-other">©肯耐珂萨 2018 | 沪ICP备09051952号-2</div>
+				</div>
+				<ul class="foot-right">
+					<li class="foot-right-item foot-weixin">
+						<i class="fa fa-weixin" aria-hidden="true"></i>
+					</li>
+					<li class="foot-right-item foot-recommend">
+						<i class="material-icons">&#xE0BF;</i>
+					</li>
+					<li class="foot-right-item foot-call">
+						<i class="material-icons">&#xE0B0;</i>
+					</li>
+				</ul>
+			</div>
+		</footer>   
+	</div>
+    <!-- Public JS -->
+    <script type="text/javascript">
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+    </script>
+	
+    <!-- Private JS -->
+    
+	<script type="text/javascript">
+        var UserTitleList = JSON.parse('');
+	    var UserName = 'Lee li';
+	    var IsOrder = '';
+	    var UserOrderList = JSON.parse('[]');
+
+	</script>
+    <script src="../../Scripts/js/MyOrder.js?v=20180206" type="text/babel"></script>
+    
+
+
+</body>
+</html>

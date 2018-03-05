@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>Index</title>
+
+    <!-- Public Header -->
+	<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../Content/lib/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../Content/css/Template.css?v=20180122"/>
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>
+
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+	<script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+	<script src="../../Scripts/js/Template.js?v=20180301"></script>
+	<script src="../../Scripts/lib/babel.min.js"></script>
+
+	<!--[if lt IE 9]>
+	    <script src="../../Scripts/lib/html5shiv.min.js"></script>
+	    <script src="../../Scripts/lib/respond.min.js"></script>
+	<![endif]-->
+
+    <!-- Private Header -->
+    
+	<link rel="stylesheet" href="../../Content/lib/swiper-3.4.2.min.css" />
+	<link rel="stylesheet" href="../../Content/css/HomeIndex.css?v=20180104"/>
+
+</head>
+<body>
+    <!--Page Public -->
+	<div class="container-fluid" id="app">
+        <!-- Top -->
+		<header class="row">
+			<div class="row top-box top-width">
+				<div class="top-logo"><a href="Index.html"></a></div>
+				<ul class="top-nav clearbox">
+					<li class="top-nav-item"><a href="../Assessment/Index.html">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List.html">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Serve.html">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About.html">关于我们</a></li>
+                        <li class="top-nav-item lr-success">
+                            <a href="../Resume/Index.html">
+                            <img src="/UserPhoto/aa1517577133806.png" class="success-img" onerror="nofind();"/>
+                            </a>
+                            <div class="backstage-entrance-container">
+							    <div class="backstage-entrance">
+								    <div class="entrance-wrapper">
+									    <div class="entrance-top clearbox">
+										    <img src="/UserPhoto/aa1517577133806.png" class="entrance-img" onerror="nofind();"/>
+										    <div class="entrance-name overflow-text">13761646494</div>
+										    <div class="entrance-edit-btn"><a href="../Resume/Index.html" id="entrance-edit-href">修改资料</a></div>
+									    </div>
+									    <ul class="entrance-href-box clearbox">
+										    <li class="entrance-href-item"><a href="../My/MyCollection.html">收藏职位</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyJob.html">投递职位</a></li>
+										    <li class="entrance-href-item"><a href="../Resume/Index.html">我的简历</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyAssessment.html">我的测评</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyOrder.html">我的订单</a></li>
+									    </ul>
+									    <div class="entrance-back-btn login-exit">安全退出</div>
+								    </div>
+							    </div>
+						    </div>
+                        </li>
+                    <li class="top-nav-item top-nav-call" style="display:block;">
+						<div class="top-call-msg top-call-text">求职小助手</div>
+						<div class="top-call-num top-call-text">+86 400 123 4567</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+        <!--********************************************Page Private************************************-->
+        
+<!-- Banner-->
+<div class="row top-banner">
+	<div class="top-title">最懂你的留学生求职网站</div>
+	<div class="top-msg">高薪水<span>·</span>大公司<span>·</span>好职位</div>
+	<div class="top-view-btn"><a href="../Job/List.html">查看职位</a></div>
+	<div class="search-box">
+		<input type="text" id="Position" class="search-input" placeholder="请输入您想要的职位"/>
+		<div class="search-btn">搜索</div>
+	</div>
+</div>
+<div class="row top-banner-tip"></div>
+<!-- Content -->
+<section class="row">
+	<!-- 职位查看 -->
+	<div class="position-container">
+		<div class="module-title position-title">您想从事的行业？</div>
+		<ul class="position-wrapper clearbox">
+			<li class="position-item">
+				<a href="../Job/List.html?Industry=银行|证券|金融行业">
+					<img src="../../Content/img/home_index_industry01.png"/>
+					<div class="position-num">2245个职位</div>
+					<div class="position-item-title">银行/证券/金融行业</div>
+					<div class="position-btn">查看职位</div>
+				</a>
+			</li>
+			<li class="position-item">
+				<a href="../Job/List?Industry=销售|客服|快消房产行业">
+					<img src="../../Content/img/home_index_industry02.png"/>
+					<div class="position-num">3846个职位</div>
+					<div class="position-item-title">销售/客服/快消房产行业</div>
+					<div class="position-btn">查看职位</div>
+				</a>
+			</li>
+			<li class="position-item">
+				<a href="../Job/List.html?Industry=产品|技术|IT互联科技行业">
+					<img src="../../Content/img/home_index_industry03.png"/>
+					<div class="position-num">2958个职位</div>
+					<div class="position-item-title">产品/技术/IT互联科技行业</div>
+					<div class="position-btn">查看职位</div>
+				</a>
+			</li>
+			<li class="position-item">
+				<a href="../Job/List.html?Industry=会计|教育|法律|咨询行业">
+					<img src="../../Content/img/home_index_industry04.png"/>
+					<div class="position-num">3615个职位</div>
+					<div class="position-item-title">会计/教育/法律/咨询行业</div>
+					<div class="position-btn">查看职位</div>
+				</a>
+			</li>
+			<li class="position-item">
+				<a href="../Job/List.html?Industry=汽车|医药|化工|制造行业">
+					<img src="../../Content/img/home_index_industry05.png"/>
+					<div class="position-num">3054个职位</div>
+					<div class="position-item-title">汽车/医药/化工/制造行业
+</div>
+					<div class="position-btn">查看职位</div>
+				</a>
+			</li>
+		</ul>
+		<div class="module-btn position-view-btn"><a href="../Job/List.html">查看全部职位</a></div>
+	</div>
+	<!-- 加速求职 -->
+	<div class="speed-box">
+		<div class="speed-container">
+			<div class="module-title speed-title">加速你的求职之旅</div>
+			<ul class="speed-wrapper clearbox">
+				<li class="speed-item">
+					<div class="speed-img"></div>
+					<div class="speed-item-title">职业雷达站</div>
+					<div class="speed-item-msg">快速提供个性画像，意向不到的惊喜体验。</div>
+				</li>
+				<li class="speed-item">
+					<div class="speed-img"></div>
+					<div class="speed-item-title">求职加油站</div>
+					<div class="speed-item-msg">锁定目标行业，聚焦心仪岗位，各个击破，精准赋能。</div>
+				</li>
+				<li class="speed-item">
+					<div class="speed-img"></div>
+					<div class="speed-item-title">职场达人堂</div>
+					<div class="speed-item-msg">真人真事真经验，进堂上座听分享。</div>
+				</li>
+				<li class="speed-item">
+					<div class="speed-img"></div>
+					<div class="speed-item-title">职位面对面</div>
+					<div class="speed-item-msg">快速提供个性画像，意向不到的惊喜体验。</div>
+				</li>
+			</ul>
+			<div class="module-btn speed-btn"><a href="About.html">关于career success</a></div>
+		</div>
+	</div>
+	<!-- 理想工作 -->
+	<div class="work-box">
+		<div class="work-container">
+			<div class="module-title work-title">理想工作怎么找</div>
+			<ul class="work-wrapper clearbox">
+				<li class="work-item">
+					<div class="work-item-title">最全面的行业名企覆盖</div>
+					<div class="work-item-msg">投行/银行/互联网公司/....你耳熟能详的名企，行业专家为你提供一对一辅导</div>
+				</li>
+				<li class="work-item">
+					<div class="work-item-title">最实用的求职技能辅导</div>
+					<div class="work-item-msg">模拟面试、行业技能、案例分析...，杜绝一切假大空，专家只讲行业FAQ</div>
+				</li>
+				<li class="work-item">
+					<div class="work-item-title">最深度的岗位知识分享</div>
+					<div class="work-item-msg">无论你希望从事什么岗位工作，我们专家将给你深度解析岗位的工作日常与前景</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 案例 -->
+	<div class="case-box">
+		<div class="case-container">
+			<div class="module-title case-title">万事俱备  只等你来</div>
+			<div class="case-content swiper-container">
+				<div class="swiper-wrapper case-wrapper">
+					<div class="swiper-slide case-slide">
+						<div class="case-text">14年毕业回国入百度LBS做产品经理。我很喜欢我现在的工作，数据分析、用户需求发掘、产品快速迭代，与运营RD们讨论用户。虽然很辛苦但和乐在其中。感谢老师，让我从一个求职小白从零开始准备，帮助我分析规划，一步步协助准备资料，不厌其烦的Mock Interview，最终获得了Baidu的Offer。
+								</div>
+						<div class="case-info clearbox">
+							<img src="../../Content/img/case01.png" alt="案例" class="case-img"/>
+							<div class="info-left clearbox">
+								<div class="msg-name">Lin Li</div>
+								<div class="msg-address">密歇根大学</div>
+								<div class="msg-position blue">百度 | 产品经理</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide case-slide">
+						<div class="case-text">	在美国这几年，一直关心着国内的互联网发展。根据我的情况，咨询师精选了几家优秀的创业公司做重点申请突破。针对每家公司，咨询师帮助我分析理解公司业务，了解职位的工作和要求，根据自己的不足制定学习计划，并从网申开始贴身辅导。经过多轮的严格面试，我最终入职今日头条.
+								</div>
+						<div class="case-info clearbox">
+							<img src="../../Content/img/case02.png" alt="案例" class="case-img"/>
+							<div class="info-left clearbox">
+								<div class="msg-name">Mike Wu</div>
+										<div class="msg-address">Boston Univ</div>
+										<div class="msg-position blue">Boston Univ | 商务拓展</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide case-slide">
+						<div class="case-text">	明大Accounting专业，出国四年感觉还是有点脱节，对回国能做什么基本处于懵逼状态。特别感谢导师帮助我走过这段艰苦又快乐的求职过程。他们不厌其烦的帮我分析能力模型、修改简历、Mock Interview，每次笔试面试复盘提出学习计划。我顺利的拿到了德勤深圳所审计方向的offer，希望可以发展顺利吧，加油！
+								</div>
+						<div class="case-info clearbox">
+							<img src="../../Content/img/case03.png" alt="案例"  class="case-img"/>
+							<div class="info-left clearbox">
+								<div class="msg-name">Steven Lee</div>
+										<div class="msg-address">明尼苏达大学</div>
+										<div class="msg-position blue">德勤 | 审计师</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide case-slide">
+						<div class="case-text">	英国硕士毕业和国内校招有时间差，专家建议我直接申请股份制商业银行的职位，很多职位虽然是社招但也对毕业生开放。整个申请过程的细节不在赘述，简历递交上去很快就获得面试机会。正式面试前，求职顾跟我通了两个小时的视频面试，把整个面试过程模拟了一遍，重点提醒了很多细节，真的是非常的专业！
+								</div>
+						<div class="case-info clearbox">
+							<img src="../../Content/img/case04.png" alt="案例" class="case-img"/>
+							<div class="info-left clearbox">
+								<div class="msg-name">Sabrina Chan</div>
+										<div class="msg-address">英国曼彻斯特大学</div>
+										<div class="msg-position blue">中信银行 | 电子银行部</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide case-slide">
+						<div class="case-text">在学校读书时候，不太了解IT咨询，老师帮我详细梳理了IT Consulting的工作和职业发展。我个人逻辑能力和沟通能力蛮强，咨询师建议我重点考虑IT咨询。在IBM GBS导师Tina的帮助下，我成功的拿下了Accenture ERP部门的Offer。入职已经半年了，感觉这份工作非常挑战，也很能提升个人能力，真棒！
+								</div>
+						<div class="case-info clearbox">
+							<img src="../../Content/img/case05.png" alt="案例" class="case-img"/>
+							<div class="info-left clearbox">
+								<div class="msg-name">Patrick Hu</div>
+										<div class="msg-address">UT Austin</div>
+										<div class="msg-position blue">埃森哲 | 咨询顾问</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide case-slide">
+						<div class="case-text">我拿到的是微软MACH管培生机会的Offer，现在rotate在总部从事销售管理。我的专业是商业管理，原本没想到加入微软，咨询师建议我试试MACH Program。因为微软中国在执行Go Big扩张计划，会有很多商科学生的机会。申请过程很艰难也很tough，多亏BCG的专家，帮我攻克了最难的Case Study。
+								</div>
+						<div class="case-info clearbox">
+							<img src="../../Content/img/case06.png" alt="案例"  class="case-img"/>
+							<div class="info-left clearbox">
+								<div class="msg-name">Marina Cong</div>
+										<div class="msg-address">北卡Microsoft</div>
+										<div class="msg-position blue">MACH | 管培生</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 前进后退按钮 -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+				    
+			<div class="module-btn case-btn"><a href="About.html">关于career success</a></div>
+		</div>
+	</div>
+	<!-- 合作公司 -->
+	<div class="company-box">
+		<div class="company-container"></div>
+	</div>
+	<!-- 联系我们 -->
+	<div class="contact-box">
+		<div class="module-title contact-title">联系我们</div>
+		<div class="contact-wrapper">
+			<div class="contact-weixin"></div>
+			<div class="contact-item contact-address">
+				<i class="fa fa-map-marker" aria-hidden="true"></i>
+				<span>地址: 上海长宁区虹桥路1438号古北财富二期16层</span>
+			</div>
+			<div class="contact-item contact-phone">
+				<i class="fa fa-phone" aria-hidden="true"></i>
+				<span>电话：(+86) 021-31336975</span>
+			</div>
+			<div class="contact-item contact-email">
+				<i class="fa fa-envelope" aria-hidden="true"></i>
+				<span>mickeyge@knx.com.cn</span>
+			</div>
+			<div class="contact-btn"><a href="Serve.html">立即购买</a></div>
+		</div>
+	</div>
+</section>
+<!-- 侧边栏弹窗 -->
+<div class="flo-consult">
+	<div class="flo-consult-container">
+		<div class="consult-close-btn"></div>
+		<div class="flo-consult-left"></div>
+		<div class="flo-consult-right clearbox">
+			<div class="flo-consult-title">
+				<span>官方微信顾问 </span>
+				<span>为您提供1V1答疑解惑服务</span>
+			</div>
+			<div class="flo-consult-text">有职场招聘经验的求职顾问小助手，找工作真给力！</div>
+			<div class="flo-consult-weixin-box clearbox">
+				<div class="flo-consult-weixin"></div>
+				<div class="flo-consult-msg">
+					<div class="flo-consult-msg01">求职顾问小助手</div>
+					<div class="flo-consult-msg02">- 求职顾问为您服务</div>
+					<div class="flo-consult-msg02">- 获取当月优惠折扣</div>
+					<div class="flo-consult-msg02">- 掌握留学生求职攻略</div>
+				</div>
+			</div>
+			<div class="flo-consult-btn" v-bind:class="{'consult-login-btn':!loginKey,'consult-logined-btn':loginKey}" v-html="loginKey?'已登录':'立即登录'"><!--立即登录--></div>
+			<div class="flo-consult-btn consult-know-btn">我知道啦</div>
+		</div>
+	</div>
+</div>
+		
+<!-- 咨询 -->
+<div class="consult">有疑问?点我问！</div>
+
+        <!--********************************************Page Private End*********************************-->
+        
+        <!-- aside -->
+		<aside>
+			<div class="aside-container">
+				<div class="aside-back-top aside-item">TOP</div>
+				<div class="aside-call aside-item">
+					<i class="material-icons">&#xE0B0;</i>
+				</div>
+				<div class="aside-weixin aside-item">
+					<i class="fa fa-weixin" aria-hidden="true"></i>
+				</div>
+				<div class="aside-share aside-item">
+					<i class="material-icons">&#xE80D;</i>
+				</div>
+			</div>
+		</aside>
+
+        <!-- Login and Register Dialog -->
+		<div class="lr-container">
+			<div class="lr-wrapper">
+				<div class="lr-box">
+					<div class="lr-cancel"></div>
+					<div class="lr-btn-box clearbox">
+						<div class="login-btn lr-btn">
+							登录
+							<div class="btn-line"></div>
+						</div>
+						<div class="register-btn lr-btn">
+							注册
+							<div class="btn-line"></div>
+						</div>
+					</div>
+					<div class="login-box">
+						<div class="login-title">欢迎登录Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item login-phone" placeholder="请输入登录手机号" maxlength="11"/>
+							</div>
+							<div class="login-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item login-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="28"/>
+							</div>
+							<div class="login-password-tips lr-tips"></div>
+							<div class="rf-box clearbox">
+								<div class="remember-password-box lr-checkbox-box">
+									<div class="yes rp-yes lr-checkbox"></div>
+									<div class="no rp-no lr-checkbox"></div>
+									<div class="rp-text lr-text">记住密码</div>
+								</div>
+								<div class="forget-password-box lr-text">忘记密码？</div>
+							</div>
+							<div class="lr-login-btn lr-confirm-btn">登录</div>
+						</div>
+					</div>
+					<div class="register-box">
+						<div class="register-title">欢迎注册Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item register-username" placeholder="请输入用户名" maxlength="20"/>
+							</div>
+							<div class="register-username-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item register-phone" placeholder="请输入注册手机号" maxlength="11"/>
+							</div>
+							<div class="register-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item test-code" placeholder="请输入您收到的验证码" maxlength="6"/>
+								<div class="get-code-btn">获取验证码</div>
+							</div>
+							<div class="code-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item register-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="20"/>
+							</div>
+							<div class="register-password-tips lr-tips"></div>
+							<div class="protocol-box lr-checkbox-box">
+								<div class="yes protocol-yes lr-checkbox"></div>
+								<div class="no protocol-no lr-checkbox"></div>
+								<div class="lr-text">同意《<a href="../../Registration.html" target="_blank">Career Success注册协议</a>》</div>
+							</div>
+                            <div class="register-protocol-tips lr-tips"></div>
+							<div class="lr-register-btn-box clearbox">
+								<div class="complate-msg-btn">注册</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+		<!-- Bottom -->
+		<footer class="row">
+			<div class="foot-box">
+				<div class="foot-left">
+					<ul class="foot-href">
+						<li class="foot-href-item"><a href="">网站首页</a></li>
+						<li class="foot-href-item"><a href="">企业合作</a></li>
+						<li class="foot-href-item"><a href="">人才招聘</a></li>
+						<li class="foot-href-item"><a href="">联系我们</a></li>
+						<li class="foot-href-item"><a href="">讲师招募</a></li>
+						<li class="foot-href-item"><a href="">常见问题</a></li>
+						<li class="foot-href-item"><a href="">意见反馈</a></li>
+						<li class="foot-href-item"><a href="">友情链接</a></li>
+					</ul>
+					<div class="about-other">©肯耐珂萨 2018 | 沪ICP备09051952号-2</div>
+				</div>
+				<ul class="foot-right">
+					<li class="foot-right-item foot-weixin">
+						<i class="fa fa-weixin" aria-hidden="true"></i>
+					</li>
+					<li class="foot-right-item foot-recommend">
+						<i class="material-icons">&#xE0BF;</i>
+					</li>
+					<li class="foot-right-item foot-call">
+						<i class="material-icons">&#xE0B0;</i>
+					</li>
+				</ul>
+			</div>
+		</footer>   
+	</div>
+    <!-- Public JS -->
+    <script type="text/javascript">
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+    </script>
+	
+    <!-- Private JS -->
+    
+    <script src="../../Scripts/lib/swiper-3.4.2.jquery.min.js"></script>
+	<script src="../../Scripts/js/HomeIndex.js?v=20180125" type="text/babel"></script>
+
+
+</body>
+</html>

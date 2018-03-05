@@ -1,0 +1,872 @@
+@charset "utf-8";
+/*************************************Banner********************************/
+.top-banner {
+	position:relative;
+	width:100%;
+	height:520px;
+	background:url(../img/meal_banner.png)no-repeat center center;
+	background-size:cover;
+}
+
+.top-banner .banner-title{
+	padding-top:102px;
+	font-size: 42px;
+  	font-weight: 500;
+  	letter-spacing: 2.1px;
+  	text-align: center;
+  	color: #ffffff;
+  	text-shadow: 0 2px 9px rgba(0, 0, 0, 0.5);
+}
+
+.top-banner .banner-msg{
+	padding-top:25px;
+	margin:0 auto;
+	width: 630px;
+  	line-height: 36px;
+  	font-size: 18px;
+  	text-align: center;
+  	color: #ffffff;
+}
+
+.top-banner .banner-star-box{
+	margin:0 auto;
+	padding-top:5px;
+	text-align:center;
+}
+
+.top-banner .banner-star-box .banner-star{
+	text-align:center;
+	color:#ffbf00;
+}
+
+.top-banner .banner-price{
+	padding-top:30px;
+	margin:0 auto;
+	text-align:center;
+}
+
+.top-banner .banner-price .promation{
+	margin-right:17px;
+  	font-size: 22px;
+  	font-weight: 500;
+  	text-align: left;
+  	color: #ee5c54;
+}
+
+.top-banner .banner-price .promation .red{
+	color:#ee5c54;
+}
+
+.top-banner .banner-price .original{
+  	font-size: 14px;
+  	text-align: left;
+  	color: #c8c8c8;
+}
+
+.top-banner .banner-buy-btn{
+	margin:0 auto;
+	margin-top:13px;
+	width: 180px;
+  	height: 48px;
+  	border-radius: 22.5px;
+  	background-color: #ffbf00;
+  	line-height:48px;
+	font-size: 15px;
+	letter-spacing: 2px;
+	text-align: center;
+	color: #ffffff;
+	cursor:pointer;
+}
+
+.top-banner .banner-buy-btn:hover{
+	background:#ffb400;
+}
+
+/***************************Content***********************/
+section{
+	position:relative;
+	background:#fff;
+}
+
+section .introduce-detail{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	width:100%;
+	height:60px;
+	background:#fff;
+	text-align:center;
+}
+
+.introduce-detail span{
+	display:inline-block;
+	margin:0;
+	padding:0 30px;
+	height:100%;
+	line-height:60px;
+  	font-size: 14px;
+  	color: #6d6d6d;
+  	cursor:pointer;
+}
+
+.introduce-detail .introduce-btn{
+	position:relative;
+	color:#333;
+}
+
+.introduce-detail .introduce-btn:hover{
+	color:#ffbf00;
+}
+
+.introduce-detail .detail-btn:hover{
+	color:#ffbf00;
+}
+
+.introduce-detail .introduce-btn::after{
+	position:absolute;
+	top:20px;
+	right:-3px;
+	content:"";
+	width:0;
+	height:21px;
+	border-left:1px solid #979797;
+}
+
+/*******************************************套餐介绍introduce*************************************/
+.introduce-box{
+	display:block;
+	position:relative;
+	background:#fff;
+}
+
+.introduce-box .introduce-title-box{
+	position:relative;
+	background:url(../img/meal_introduce_title_bg.png)no-repeat center center;
+	background-size:contain;
+}
+
+.introduce-title-box .introduce-title{
+	margin-top:120px;
+	text-align:center;
+}
+
+.introduce-title-box span{
+	display:inline-block;
+	margin-right:15px;
+  	font-size: 32px;
+  	font-weight: 500;
+  	color: #333333;
+  	text-align:center;
+}
+
+.introduce-title-box span:last-child{
+	margin-right:0;
+}
+
+.introduce-title-box .introduce-msg{
+	margin:0 auto;
+	margin-top:60px;
+	width:1080px;
+	line-height:24px;
+  	font-size: 16px;
+  	text-align: left;
+  	color: #6d6d6d;
+}
+
+.introduce-title-box .logo-box{
+	margin:0 auto;
+	margin-top:30px;
+	width:630px;
+	height:68px;
+}
+
+.logo-box .knx-logo{
+	position:relative;
+	float:left;
+	margin-top:12px;
+	width:250px;
+	height:40px;
+	background:url(../img/logo_02.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.logo-box .knx-logo::before{
+	position:absolute;
+	top: 20px;
+    right: -103px;
+	content:"";
+	width:46px;
+	height:1px;
+	background:#8896a7;
+	
+	transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+.logo-box .knx-logo::after{
+	position:absolute;
+	top: -2px;
+    right: -80px;
+	content:"";
+	width:1px;
+	height:46px;
+	background:#8896a7;
+	
+	transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}
+
+
+.logo-box .haitu-logo{
+	float:right;
+	width:210px;
+	height:68px;
+	background:url(../img/haitu_logo.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.introduce-title-box .msg-content{
+	margin:0 auto;
+	margin-top:45px;
+	width:1200px;
+	border-radius: 10px;
+  	background-color: #182733;
+  	box-shadow: 0 2px 6px 0 #4f4f4f;
+}
+
+.msg-content .msg-title{
+	padding-top:60px;
+  	font-size: 22px;
+  	text-align: center;
+  	color: #fbc02d;
+}
+
+.msg-content .msg-list{
+	padding:45px 140px;
+	width:100%;
+}
+
+.msg-content .msg-list::after{
+	display:block;
+	content:"";
+	clear:both;
+}
+
+.msg-list .msg-item{
+	display:block;
+	position:relative;
+	float:left;
+	padding-left:15px;
+	margin-right:60px;
+	margin-bottom:30px;
+	width:425px;
+	height:60px;
+	line-height:20px;
+  	font-size: 14px;
+  	text-align: left;
+  	color: #ffffff;
+  	overflow:hidden;
+}
+
+.msg-list .msg-item:nth-of-type(2n+0){
+	margin-right:0;
+}
+
+.msg-list .msg-item::before{
+	position:absolute;
+	top:4px;
+	left:0;
+	content:"";
+	width:11px;
+	height:11px;
+  	border: dotted 2px #ffbf00;
+  	border-radius:100%;
+}
+
+.msg-list .msg-item::after{
+	position:absolute;
+	top:8px;
+	left:4px;
+	content:"";
+	width:3px;
+	height:3px;
+	background:#ffbf00;
+	border-radius:100%;
+}
+
+.introduce-title-box .evaluation-box{
+	position:absolute;
+	bottom:-390px;
+	left:0;
+	z-index:100;
+	margin:0 auto;
+	width:100%;
+	height:427px;
+	background:#ffd353;
+}
+
+.evaluation-box .evaluation-title{
+	margin-top:60px;
+	font-size: 32px;
+	font-weight: 500;
+	letter-spacing: 2px;
+	text-align: center;
+	color: #333333;
+}
+
+.evaluation-box .evaluation-msg{
+	margin:60px auto;
+	margin-bottom:30px;
+	padding-bottom:30px;
+	width:976px;
+}
+
+.evaluation-box .evaluation-msg::after{
+	display:block;
+	content:"";
+	clear:both;
+}
+
+.evaluation-box .evaluation-msg .msg-item{
+	position:relative;
+	float:left;
+	margin-right:80px;
+	padding-top:140px;
+	width:272px;
+}
+
+.evaluation-box .evaluation-msg .msg-item:last-child{
+	margin-right:0;
+}
+
+.evaluation-box .evaluation-msg .msg-item:nth-child(1)::before{
+	position:absolute;
+	top:0;
+	left:50%;
+	margin-left:-55px;
+	content:"";
+	width:110px;
+	height:110px;
+	background:url(../img/meal_evaluation01.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.evaluation-box .evaluation-msg .msg-item:nth-child(2)::before{
+	position:absolute;
+	top:0;
+	left:50%;
+	margin-left:-55px;
+	content:"";
+	width:110px;
+	height:110px;
+	background:url(../img/meal_evaluation02.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.evaluation-box .evaluation-msg .msg-item:nth-child(3)::before{
+	position:absolute;
+	top:0;
+	left:50%;
+	margin-left:-55px;
+	content:"";
+	width:110px;
+	height:110px;
+	background:url(../img/meal_evaluation03.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.introduce-box .course-box{
+	margin:0 auto;
+	margin-top:500px;
+	margin-bottom:100px;
+	width:1200px;
+}
+
+.course-box::after{
+	display:block;
+	content:"";
+	clear:both;
+}
+
+.course-box .course-img{
+	float:left;
+	width:530px;
+	height:340px;
+	background:url(../img/meal_example.png)no-repeat center center;
+	background-size:100% 100%; 
+}
+
+.course-box .course-content{
+	float:right;
+	width:640px;
+}
+
+.course-box .course-content .course-title{
+  	font-size: 32px;
+  	font-weight: 500;
+  	letter-spacing: 2px;
+  	text-align: left;
+  	color: #333333;
+}
+
+.course-content .course-msg{
+	position:relative;
+	margin-top:60px;
+	padding-left:20px;
+	border-left:1px solid #d8d8d8;
+}
+
+.course-content .course-msg::before{
+	position:absolute;
+	top:0px;
+	left:-7px;
+	content:"";
+	width:14px;
+	height:14px;
+	background:#fff;
+	border:5px solid #d8d8d8;
+	border-radius:100px;
+}
+
+.course-content .course-msg .msg-text{
+	margin-bottom:30px;
+  	font-size: 14px;
+  	letter-spacing: 1px;
+  	text-align: left;
+  	color: #333333;
+}
+
+.course-content .course-msg .msg-text:last-child{
+	margin-bottom:0;
+	padding-bottom:5px;
+}
+
+.introduce-box .company-box{
+	position:relative;
+	margin:0 auto;
+	padding:75px 0 190px 0;
+	background:#f9fafc;
+}
+
+.company-box .company-title{
+  	font-size: 32px;
+  	letter-spacing: 2px;
+  	text-align: center;
+  	color: #ffbf00;
+}
+
+.company-box .company-content-box{
+	position:relative;
+	margin:0 auto;
+	margin-top:60px;
+	width:1200px;
+	height:270px;
+}
+
+.company-box .company-content{
+	margin:0 auto;
+	width:1090px;
+	height:270px;
+	overflow:hidden;
+}
+
+.company-content .company-list{
+	margin:0 auto;
+	width:100%;
+	height:100%;
+}
+
+.company-list .company-item{
+	width:100%;
+	height:100%;
+}
+
+.company-item .item-list{
+	width:100%;
+	height:100%;
+}
+
+.item-list .item-list-item{
+	float:left;
+	margin-right:30px;
+	width:250px;
+	height:100%;
+}
+
+.item-list .item-list-item:last-child{
+	margin-right:0;
+}
+
+.item-list .item-list-item:nth-child(1){
+	background:url(../img/meal_company_01.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.item-list .item-list-item:nth-child(2){
+	background:url(../img/meal_company_02.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.item-list .item-list-item:nth-child(3){
+	background:url(../img/meal_company_03.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.item-list .item-list-item:nth-child(4){
+	background:url(../img/meal_company_04.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.item-list-item .company-type{
+	padding-top:17px;
+	line-height:27px;
+  	font-size: 18px;
+  	letter-spacing: 1.1px;
+  	text-align: center;
+  	color: #ffffff;
+}
+
+.item-list-item .company-name-list{
+	margin:0 auto;
+	margin-top:45px;
+	width:150px;
+}
+
+.item-list-item .company-name-list::after{
+	display:block;
+	content:"";
+	clear:both;
+}
+
+.item-list-item .company-name-list .company-name{
+	float:left;
+	margin-right:30px;
+	margin-bottom:20px;
+	width:60px;
+  	font-size: 14px;
+  	letter-spacing: 0.9px;
+  	text-align: center;
+  	color: #6d6d6d;
+  	overflow:hidden;
+}
+
+.item-list-item .company-name-list .company-name:nth-of-type(2n+0){
+	margin-right:0;
+}
+
+
+
+/*********************************套餐详情部分************************************/
+.detail-box{
+	display:none;
+	position:relative;
+	background:#fff;
+}
+
+.detail-box .detail-evaluation-box{
+	position:relative;
+	background:url(../img/meal_detail_evaluation_bg.png)no-repeat center center;
+	background-size:cover;
+}
+
+.detail-evaluation-box .evaluation-title{
+	position:relative;
+	margin-top:60px;
+	padding-top:60px;
+  	font-size: 32px;
+  	font-weight: 500;
+  	letter-spacing: 2px;
+  	text-align: center;
+  	color: #333333;
+}
+
+.detail-evaluation-box .evaluation-msg{
+	margin-top:10px;
+	padding-bottom:400px;
+  	font-size: 16px;
+  	letter-spacing: 1px;
+ 	text-align: center;
+  	color: #6d6d6d;
+}
+
+.detail-evaluation-box .evaluation-content-title{
+	position:absolute;
+	top:200px;
+	left:50%;
+	margin-left:-290px;
+	width:580px;
+	height:45px;
+	line-height:45px;
+	background:#182733;
+  	font-size: 16px;
+  	letter-spacing: 1px;
+  	text-align: center;
+  	color: #fff;
+  	z-index:100;
+}
+
+.detail-evaluation-box .evaluation-content{
+	position:absolute;
+	top:222px;
+	left:50%;
+	margin-left:-550px;
+	padding:20px 130px;
+	width:1100px;
+	background:#fff;
+	box-shadow: 0 2px 10px 0 rgba(213, 213, 213, 0.5);
+	border-radius:10px;
+  	z-index:10;
+}
+
+.evaluation-content .content-msg{
+	padding-top:20px;
+  	font-size: 14px;
+  	letter-spacing: 0.9px;
+  	text-align: center;
+  	color: #6d6d6d;
+}
+
+.evaluation-content .evaluation-list{
+	position:relative;
+	margin:10px 0;
+	width:100%;
+}
+
+.evaluation-content .evaluation-list::before{
+	position:absolute;
+	top:160px;
+	left:50%;
+	margin-left:-460px;
+	content:"";
+	width:920px;
+	height:0;
+	border-top:1px dashed #e9e9e9;
+	z-index:10;
+}
+
+.evaluation-list .evaluation-item{
+	float:left;
+	margin:30px 100px 30px 0; 
+	width:210px;
+}
+
+.evaluation-list .evaluation-item:nth-of-type(3n+0){
+	margin-right:0;
+}
+
+.evaluation-item .item-title{
+	margin-bottom:20px;
+	line-height:27px;
+  	font-size: 18px;
+  	text-align: center;
+  	color: #0099e5;
+}
+
+.evaluation-item .item-msg{
+	height:54px;
+	line-height:18px;
+  	font-size: 12px;
+  	letter-spacing: 1px;
+  	text-align: center;
+  	color: #333;
+  	overflow:hidden;
+}
+
+.detail-box .detail-read-box{
+	position:relative;
+	width:100%;
+	background:#595959;
+}
+
+.detail-read-box .read-title{
+	padding-top:150px;
+  	font-size: 32px;
+  	font-weight: 500;
+  	letter-spacing: 2px;
+  	text-align: center;
+  	color: #ffbf00;
+}
+
+.detail-read-box .read-msg{
+	margin:0 auto;
+	margin-top:10px;
+	width:500px;
+	line-height:24px;
+  	font-size: 16px;
+  	letter-spacing: 1px;
+  	text-align: center;
+  	color: #d6d6d6;
+}
+
+.detail-read-box .read-box{
+	margin:0 auto;
+	margin-top:30px;
+	padding-bottom:60px;
+	width:1050px;
+}
+
+.read-box .read-img{
+	margin-top:45px;
+	float:left;
+	width: 473px;
+  	height: 284px;
+  	background:url(../img/meal_read.png)no-repeat center center;
+  	background-size:100% 100%;
+}
+
+.read-box .read-content{
+	float:right;
+	width:520px;
+}
+
+.read-content .content-title{
+  	font-size: 24px;
+  	font-weight: 500;
+  	letter-spacing: 2px;
+  	text-align: left;
+  	color: #ffffff;
+}
+
+.read-content .content-list{
+	position:relative;
+	margin-top:18px;
+}
+
+.content-list::before{
+	position:absolute;
+	top:10px;
+	left:2px;
+	content:"";
+	width:1px;
+	height:300px;
+	background:#818181;
+}
+
+.content-list .content-item{
+	position:relative;
+	margin-bottom:30px;
+	padding-left:20px;
+}
+
+.content-list .content-item::before{
+	position:absolute;
+	top:2px;
+	left:-5px;
+	content:"";
+	width: 15px;
+  	height: 15px;
+  	background-color: rgba(255,191,0,0.32);
+  	border-radius:100px;
+  	z-index:10;
+}
+
+.content-list .content-item::after{
+	position:absolute;
+	top:7px;
+	left:0px;
+	content:"";
+	width: 5px;
+  	height: 5px;
+  	background-color:#ffbf00;
+  	border-radius:100px;
+  	z-index:11;
+}
+
+.content-list .content-item:last-child{
+	margin-bottom:0;
+	padding-bottom:10px;
+}
+
+.content-item .item-title{
+  	font-size: 18px;
+  	letter-spacing: 1.1px;
+  	text-align: left;
+  	color: #ffbf00;
+}
+
+.content-item .item-msg{
+	margin-top:5px;
+  	font-size: 14px;
+  	letter-spacing: 0.9px;
+  	text-align: left;
+  	color: #ffffff;
+}
+
+.detail-box .detail-tips-box{
+	padding:60px 0;
+	width:100%;
+	background:url(../img/meal_tips.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.detail-tips-box .tips-title{
+  	font-size: 28px;
+  	letter-spacing: 1.8px;
+  	text-align: center;
+  	color: #333333;
+}
+
+.detail-tips-box .tips-one{
+	margin-top:30px;
+}
+
+.detail-tips-box .tips-two{
+	margin-top:10px;
+}
+
+.detail-tips-box .tips-box span{
+	display:inline-block;
+}
+
+.detail-tips-box .tips-box{
+  	font-size: 16px;
+ 	letter-spacing: 1.3px;
+ 	text-align: center;
+ 	color: #6d6d6d;
+}
+
+.detail-tips-box .tips-box .tips-head{
+	font-size: 18px;
+  	color: #333333;
+}
+
+/*********************************swiper轮播部分************************************/
+.swiper-button-prev {
+	width:20px;
+	height:30px;
+	background-image:url(../img/left.png);
+	background-size:100%;
+	top:50%;
+    left:0;
+}
+
+.swiper-button-next {
+	width:20px;
+	height:30px;
+	background-image:url(../img/right.png);
+	background-size:100%;
+	top: 50%;
+    right: 0;
+}
+
+.swiper-pagination2{
+	text-align: center;
+}
+
+.swiper-pagination-bullet-active {
+    width: 20px;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.swiper-pagination-bullet {
+    margin: 6px;
+}
+

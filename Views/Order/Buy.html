@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>智慧生涯--服务购买</title>
+
+    <!-- Public Header -->
+	<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../Content/lib/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../Content/css/Template.css?v=20180122"/>
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>
+
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+	<script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+	<script src="../../Scripts/js/Template.js?v=20180301"></script>
+	<script src="../../Scripts/lib/babel.min.js"></script>
+
+	<!--[if lt IE 9]>
+	    <script src="../../Scripts/lib/html5shiv.min.js"></script>
+	    <script src="../../Scripts/lib/respond.min.js"></script>
+	<![endif]-->
+
+    <!-- Private Header -->
+    
+    <link rel="stylesheet" href="../../Content/fontfamily/NotoSansCJKsc-Light.css" />
+	<link rel="stylesheet" href="../../Content/css/BuyIndex.css?v=20180206"/>
+
+</head>
+<body>
+    <!--Page Public -->
+	<div class="container-fluid" id="app">
+        <!-- Top -->
+		<header class="row">
+			<div class="row top-box top-width">
+				<div class="top-logo"><a href="../Home/Index.html"></a></div>
+				<ul class="top-nav clearbox">
+					<li class="top-nav-item"><a href="../Assessment/Index.html">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List.html">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Serve.html">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About.html">关于我们</a></li>
+                        <li class="top-nav-item lr-success">
+                            <a href="../Resume/Index.html">
+                            <img src="/UserPhoto/aa1517577133806.png" class="success-img" onerror="nofind();"/>
+                            </a>
+                            <div class="backstage-entrance-container">
+							    <div class="backstage-entrance">
+								    <div class="entrance-wrapper">
+									    <div class="entrance-top clearbox">
+										    <img src="/UserPhoto/aa1517577133806.png" class="entrance-img" onerror="nofind();"/>
+										    <div class="entrance-name overflow-text">13761646494</div>
+										    <div class="entrance-edit-btn"><a href="../Resume/Index.html" id="entrance-edit-href">修改资料</a></div>
+									    </div>
+									    <ul class="entrance-href-box clearbox">
+										    <li class="entrance-href-item"><a href="../My/MyCollection.html">收藏职位</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyJob.html">投递职位</a></li>
+										    <li class="entrance-href-item"><a href="../Resume/Index.html">我的简历</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyAssessment.html">我的测评</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyOrder.html">我的订单</a></li>
+									    </ul>
+									    <div class="entrance-back-btn login-exit">安全退出</div>
+								    </div>
+							    </div>
+						    </div>
+                        </li>
+                    <li class="top-nav-item top-nav-call" style="display:block;">
+						<div class="top-call-msg top-call-text">求职小助手</div>
+						<div class="top-call-num top-call-text">+86 400 123 4567</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+        <!--********************************************Page Private************************************-->
+        
+
+<!-- Banner-->
+<div class="row top-banner">产品订单支付</div>
+<!-- Content -->
+<section class="row">
+<form action="/Order/SubmitToAli" method="get" target="_blank" name="myform">
+	<div class="buy-container">
+		<div class="buy-box buy-position">
+			<div class="buy-title">购买产品</div>
+			<div class="position-content buy-content">
+				<span class="position-name" v-html="positionDetail.Name"><!--全职服务产品--></span>
+				<span class="position-dec" v-html="positionDetail.Remark"><!--内含12项服务--></span>
+				<span class="position-price" v-html="'¥'+positionDetail.Price"><!--12888.00--></span>
+			</div>
+		</div>
+		<div class="buy-box student-msg">
+			<div class="buy-title">学生信息（必填）</div>
+			<div class="student-content buy-content">
+                <input class="ProID" type="hidden" name="ProductID" v-model="positionDetail.PositionID"/>
+                <input type="hidden" name="OrderNo" v-model="OrderNo"/>
+                <input type="hidden" name="OrderID" v-model="OrderID"/>
+				<input type="text" name="Contacts" class="student-input" placeholder="姓名" v-model="name" v-on:focus="nameFocus" v-on:blur="nameBlur"/>
+				<input type="text" name="Tel" class="student-input studen-phone" placeholder="联系电话" v-model="phone" v-on:focus="phoneFocus" v-on:blur="phoneBlur"/>
+				<input type="text" name="Email" class="student-input" placeholder="E-mail" v-model="email" v-on:focus="emailFocus" v-on:blur="emailBlur"/>
+				<div class="student-tip name-tip" style="display:none;" v-show="nameTipShow" v-html="nameTip"></div>
+				<div class="student-tip phone-tip" style="display:none;" v-show="phoneTipShow" v-html="phoneTip"></div>
+				<div class="student-tip email-tip" style="display:none;" v-show="emailTipShow" v-html="emailTip"></div>
+			</div>
+		</div>
+		<div class="buy-box">
+			<div class="buy-title">商家联系方式</div>
+			<div class="buy-content seller-content">
+				<div class="seller-item contact-address">
+					<i class="fa fa-map-marker" aria-hidden="true"></i>
+					<span>地址: 上海长宁区虹桥路1438号古北财富二期16层</span>
+				</div>
+				<div class="seller-item contact-phone">
+					<i class="fa fa-phone" aria-hidden="true"></i>
+					<span>电话：(+86) 021-31336975</span>
+				</div>
+				<div class="seller-item contact-email">
+					<i class="fa fa-envelope" aria-hidden="true"></i>
+					<span>mickeyge@knx.com.cn</span>
+				</div>
+			</div>
+		</div>
+		<div class="pay-box clearbox">
+			<div class="pay-left">
+				<div class="pay-msg">订单支付通过支付宝（支持国内信用卡/余额/花呗支付）</div>
+				<div class="pay-msg">支付手续费0.6%为支付宝收取</div>
+			</div>
+			<div class="pay-right">
+				<div class="pay-item pay-item-price clearbox">
+					<span class="pay-item-right" v-html="'￥'+positionDetail.Price"><!--21000.00--></span>
+					<span class="pay-item-left">产品价格：</span>
+				</div>
+				<div class="pay-item pay-item-charge clearbox">
+					<span class="pay-item-right" v-html="'￥'+(Number(positionDetail.Price)*0.006).toFixed(2)"><!--126.00--></span>
+					<span class="pay-item-left">支付手续费：</span>
+				</div>
+				<div class="pay-item pay-item-total clearbox">
+					<span class="pay-item-right" v-html="'￥'+(positionDetail.Price+Number((Number(positionDetail.Price)*0.006).toFixed(2)))"><!--21126.00--></span>
+					<span class="pay-item-left">合计支付：</span>
+				</div>
+				<div class="pay-item pay-item-num clearbox" style="display:none;" v-show="loginKey">
+					<span class="pay-item-right" v-html="formatName"><!--xxxxxx123456--></span>
+					<span class="pay-item-left">购买账号：</span>
+				</div>
+				<div class="pay-btn-box clearbox">
+					<div class="pay-btn pay-order-btn"><button type="button" onclick="check(this.form)">支付订单</button></div>
+					<!--<div class="pay-btn pay-print-btn" v-on:click="printClick">打印</div>-->
+				</div>
+				<div class="pay-agreement">
+					<span class="pay-agreement-text">我已经阅读并同意<a href="../../Registration.html" target="_blank">《用户付费协议》</a> </span>
+					<input type="checkbox" class="pay-checkbox" checked="checked" v-model="argeement"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>					
+</section>
+<!-- 侧边栏弹窗 -->
+<div class="flo-consult">
+	<div class="flo-consult-container">
+		<div class="consult-close-btn"></div>
+		<div class="flo-consult-left"></div>
+		<div class="flo-consult-right clearbox">
+			<div class="flo-consult-title">
+				<span>官方微信顾问 </span>
+				<span>为您提供1V1答疑解惑服务</span>
+			</div>
+			<div class="flo-consult-text">有职场招聘经验的求职顾问小助手，找工作真给力！</div>
+			<div class="flo-consult-weixin-box clearbox">
+				<div class="flo-consult-weixin"></div>
+				<div class="flo-consult-msg">
+					<div class="flo-consult-msg01">求职顾问小助手</div>
+					<div class="flo-consult-msg02">- 求职顾问为您服务</div>
+					<div class="flo-consult-msg02">- 获取当月优惠折扣</div>
+					<div class="flo-consult-msg02">- 掌握留学生求职攻略</div>
+				</div>
+			</div>
+			<div class="flo-consult-btn" v-bind:class="{'consult-login-btn':!loginKey,'consult-logined-btn':loginKey}" v-html="loginKey?'已登录':'立即登录'"><!--立即登录--></div>
+			<div class="flo-consult-btn consult-know-btn">我知道啦</div>
+		</div>
+	</div>
+</div>
+<!-- 咨询 -->
+<div class="consult">有疑问?点我问！</div>
+
+<!-- 订单支付成功弹窗 -->
+<div class="flo-order">
+    <div class="flo-order-container">
+        <div class="flo-order-top">
+            <span class="flo-order-title">订单支付</span>
+            <span class="flo-order-close"><i class="material-icons">&#xE14C;</i></span>
+        </div>
+        <div class="flo-order-tips">
+            <div class="flo-order-warn"><i class="material-icons">&#xE001;</i></div>
+            <div class="flo-order-text">
+                <div class="flo-order-one">请您在新打开的页面上完成支付。</div>
+                <div class="flo-order-two">付款完成前请不要关闭此页面，如有疑问或需要帮助，请联系客服+86 400-123-4567.</div> 
+            </div>
+        </div>
+        <div class="flo-order-btn">
+            <div class="flo-order-success order-btn">支付成功</div>
+            <div class="flo-order-reset  order-btn">重新支付</div>
+        </div>
+    </div>
+</div>
+
+        <!--********************************************Page Private End*********************************-->
+        
+        <!-- aside -->
+		<aside>
+			<div class="aside-container">
+				<div class="aside-back-top aside-item">TOP</div>
+				<div class="aside-call aside-item">
+					<i class="material-icons">&#xE0B0;</i>
+				</div>
+				<div class="aside-weixin aside-item">
+					<i class="fa fa-weixin" aria-hidden="true"></i>
+				</div>
+				<div class="aside-share aside-item">
+					<i class="material-icons">&#xE80D;</i>
+				</div>
+			</div>
+		</aside>
+
+        <!-- Login and Register Dialog -->
+		<div class="lr-container">
+			<div class="lr-wrapper">
+				<div class="lr-box">
+					<div class="lr-cancel"></div>
+					<div class="lr-btn-box clearbox">
+						<div class="login-btn lr-btn">
+							登录
+							<div class="btn-line"></div>
+						</div>
+						<div class="register-btn lr-btn">
+							注册
+							<div class="btn-line"></div>
+						</div>
+					</div>
+					<div class="login-box">
+						<div class="login-title">欢迎登录Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item login-phone" placeholder="请输入登录手机号" maxlength="11"/>
+							</div>
+							<div class="login-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item login-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="28"/>
+							</div>
+							<div class="login-password-tips lr-tips"></div>
+							<div class="rf-box clearbox">
+								<div class="remember-password-box lr-checkbox-box">
+									<div class="yes rp-yes lr-checkbox"></div>
+									<div class="no rp-no lr-checkbox"></div>
+									<div class="rp-text lr-text">记住密码</div>
+								</div>
+								<div class="forget-password-box lr-text">忘记密码？</div>
+							</div>
+							<div class="lr-login-btn lr-confirm-btn">登录</div>
+						</div>
+					</div>
+					<div class="register-box">
+						<div class="register-title">欢迎注册Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item register-username" placeholder="请输入用户名" maxlength="20"/>
+							</div>
+							<div class="register-username-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item register-phone" placeholder="请输入注册手机号" maxlength="11"/>
+							</div>
+							<div class="register-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item test-code" placeholder="请输入您收到的验证码" maxlength="6"/>
+								<div class="get-code-btn">获取验证码</div>
+							</div>
+							<div class="code-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item register-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="20"/>
+							</div>
+							<div class="register-password-tips lr-tips"></div>
+							<div class="protocol-box lr-checkbox-box">
+								<div class="yes protocol-yes lr-checkbox"></div>
+								<div class="no protocol-no lr-checkbox"></div>
+								<div class="lr-text">同意《<a href="../../Registration.html" target="_blank">Career Success注册协议</a>》</div>
+							</div>
+                            <div class="register-protocol-tips lr-tips"></div>
+							<div class="lr-register-btn-box clearbox">
+								<div class="complate-msg-btn">注册</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+		<!-- Bottom -->
+		<footer class="row">
+			<div class="foot-box">
+				<div class="foot-left">
+					<ul class="foot-href">
+						<li class="foot-href-item"><a href="">网站首页</a></li>
+						<li class="foot-href-item"><a href="">企业合作</a></li>
+						<li class="foot-href-item"><a href="">人才招聘</a></li>
+						<li class="foot-href-item"><a href="">联系我们</a></li>
+						<li class="foot-href-item"><a href="">讲师招募</a></li>
+						<li class="foot-href-item"><a href="">常见问题</a></li>
+						<li class="foot-href-item"><a href="">意见反馈</a></li>
+						<li class="foot-href-item"><a href="">友情链接</a></li>
+					</ul>
+					<div class="about-other">©肯耐珂萨 2018 | 沪ICP备09051952号-2</div>
+				</div>
+				<ul class="foot-right">
+					<li class="foot-right-item foot-weixin">
+						<i class="fa fa-weixin" aria-hidden="true"></i>
+					</li>
+					<li class="foot-right-item foot-recommend">
+						<i class="material-icons">&#xE0BF;</i>
+					</li>
+					<li class="foot-right-item foot-call">
+						<i class="material-icons">&#xE0B0;</i>
+					</li>
+				</ul>
+			</div>
+		</footer>   
+	</div>
+    <!-- Public JS -->
+    <script type="text/javascript">
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+    </script>
+	
+    <!-- Private JS -->
+    
+    <script src="../../Scripts/js/BuyIndex.js?v=20180228" type="text/babel"></script>
+    <script type="text/javascript">
+        var Product = JSON.parse('{"ID":1,"ProductName":"职业测评服务产品","Price":598,"Remark":"内含11项服务"}');
+		var OrderNo = '2018030510210100000529086';
+		var OrderID = '47';
+    </script>
+
+
+</body>
+</html>

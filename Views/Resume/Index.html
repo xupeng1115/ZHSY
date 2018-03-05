@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>智慧生涯--我的简历</title>
+
+    <!-- Public Header -->
+	<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../Content/lib/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../Content/css/Template.css?v=20180122"/>
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>
+
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+	<script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+	<script src="../../Scripts/js/Template.js?v=20180301"></script>
+	<script src="../../Scripts/lib/babel.min.js"></script>
+
+	<!--[if lt IE 9]>
+	    <script src="../../Scripts/lib/html5shiv.min.js"></script>
+	    <script src="../../Scripts/lib/respond.min.js"></script>
+	<![endif]-->
+
+    <!-- Private Header -->
+    
+    <link rel="stylesheet" href="../../Content/css/MyBackstage.css?v=20180206" />
+    <link rel="stylesheet" href="../../Content/css/MyResume.css?v=20180206" />
+
+</head>
+<body>
+    <!--Page Public -->
+	<div class="container-fluid" id="app">
+        <!-- Top -->
+		<header class="row">
+			<div class="row top-box top-width">
+				<div class="top-logo"><a href="../Home/Index.html"></a></div>
+				<ul class="top-nav clearbox">
+					<li class="top-nav-item"><a href="../Assessment/Index.html">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List.html">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Serve.html">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About.html">关于我们</a></li>
+                        <li class="top-nav-item lr-success">
+                            <a href="../Resume/Index.html">
+                            <img src="/UserPhoto/aa1517577133806.png" class="success-img" onerror="nofind();"/>
+                            </a>
+                            <div class="backstage-entrance-container">
+							    <div class="backstage-entrance">
+								    <div class="entrance-wrapper">
+									    <div class="entrance-top clearbox">
+										    <img src="/UserPhoto/aa1517577133806.png" class="entrance-img" onerror="nofind();"/>
+										    <div class="entrance-name overflow-text">13761646494</div>
+										    <div class="entrance-edit-btn"><a href="../Resume/Index.html" id="entrance-edit-href">修改资料</a></div>
+									    </div>
+									    <ul class="entrance-href-box clearbox">
+										    <li class="entrance-href-item"><a href="../My/MyCollection.html">收藏职位</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyJob.html">投递职位</a></li>
+										    <li class="entrance-href-item"><a href="../Resume/Index.html">我的简历</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyAssessment.html">我的测评</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyOrder.html">我的订单</a></li>
+									    </ul>
+									    <div class="entrance-back-btn login-exit">安全退出</div>
+								    </div>
+							    </div>
+						    </div>
+                        </li>
+                    <li class="top-nav-item top-nav-call" style="display:block;">
+						<div class="top-call-msg top-call-text">求职小助手</div>
+						<div class="top-call-num top-call-text">+86 400 123 4567</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+        <!--********************************************Page Private************************************-->
+        
+<!-- Banner-->
+<div class="row top-banner">
+	<div class="banner-head-box">
+		<img class="banner-head" v-bind:src="userInfo.PicturePath===''?'../../Content/img/head.png':userInfo.PicturePath" onerror="nofind();"/>
+	</div>
+	<div class="banner-name" v-show="userInfo.Name.length>0" style="display:none;" v-html="userInfo.Name"></div>
+	<div class="banner-tag-box clearbox">
+		<div class="banner-tag-content clearbox">
+		    <ul class="banner-tag clearbox user-title-list" style="display:none;" v-show="userTags.length>0">
+		        <li class="tag-item" v-for="(item,index) in userTags" v-bind:key="item.ID" v-bind:index="item.ID" v-html="item.TitleName"><!--测试工程师--></li>
+		    </ul>
+		    <div class="add-tag-btn" v-on:click="addTags"></div>
+		</div>
+	</div>
+</div>
+<!-- Content -->
+<section class="row">
+	<div class="nav-content">
+		<ul class="nav-box clearbox">
+			<li class="nav-item">
+				<a href="../My/MyCollection.html" class="nav-text">收藏职位</a>
+			</li>
+			<li class="nav-item">
+				<a href="../My/MyJob.html" class="nav-text">投递职位</a>
+			</li>
+			<li class="nav-item nav-item-active">
+				<a href="../Resume/Index.html" class="nav-text">我的简历</a>
+			</li>
+			<li class="nav-item">
+				<a href="../My/MyAssessment.html" class="nav-text">我的测评</a>
+			</li>
+            <li class="nav-item">
+				<a href="../My/MyOrder.html" class="nav-text">我的订单</a>
+			</li>
+		</ul>
+	</div>
+	<div class="content-box clearbox">
+	    <!--我的简历-->
+		<div class="resume-module-container backstage-module">
+			<!-- 左侧简历内容区 -->
+			<div class="resume-content">
+				<!-- 简历头部个人信息 -->
+				<div class="head-box">
+					<div class="head-img-box">
+						<img class="head-img" v-bind:src="userInfo.PicturePath===''?'../../Content/img/head.png':userInfo.PicturePath" onerror="nofind();"/>
+						<input id="PictureFile"name="file" accept=".jpg,.jpeg,.png,.bmp" onchange="filePictureChange()" type="file" class="upload-head"/>
+						<span class="upload-head-icon"><i class="fa fa-camera" aria-hidden="true"></i></span>
+					</div>
+					<div class="head-container">
+						<div class="info-edit-container clearbox" v-show="!userInfoShow" style="display:none;">
+							<input type="text" class="info-input info-name" placeholder="你的姓名" v-model.trim="userEditInfo.Name"/>
+							<input type="radio" name="radio" class="info-input info-sex" id="mars" value="1"  v-model="userEditInfo.Gender"/>
+							<label for="mars">男</label>
+							<span class="name-icon"><i class="fa fa-mars" aria-hidden="true"></i></span>
+							<input type="radio" name="radio" class="info-input info-sex" id="venus" value="2" v-model="userEditInfo.Gender"/>
+							<label for="venus">女</label>
+							<span class="name-icon"><i class="fa fa-venus" aria-hiden="true"></i></span>
+							<div class="info-filter msg-filter-box" v-show="userEditInfo.Gender.length===0||userEditInfo.Name.length===0" style="display:none;">
+								<span class="name-filter" v-show="userEditInfo.Name.length===0" style="display:none;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span>必填</span></span>
+								<span class="gender-filter" v-show="userEditInfo.Gender.length===0" style="display:none;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span>必选性别</span></span>
+							</div>
+							<input type="text" class="info-input info-phone" placeholder="联系电话" v-model.trim="userEditInfo.Tel"/>
+							<input type="text" class="info-input info-email" placeholder="联系邮箱" v-model.trim="userEditInfo.Email"/>
+							<div class="info-filter contact-filter-box"  v-show="userPhoneShow||userEmailShow" style="display:none;">
+								<span class="phone-filter" v-show="userPhoneShow" style="display:none;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span v-html="phoneFilter"></span></span>
+								<span class="email-filter" v-show="userEmailShow" style="display:none;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span v-html="emailFilter"></span></span>
+							</div>
+							<input type="text" class="info-input info-address" placeholder="联系地址" v-model.trim="userEditInfo.AddressInfo"/>
+							<div class="info-filter address-filter" v-show="userEditInfo.AddressInfo.length===0" style="display:none;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span>必填</span></div>
+							<div class="info-btn info-save-btn" v-on:click="infoSave" v-bind:class="{'info-save-disable-btn':currentModule!==0}">保存</div>
+							<div class="info-btn info-cancel-btn" v-on:click="infoCancel">取消</div>
+						</div>
+						<div class="head-content" v-show="userInfoShow" style="display:none;">
+							<div class="head-edit" v-on:click="infoEdit" v-bind:class="{'head-edit-disable':!clickEnable&&headEditEnable}">
+								<span class="head-edit-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+							</div>
+							<div class="head-name">
+								<span class="name-text" v-show="userInfo.Name.length>0" style="display:none;" v-html="userInfo.Name"><!--Jessie Lai--></span>
+								<span class="name-icon" v-show="userInfo.Gender.length>0" style="display:none;"><i class="fa fa-venus" aria-hiden="true" v-show="userInfo.Gender==='2'" style="display:none;"></i><i class="fa fa-mars" aria-hidden="true" v-show="userInfo.Gender==='1'" style="display:none;"></i></span>
+							</div>
+							<div class="head-contact">
+								<span class="head-phone" v-show="userInfo.Tel.length>0" style="display:none;"><span class="phone-icon"><i class="fa fa-phone" aria-hidden="true"></i></span><span class="phone-num" v-html="userInfo.Tel"><!--13801010101--></span></span>
+								<span class="head-email" v-show="userInfo.Email.length>0" style="display:none;"><span class="email-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span><span class="email-num" v-html="userInfo.Email"><!--9993332738@163.com--></span></span>
+							</div>
+							<div class="head-address" v-show="userInfo.AddressInfo.length>0" style="display:none;">
+								<span class="address-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+								<span class="address-text" v-html="userInfo.AddressInfo"><!--上海市长宁区玛瑙路1438号国际古北财富中心二期--></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 简历模块部分 -->
+				<div class="resume-box">
+					<div class="resume-module education-box" id="education">
+						<div class="resume-module-top">
+							<span class="top-icon"><i class="material-icons">&#xE80C;</i></span>
+							<span class="top-title">教育背景</span>
+							<span class="add-module-btn add-education-btn resume-operation-btn" v-bind:class="{'add-module-disable-btn':!clickEnable&&!ModuleShow_1}" v-html="ModuleShow_1?'取消':'添加'" v-on:click="addModule(1)"></span>
+						    <!-- 解决点击其他添加按钮同样可以可以点击教育背景添加按钮的问题（加一个浮动层覆盖掉按钮） -->
+                            <span class="education-btn-flo" style="display:none;" v-show="!clickEnable&&!ModuleShow_1||editOnce" v-bind:style="{cursor:editOnce?'pointer':'default'}" v-on:click.prevent.self="floClick"></span>  
+                        </div>
+						<div class="module-wrapper education-wrapper clearbox" v-bind:style="{paddingTop:educationLists.length>0?'30px':'20px'}">
+							<ul class="education-date-box" style="display:none;" v-show="educationDate.length>0">
+								<li class="education-date" v-for="(date,index) in educationDate" v-bind:key="index" v-bind:class="{nullyear:date.year===''}">
+									<span class="date-predict-text" v-show="date.year>=currrentDate" style="display:none;">(预计)</span>
+									<span class="date-year" v-html="date.year"><!--2012--></span>
+									<span class="date-mouth" v-html="date.month"><!--7月--></span>
+								</li>
+							</ul>
+							<div class="education-container">
+								<div class="module-edit-container education-edit-container clearbox" style="display:none;" v-show="ModuleShow_1">
+									<input type="text" class="module-input" placeholder="请输入学校名称" v-model="educationschool"/>
+									<div class="module-select background-select">
+										<div class="module-select-content background-content" v-html="educationbackground?educationbackground:'学历'"><!--学历--></div>
+										<ul class="module-select-list background-select-list">
+											<li class="module-select-item background-item" v-for="(item,index) in educationEditBackgrounds" :key="index" v-html="item.background" v-on:click="selectbackground(item.background,item.id)"><!--大专--></li>
+										</ul>
+									</div>
+									<input type="text" class="module-input" placeholder="请输入所学专业" v-model="educationmajor"/>
+		                            <div class="module-select graduate-select graduate-select-year" style="width: 100px;">
+										<div class="module-select-content graduate-content graduate-content-year" v-html="educationgraduate_year?educationgraduate_year+'年':'毕业年份'">
+										</div>
+										<ul class="module-select-list graduate-select-list graduate-select-list-year" style="width: 100px;">
+											<li class="module-select-item graduate-item graduate-item-year" v-for="(item,index) in educationEditgraduatesYear" v-bind:key="index" v-html="item.graduate" v-on:click="selectgraduateyear(item.graduate)"><!--2019--></li>
+										</ul>
+									</div>
+		                                <div class="module-select graduate-select graduate-select-month" style="width: 100px;">
+										<div class="module-select-content graduate-content graduate-content-month" v-html="educationgraduate_month?educationgraduate_month+'月':'毕业月份'">
+			
+										</div>
+										<ul class="module-select-list graduate-select-list graduate-select-list-month" style="width: 100px;">
+											<li class="module-select-item graduate-item graduate-item-month" v-for="(item,index) in educationEditgraduatesMonth" v-bind:key="index" v-html="item.graduate" v-on:click="selectgraduatemonth(item.graduate)"><!--2019--></li>
+										</ul>
+									</div>
+									<div class="module-save-btn module-btn education-save-btn" v-on:click.self.stop="educationSave(1)">保存</div>
+									<div class="module-cancel-btn module-btn education-cancel-btn" v-on:click.self.stop="educationCancel(1)">取消</div>
+								</div>
+								<ul class="education-list" style="display:none;" v-show="educationLists.length>0">
+									<li class="education-item" v-for="(item,index) in educationLists" v-bind:key="index">
+										<input type="hidden" v-model="item.ID" value="0"/>
+										<span class="education-school" v-html="item.SchoolName"><!--哈佛大学--></span>
+										<span class="education-background" v-html="item.Education>=14?'其他':(item.Education>=13?'博士':(item.Education>=12?'硕士':(item.Education>=11?'本科':(item.Education>=10?'大专':''))))"><!--本科--></span>
+										<span class="education-major" v-html="item.Major"><!--机械及自动化专业--></span>
+										<span class="date-end" v-html="item.EndDate.substr(0,4)+'年'+item.EndDate.substr(5,2)+'月'+'毕业'"><!--2015年6月19日--></span>
+										<span class="delete-btn" v-bind:class="{'education-btn-able':!ModuleShow_1&&currentModule===0&&userInfoShow}" v-on:click="educationDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+										<span class="edit-btn" v-bind:class="{'education-edit-btn-able':!ModuleShow_1&&currentModule===0&&userInfoShow}" v-on:click="educationEdit(item,index)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="resume-module award-box" id="award">
+						<div class="resume-module-top">
+							<span class="top-icon"><i class="material-icons">&#xE86E;</i></span>
+							<span class="top-title">所获荣誉</span>
+							<span class="add-module-btn add-award-btn resume-operation-btn" v-bind:class="{'add-module-disable-btn':!clickEnable&&!ModuleShow_2}" v-html="ModuleShow_2?'取消':'添加'" v-on:click="addModule(2)"></span>
+						</div>
+						<div class="module-wrapper award-wrapper">
+							<div class="award-container">
+								<div class="module-edit-container award-edit-container clearbox" v-show="ModuleShow_2" style="display:none;">
+									<input type="text" class="module-input" placeholder="荣誉名称" v-model="awardname"/>
+											
+		                            <div class="module-select award-select award-select-year" style="width:100px;">
+										<div class="module-select-content award-content award-content-year" v-html="awardgraduate_year?awardgraduate_year:'年份'"><!--年份--></div>
+										<ul class="module-select-list award-select-list award-select-list-year" style="width:100px;">
+											<li class="module-select-item award-year-item  award-year-item-year" v-for="(item,index) in awardgraduates_year" :key="index" v-on:click="awardselect_year(item.year)" v-html="item.year"><!--2019--></li>
+										</ul>
+									</div>
+		
+		                            <div class="module-select award-select award-select-month" style="width:100px;">
+										<div class="module-select-content award-content award-content-month" v-html="awardgraduate_month?awardgraduate_month:'月份'"><!--年份--></div>
+										<ul class="module-select-list award-select-list award-select-list-month" style="width:100px;">
+											<li class="module-select-item award-year-item  award-year-item-month" v-for="(item,index) in awardgraduates_month" :key="index" v-on:click="awardselect_month(item.month)" v-html="item.month"><!--2019--></li>
+										</ul>
+									</div>
+		                                
+									<div class="module-save-btn module-btn award-save-btn" v-on:click="awardSave(2)">保存</div>
+									<div class="module-cancel-btn module-btn award-cancel-btn" v-on:click="awardCancel(2)">取消</div>
+								</div>
+												
+								<ul class="award-list">
+									<li class="award-item" v-for="(item,index) in awardLists" v-bind:key="index" v-bind:index="item.ID">
+										<input type="hidden" v-model="item.ID" value="0"/>
+										<span class="award-name" v-html="item.HonorName"><!--外语系第十三届英语戏剧比赛一等奖--></span>
+										<span class="award-date" v-html="item.GetTime.substr(0,4)+'年'+item.GetTime.substr(5,2)+'月'"><!--2015年6月19日--></span>
+										<span class="delete-btn" v-bind:class="{'award-btn-able':!ModuleShow_2&&currentModule===0&&userInfoShow}" v-on:click="awardDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+										<span class="edit-btn" v-bind:class="{'award-edit-btn-able':!ModuleShow_2&&currentModule===0&&userInfoShow}" v-on:click="awardEdit(item,index)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="resume-module practice-box" id="practice">
+						<div class="resume-module-top">
+							<span class="top-icon"><i class="material-icons">&#xE85D;</i></span>
+							<span class="top-title">实习经历</span>
+							<span class="add-module-btn add-practice-btn resume-operation-btn" v-bind:class="{'add-module-disable-btn':!clickEnable&&!ModuleShow_3}" v-html="ModuleShow_3?'取消':'添加'" v-on:click="addModule(3)"></span>
+						</div>
+						<div class="module-wrapper practice-wrapper">
+							<div class="practice-container" v-bind:style="{marginTop:practiceLists.length>0?'20px':'30px'}">
+								<div class="module-edit-container practice-edit-container clearbox" v-show="ModuleShow_3" style="display:none;">
+									<div class="uploader-box">
+										<img id="CompanyLogoImg" class="head-img" src="../../Content/img/position_head.png" onclick="imgClick()" width="100px" height="100px" onerror="noFindLogo();"/>
+										<!--<span class="uploader-msg">上传公司logo</span>-->
+										<input style="display: none;" id="CompanyLogo" name="file"  accept=".jpg,.jpeg,.png,.bmp" onchange="fileCompanyLogoChange()" type="file" class="uploader-input"  placeholder="上传公司logo"/>
+									</div>
+
+		                            <input type="text" style="width: 274px;" class="module-input" placeholder="请输入公司名称" v-model="practicecompanyname"/>
+											
+									<input type="text" style="width: 274px;" class="module-input practice-address" placeholder="实习职位名称" v-model="practicepositionname"/>
+											
+		                            <div>
+		                                <div class="module-select practice-select practice-select-begin-year" style="width:129px">
+											<div class="module-select-content practice-content practice-content-begin-year" v-html="practicebegin_year?practicebegin_year:'开始年份'"><!--开始时间--></div>
+											<ul class="module-select-list practice-select-list practice-date-list-begin-year" style="width:130px">
+												<li class="module-select-item practice-year-item practice-year-begin-year" v-for="(item,index) in practiceYears" v-bind:key="index" v-html="item.year" v-on:click="practiceselectbegin_year(item.year)"><!--2019--></li>
+											</ul>
+										</div>
+		
+		                                <div class="module-select practice-select practice-select-begin-month" style="width:129px">
+											<div class="module-select-content practice-content practice-content-begin-month" v-html="practicebegin_month?practicebegin_month:'开始月份'"><!--开始时间--></div>
+											<ul class="module-select-list practice-select-list practice-date-list-begin-month" style="width:130px">
+												<li class="module-select-item practice-year-item practice-year-begin-month" v-for="(item,index) in awardgraduates_month" v-bind:key="index" v-html="item.month" v-on:click="practiceselectbegin_month(item.month)"><!--2019--></li>
+											</ul>
+										</div>
+		                                    
+		                                <span style="float: left;  padding: 12px 15px;  display: block;">--</span>
+										<div class="module-select practice-select practice-select-end-year" style="width:129px">
+											<div class="module-select-content practice-content practice-content-end-year" v-html="practiceend_year?practiceend_year:'结束年份'"><!--结束时间--></div>
+											<ul class="module-select-list practice-select-list practice-date-list-end-year" style="width:130px">
+												<li class="module-select-item practice-year-item practice-year-end-year" v-for="(item,index) in practiceYears" v-bind:key="index" v-html="item.year" v-on:click="practiceselectend_year(item.year)"><!--2019--></li>
+											</ul>
+										</div>
+		
+		                                <div class="module-select practice-select practice-select-end-month" style="width:129px">
+											<div class="module-select-content practice-content practice-content-end-month" v-html="practiceend_month?practiceend_month:'结束月份'"><!--结束时间--></div>
+											<ul class="module-select-list practice-select-list practice-date-list-end-month" style="width:130px">
+												<li class="module-select-item practice-year-item practice-year-end-month" v-for="(item,index) in awardgraduates_month" v-bind:key="index" v-html="item.month" v-on:click="practiceselectend_month(item.month)"><!--2019--></li>
+											</ul>
+										</div>
+		                                <div style="clear: both;">                                       
+		                                </div>
+		                                </div>
+		                                <input style="width:560px;" type="text" class="module-input practice-address" placeholder="公司地址" v-model="practicesite"/>
+										<textarea class="practice-area" placeholder="工作职能" v-model="practicecontent"></textarea>
+										<div class="module-save-btn module-btn practice-save-btn" v-on:click="practiceSave(3)">保存</div>
+									<div class="module-cancel-btn module-btn practice-cancel-btn" v-on:click="practiceCancel(3)">取消</div>
+								</div>
+		
+								<ul class="practice-list" style="display:none;" v-show="practiceLists.length>0">
+									<li class="practice-item" v-for="(item,index) in practiceLists" v-bind:key="index" v-bind:index="item.ID">
+										<div class="item-head">
+											<input type="hidden" v-model="item.ID" value="0"/>
+											<img class="item-company-logo" v-bind:src="item.CompanyLogo!==''?item.CompanyLogo:'../../Content/img/position_head.png'" onerror="noFindLogo();"/>
+											<div class="head-msg">
+												<div class="msg-top">
+													<span class="msg-company-name" v-html="item.CompanyName"><!--洋葱数学--></span>
+													<span class="msg-position-name" v-html="item.PositionName"><!--HR助理--></span>
+												</div>
+												<div class="msg-bottom">
+													<span class="msg-site" v-html="item.AddressInfo"><!--长沙-岳麓区--></span>
+													<span class="msg-date"><span class="date-begin" v-html="item.BeginDate.substr(0,4)+'月'+item.BeginDate.substr(5,2)+'年'"></span><span>&nbsp;-&nbsp;</span><span class="date-end" v-html="item.EndDate.substr(0,4)+'年'+item.EndDate.substr(5,2)+'月'"></span></span>
+												</div>
+											</div>
+										</div>
+										<div class="item-content" v-html="item.JobDescription">
+											<!--1、协助上级建立健全公司招聘、培训、保险、绩效考核等人力资源制度建设；
+											<br>
+											2、建立、维护人事档案，办理和更新劳动合同；
+											<br>
+											3、收集相关的劳动用工等人事政策及法规；
+											<br>
+											4、执行招聘工作流程，协调、办理员工招聘、入职、离职、调任、升职等手续；
+											<br>
+											5、协同开展新员工入职培训，执行培训计划，以及培训效果的跟踪、反馈；
+											<br>
+											6、办理相应的社会保险、医保等外联工作；
+											<br>
+											7、在技术服务部的主要职责：1、文件整理；2、绩效考核数据统计；3、服务计划与出差记录；
+											<br>
+											8、其他临时任务。-->
+										</div>
+										<span class="delete-btn" v-bind:class="{'practice-btn-able':!ModuleShow_3&&currentModule===0&&userInfoShow}" v-on:click="practiceDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+										<span class="edit-btn" v-bind:class="{'practice-edit-btn-able':!ModuleShow_3&&currentModule===0&&userInfoShow}" v-on:click="practiceEdit(item,index)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="resume-module skill-box" id="skill">
+						<div class="resume-module-top">
+							<span class="top-icon"><i class="material-icons">&#xE8A3;</i></span>
+							<span class="top-title">语言/技术技能</span>
+							<span class="add-module-btn add-skill-btn resume-operation-btn" v-bind:class="{'add-module-disable-btn':!clickEnable&&!ModuleShow_4}" v-html="ModuleShow_4?'取消':'添加'" v-on:click="addModule(4)"></span>
+						</div>
+						<div class="module-wrapper skill-wrapper">
+							<div class="skill-container">
+								<div class="module-edit-container skill-edit-container clearbox" v-show="ModuleShow_4" style="display:none;">
+									<input type="text" class="module-input" placeholder="语音/技能名称" v-model="skillname"/>
+									<input type="text" class="module-input skill-dec" placeholder="熟练度描述" v-model="skilldec"/>
+									<div class="skill-edit-progress">
+										<div class="skill-edit-progress_bg">
+											<div class="skill-edit-progress_bar">
+											    <div class="skill-edit-degree">一般</div>
+											</div>
+										</div>
+										<div class="skill-edit-progress_btn"></div>
+									</div>
+									<div class="module-save-btn module-btn skill-save-btn" v-on:click="skillSave(4)">保存</div>
+									<div class="module-cancel-btn module-btn skill-cancel-btn" v-on:click="skillCancel(4)">取消</div>
+								</div>
+								<ul class="skill-list" style="display:none;" v-show="skillLists.length>0">
+									<li class="skill-item" v-for="(item,index) in skillLists" v-bind:key="index" v-bind:index="item.ID">
+										<input type="hidden" v-model="item.ID" value="0"/>
+										<span class="skill-name overflow-text" v-html="item.SepciltyName"><!--英语CET-6--></span>
+										<span class="skill-bar-box"><span class="skill-bar" v-bind:style="{width:item.Skilled+'px'}"></span></span>
+										<span class="skill-dec overflow-text" v-html="item.SkillDescription"><!--熟练使用英语交流--></span>
+										<span class="delete-btn" v-bind:class="{'skill-btn-able':!ModuleShow_4&&currentModule===0&&userInfoShow}" v-on:click="skillDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+										<span class="edit-btn" v-bind:class="{'skill-edit-btn-able':!ModuleShow_4&&currentModule===0&&userInfoShow}" v-on:click="skillEdit(item,index)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="resume-module activity-box" id="activity">
+						<div class="resume-module-top">
+							<span class="top-icon"><i class="material-icons">&#xE566;</i></span>
+							<span class="top-title">课外活动</span>
+							<span class="add-module-btn add-activity-btn resume-operation-btn" v-bind:class="{'add-module-disable-btn':!clickEnable&&!ModuleShow_5}" v-html="ModuleShow_5?'取消':'添加'" v-on:click="addModule(5)"></span>
+						</div>
+						<div class="module-wrapper activity-wrapper">
+							<div class="activity-container">
+								<div class="module-edit-container activity-edit-container clearbox" v-show="ModuleShow_5" style="display:none;">
+									<input type="text" class="module-input activity-input-name" placeholder="活动名称" v-model="activityname"/>
+									<div class="module-select activity-select-year" style="width:100px;">
+										<div class="module-select-content activity-content-year" v-html="activitydate_year?activitydate_year:'活动年份'"><!--活动时间--></div>
+										<ul class="module-select-list activity-select-list-year" style="width:100px;">
+											<li class="module-select-item activity-year-item-year" v-for="(item,index) in activityYears" :key="index" v-html="item.year" v-on:click="activityselect_year(item.year)"><!--2019--></li>
+										</ul>
+									</div>
+		
+		                            <div class="module-select activity-select-month" style="width:100px;">
+										<div class="module-select-content activity-content-month" v-html="activitydate_month?activitydate_month:'活动月份'"><!--活动时间--></div>
+										<ul class="module-select-list activity-select-list-month" style="width:100px;">
+											<li class="module-select-item activity-year-item-month" v-for="(item,index) in awardgraduates_month" :key="index" v-html="item.month" v-on:click="activityselect_month(item.month)"><!--2019--></li>
+										</ul>
+									</div>
+		
+		
+									<input type="text" class="module-input activity-input-address" placeholder="活动地点" v-model="activitysite"/>
+									<textarea class="activity-area" placeholder="活动描述" v-model="activitydec"></textarea>
+									<div class="module-save-btn module-btn activity-save-btn" v-on:click="activitySave(5)">保存</div>
+									<div class="module-cancel-btn module-btn activity-cancel-btn" v-on:click="activityCancel(5)">取消</div>
+								</div>
+								<ul class="activity-list">
+									<li class="activity-item" v-for="(item,index) in activityLists" v-bind:key="index" v-bind:index="item.ID">
+										<input type="hidden" v-model="item.ID" value="0"/>
+										<div class="activity-name">
+											<span class="name-text" v-html="item.ActivityName"><!--学术学术辩论--></span>
+										</div>
+										<div class="activity-msg">
+											<span class="msg-date" v-html="item.AttendTime.substr(0,4)+'年'+item.AttendTime.substr(5,2)+'月'"><!--2017年1月20日--></span>
+											<span class="msg-site" v-html="item.AddressInfo"><!--苏州--></span>
+										</div>
+										<div class="activity-dec" v-html="item.Description"><!--《学术辩论》课程由英锐联合哈佛大学辩论委员会（Harvard Debate Council）、全美演讲与辩论联盟（National Speech and Debate Association，简称NSDA）共同开发，课程参照美国高中辩论课程的内容和模式，结合中国学生的英语水平和思维习惯设计而成。--></div>
+										<span class="delete-btn" v-bind:class="{'activity-btn-able':!ModuleShow_5&&currentModule===0&&userInfoShow}" v-on:click="activityDelete(index,item.ID)"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+										<span class="edit-btn" v-bind:class="{'activity-edit-btn-able':!ModuleShow_5&&currentModule===0&&userInfoShow}" v-on:click="activityEdit(item,index)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 右侧简历导航区 -->
+			<div class="resume-nav-content clearbox">
+				<div class="resume-nav-box">
+					<div class="resume-nav-head" v-html="userInfo.Name.length>0?userInfo.Name+'的简历':'个人简历'"></div>
+					<ul class="resume-nav-list clearbox">
+						<li class="resume-nav-item resume-nav-active">
+							<a href="#education" class="nav-href education-href">
+								<span class="resume-nav-line"></span>
+								<span class="resume-nav-icon"><i class="material-icons">&#xE80C;</i></span>
+								<span class="resume-nav-text">教育背景</span>
+							</a>
+						</li>
+						<li class="resume-nav-item">
+							<a href="#award" class="nav-href award-href">
+								<span class="resume-nav-line"></span>
+								<span class="resume-nav-icon"><i class="material-icons">&#xE86E;</i></span>
+								<span class="resume-nav-text">所获荣誉</span>
+							</a>
+						</li>
+						<li class="resume-nav-item">
+							<a href="#practice" class="nav-href practice-href">
+								<span class="resume-nav-line"></span>
+								<span class="resume-nav-icon"><i class="material-icons">&#xE85D;</i></span>
+								<span class="resume-nav-text">实习经历</span>
+							</a>
+						</li>
+						<li class="resume-nav-item">
+							<a href="#skill" class="nav-href skill-href">
+								<span class="resume-nav-line"></span>
+								<span class="resume-nav-icon"><i class="material-icons">&#xE8A3;</i></span>
+								<span class="resume-nav-text">语言/技术技能</span>
+							</a>
+						</li>
+						<li class="resume-nav-item">
+							<a href="#activity" class="nav-href activity-href">
+								<span class="resume-nav-line"></span>
+								<span class="resume-nav-icon"><i class="material-icons">&#xE566;</i></span>
+								<span class="resume-nav-text">课外活动</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Tag Dialog -->
+<div class="flo-box" v-show="tagBoxShow" style="display:none;">
+	<div class="tag-select-box">
+		<div class="tag-cancel-btn" v-on:click="tagCancel"></div>
+		<div class="select-title">
+			<span class="title-text">标签选择</span>
+			<span class="title-dec">最多选择5个标签</span>
+			<span class="tag-num-box" v-html="'共'+totalTags.length+'个标签'"></span>
+		</div>
+		<ul class="select-list clearbox">
+			<li class="select-item" v-for="(item,index) in totalTags" v-bind:key="item.ID" v-bind:index="item.ID" v-on:click="tagClick(item,$event)" v-html="item.TitleName"></li>
+		</ul>
+		<div class="select-btn-box clearbox">
+			<div class="select-btn select-confirm-btn" v-on:click="tagConfirm">
+				<span class="select-icon"><i class="material-icons">&#xE5CA;</i></span>
+				<span class="btn-text">确定</span>
+			</div>
+			<div class="select-btn select-reset-btn" v-on:click="tagReset">
+				<span class="select-icon"><i class="material-icons">&#xE5D5;</i></span>
+				<span class="btn-text">重置</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+        <!--********************************************Page Private End*********************************-->
+        
+        <!-- aside -->
+		<aside>
+			<div class="aside-container">
+				<div class="aside-back-top aside-item">TOP</div>
+				<div class="aside-call aside-item">
+					<i class="material-icons">&#xE0B0;</i>
+				</div>
+				<div class="aside-weixin aside-item">
+					<i class="fa fa-weixin" aria-hidden="true"></i>
+				</div>
+				<div class="aside-share aside-item">
+					<i class="material-icons">&#xE80D;</i>
+				</div>
+			</div>
+		</aside>
+
+        <!-- Login and Register Dialog -->
+		<div class="lr-container">
+			<div class="lr-wrapper">
+				<div class="lr-box">
+					<div class="lr-cancel"></div>
+					<div class="lr-btn-box clearbox">
+						<div class="login-btn lr-btn">
+							登录
+							<div class="btn-line"></div>
+						</div>
+						<div class="register-btn lr-btn">
+							注册
+							<div class="btn-line"></div>
+						</div>
+					</div>
+					<div class="login-box">
+						<div class="login-title">欢迎登录Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item login-phone" placeholder="请输入登录手机号" maxlength="11"/>
+							</div>
+							<div class="login-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item login-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="28"/>
+							</div>
+							<div class="login-password-tips lr-tips"></div>
+							<div class="rf-box clearbox">
+								<div class="remember-password-box lr-checkbox-box">
+									<div class="yes rp-yes lr-checkbox"></div>
+									<div class="no rp-no lr-checkbox"></div>
+									<div class="rp-text lr-text">记住密码</div>
+								</div>
+								<div class="forget-password-box lr-text">忘记密码？</div>
+							</div>
+							<div class="lr-login-btn lr-confirm-btn">登录</div>
+						</div>
+					</div>
+					<div class="register-box">
+						<div class="register-title">欢迎注册Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item register-username" placeholder="请输入用户名" maxlength="20"/>
+							</div>
+							<div class="register-username-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item register-phone" placeholder="请输入注册手机号" maxlength="11"/>
+							</div>
+							<div class="register-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item test-code" placeholder="请输入您收到的验证码" maxlength="6"/>
+								<div class="get-code-btn">获取验证码</div>
+							</div>
+							<div class="code-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item register-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="20"/>
+							</div>
+							<div class="register-password-tips lr-tips"></div>
+							<div class="protocol-box lr-checkbox-box">
+								<div class="yes protocol-yes lr-checkbox"></div>
+								<div class="no protocol-no lr-checkbox"></div>
+								<div class="lr-text">同意《<a href="../../Registration.html" target="_blank">Career Success注册协议</a>》</div>
+							</div>
+                            <div class="register-protocol-tips lr-tips"></div>
+							<div class="lr-register-btn-box clearbox">
+								<div class="complate-msg-btn">注册</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+		<!-- Bottom -->
+		<footer class="row">
+			<div class="foot-box">
+				<div class="foot-left">
+					<ul class="foot-href">
+						<li class="foot-href-item"><a href="">网站首页</a></li>
+						<li class="foot-href-item"><a href="">企业合作</a></li>
+						<li class="foot-href-item"><a href="">人才招聘</a></li>
+						<li class="foot-href-item"><a href="">联系我们</a></li>
+						<li class="foot-href-item"><a href="">讲师招募</a></li>
+						<li class="foot-href-item"><a href="">常见问题</a></li>
+						<li class="foot-href-item"><a href="">意见反馈</a></li>
+						<li class="foot-href-item"><a href="">友情链接</a></li>
+					</ul>
+					<div class="about-other">©肯耐珂萨 2018 | 沪ICP备09051952号-2</div>
+				</div>
+				<ul class="foot-right">
+					<li class="foot-right-item foot-weixin">
+						<i class="fa fa-weixin" aria-hidden="true"></i>
+					</li>
+					<li class="foot-right-item foot-recommend">
+						<i class="material-icons">&#xE0BF;</i>
+					</li>
+					<li class="foot-right-item foot-call">
+						<i class="material-icons">&#xE0B0;</i>
+					</li>
+				</ul>
+			</div>
+		</footer>   
+	</div>
+    <!-- Public JS -->
+    <script type="text/javascript">
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+    </script>
+	
+    <!-- Private JS -->
+    
+	<script type="text/javascript">
+	    var UserTitleList = JSON.parse('[{"ID":242,"TitleName":"互联网/电子商务","TitleID":1,"Remarks":"","UserID":5},{"ID":243,"TitleName":"Java开发","TitleID":2,"Remarks":"","UserID":5},{"ID":244,"TitleName":"网络推广","TitleID":4,"Remarks":"","UserID":5},{"ID":245,"TitleName":"测试工程师","TitleID":3,"Remarks":"","UserID":5}]');
+	    var ResumeBasic = JSON.parse('{"ID":2,"UserID":5,"Name":"Lee li","Tel":"13761646494","Email":"lichxi1002@126.com","Gender":1,"AddressID":0,"AddressInfo":"上海长宁区古北区","PicturePath":"","Remarks":null,"CreatedUser":5,"CreatedTime":"2018-01-04T21:15:45.067","ModifyUser":5,"ModifyTime":"2018-02-08T17:47:17.927"}');
+	    var Activity = JSON.parse('[{"ID":19,"ResumeID":2,"ActivityName":"我往往往往往往往往往","AttendTime":"2016-04-01T00:00:00","AddressID":0,"AddressInfo":"上海市","Description":"玩哇撒啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊","CreatedUser":5,"CreatedTime":"2018-02-08T17:04:27.667","ModifyUser":5,"ModifyTime":"2018-03-01T16:50:39.99"},{"ID":20,"ResumeID":2,"ActivityName":"活动或动","AttendTime":"2016-04-01T00:00:00","AddressID":0,"AddressInfo":"可以玩的地点","Description":"活动活动的可以上hid","CreatedUser":5,"CreatedTime":"2018-03-01T16:37:08.077","ModifyUser":5,"ModifyTime":"2018-03-01T16:37:14.417"}]');
+	    var EducationBackround = JSON.parse('[{"ID":17,"ResumeID":2,"SchoolName":"迈阿密大学","Education":11,"Major":"金融专业","BeginDate":"1990-01-01T00:00:00","EndDate":"2019-05-01T00:00:00","CreatedUser":5,"CreatedTime":"2018-01-05T13:31:41.67","ModifyUser":5,"ModifyTime":"2018-03-01T16:32:04.51"},{"ID":23,"ResumeID":2,"SchoolName":"哈佛大学","Education":13,"Major":"计算机技术","BeginDate":"1990-01-01T00:00:00","EndDate":"2019-02-01T00:00:00","CreatedUser":5,"CreatedTime":"2018-02-08T17:45:46.487","ModifyUser":0,"ModifyTime":"0001-01-01T00:00:00"},{"ID":24,"ResumeID":2,"SchoolName":"剑桥大学","Education":12,"Major":"计算机专业","BeginDate":"1990-01-01T00:00:00","EndDate":"2017-10-01T00:00:00","CreatedUser":5,"CreatedTime":"2018-03-01T14:01:46.183","ModifyUser":5,"ModifyTime":"2018-03-01T16:21:10.683"}]');
+	    var Award = JSON.parse('[{"ID":17,"ResumeID":2,"HonorName":"优秀学","GetTime":"2019-09-01T00:00:00","CreatedUser":5,"CreatedTime":"2018-01-31T14:51:53.163","ModifyUser":5,"ModifyTime":"2018-03-01T16:33:18.383"},{"ID":18,"ResumeID":2,"HonorName":"看见会看见好看 ","GetTime":"2019-01-01T00:00:00","CreatedUser":5,"CreatedTime":"2018-01-31T15:11:49.007","ModifyUser":0,"ModifyTime":"0001-01-01T00:00:00"},{"ID":19,"ResumeID":2,"HonorName":"看见看见很快就","GetTime":"2019-01-01T00:00:00","CreatedUser":5,"CreatedTime":"2018-01-31T15:13:49.947","ModifyUser":0,"ModifyTime":"0001-01-01T00:00:00"},{"ID":20,"ResumeID":2,"HonorName":"是打发斯蒂芬","GetTime":"2019-03-01T00:00:00","CreatedUser":5,"CreatedTime":"2018-01-31T15:16:33.99","ModifyUser":0,"ModifyTime":"0001-01-01T00:00:00"},{"ID":21,"ResumeID":2,"HonorName":"三好学生","GetTime":"2019-02-01T00:00:00","CreatedUser":5,"CreatedTime":"2018-02-08T17:02:23.327","ModifyUser":0,"ModifyTime":"0001-01-01T00:00:00"},{"ID":23,"ResumeID":2,"HonorName":"发发发发发发发发发发发发","GetTime":"2016-02-01T00:00:00","CreatedUser":5,"CreatedTime":"2018-02-09T10:54:00.597","ModifyUser":0,"ModifyTime":"0001-01-01T00:00:00"},{"ID":24,"ResumeID":2,"HonorName":"测试测试","GetTime":"2018-08-01T00:00:00","CreatedUser":5,"CreatedTime":"2018-03-01T16:33:33.63","ModifyUser":5,"ModifyTime":"2018-03-01T16:33:33.63"}]');
+	    var InternshipExperience = JSON.parse('[{"ID":14,"CompanyLogo":"../../Content/img/position_head.png","ResumeID":2,"CompanyName":"丁德国际教育","AddressInfo":"上海","PositionName":"海外留学部信息部","BeginDate":"2015-05-01T00:00:00","EndDate":"2015-08-01T00:00:00","JobDescription":"以GMAT/GRE 数学为主进行教学调研并授课","CreatedUser":5,"CreatedTime":"2018-01-05T13:35:35.117","ModifyUser":5,"ModifyTime":"2018-03-02T12:30:59.713"},{"ID":18,"CompanyLogo":"/CompanyLogo/Penguins1517577239006.jpg","ResumeID":2,"CompanyName":"test","AddressInfo":"test tet ","PositionName":"test","BeginDate":"2019-01-01T00:00:00","EndDate":"2019-02-01T00:00:00","JobDescription":"test test stet ","CreatedUser":5,"CreatedTime":"2018-02-02T13:14:12.93","ModifyUser":0,"ModifyTime":"0001-01-01T00:00:00"},{"ID":19,"CompanyLogo":"../../Content/img/position_head.png","ResumeID":2,"CompanyName":"看看看看看看看","AddressInfo":"上海市浦东新区","PositionName":"实习生","BeginDate":"2017-01-01T00:00:00","EndDate":"2017-04-01T00:00:00","JobDescription":"看看看看看看看看看","CreatedUser":5,"CreatedTime":"2018-02-08T17:03:42.06","ModifyUser":0,"ModifyTime":"0001-01-01T00:00:00"},{"ID":22,"CompanyLogo":"../../Content/img/position_head.png","ResumeID":2,"CompanyName":"看看看","AddressInfo":"上升到速度速度上升到速度速度","PositionName":"水水水水水","BeginDate":"2018-02-01T00:00:00","EndDate":"2018-08-01T00:00:00","JobDescription":"速度大大大大大大大大大大大大大大大大大大大大大大大大大大大大大大大大","CreatedUser":5,"CreatedTime":"2018-03-02T12:37:57.26","ModifyUser":5,"ModifyTime":"2018-03-02T12:38:08.063"}]');
+	    var Sepcilty = JSON.parse('[{"ID":17,"ResumeID":2,"SepciltyName":"雅思夫","Skilled":"312","SkillDescription":"能与人交流","CreatedUser":5,"CreatedTime":"2018-01-31T14:52:19.577","ModifyUser":5,"ModifyTime":"2018-03-05T09:40:19.863"},{"ID":18,"ResumeID":2,"SepciltyName":"雅思","Skilled":"226","SkillDescription":"数数量联","CreatedUser":5,"CreatedTime":"2018-01-31T16:33:12.077","ModifyUser":5,"ModifyTime":"2018-03-02T12:38:14.857"},{"ID":21,"ResumeID":2,"SepciltyName":"托福","Skilled":"254","SkillDescription":"与人交流良好","CreatedUser":5,"CreatedTime":"2018-03-01T16:35:02.05","ModifyUser":5,"ModifyTime":"2018-03-01T16:35:02.05"},{"ID":25,"ResumeID":2,"SepciltyName":"托福福","Skilled":null,"SkillDescription":"数据uuuuuu","CreatedUser":5,"CreatedTime":"2018-03-01T16:55:47.567","ModifyUser":5,"ModifyTime":"2018-03-01T16:55:47.567"}]');
+	    var ResumeBasicPicturePaths = '/UserPhoto/aa1517577133806.png';
+	    var IsAssessment = '';
+	</script>
+    <script src="../../Scripts/ajaxfileupload/ajaxfileupload.js"></script>
+    <script src="../../Scripts/js/MyResume.js?v=20180301" type="text/babel"></script>
+
+
+</body>
+</html>

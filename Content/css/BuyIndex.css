@@ -1,0 +1,485 @@
+@charset "utf-8";
+/******************************Banner****************************/
+.top-banner {
+	padding-top:32px;
+	position:relative;
+	height:164px;
+	background:url(../img/buy_index_icon.jpg)no-repeat center center;
+	background-size:cover;
+	font-family:"NotoSansCJKsc-Light";
+	font-size:32px;
+	color:#000;
+	text-align:center;
+	font-weight:300;
+}
+
+
+/***************************Content***********************/
+section{
+	position:relative;
+	background:#f5f5f5;
+}
+
+section .buy-container{
+	margin:0 auto;
+	margin-bottom:60px;
+	margin-top:-57px;
+	padding:15px 45px 45px 45px;
+	width:1200px;
+	border-radius: 4px;
+  	background-color: #fff;
+  	box-shadow: 0 2px 7px 0 rgba(222, 222, 222, 0.5);
+  	border: solid 1px #ececec;
+}
+
+.buy-container .buy-box{
+	padding:30px 0;
+	width:100%;
+	border-bottom:1px solid #ddd;
+}
+
+.buy-box .buy-title{
+	text-align:left;
+	font-size:18px;
+	font-weight:500;
+	color:#333;
+}
+
+.buy-box .buy-content{
+	margin-top:10px;
+	width:100%;
+}
+
+.buy-position .position-content{
+	padding:0 30px;
+	height:84px;
+	background:#f8f8f8;
+}
+
+.position-content span{
+	position:relative;
+	display:inline-block;
+	height:84px;
+	line-height:84px;
+}
+
+.position-content .position-name{
+    float:left;
+	padding-left:15px;
+	font-size:16px;
+	font-weight:500;
+	color:#333;
+}
+
+.position-content .position-name:before{
+	position:absolute;
+	top:40px;
+	left:0;
+	content:"";
+	width:6px;
+	height:6px;
+	background:#0099e5;
+	border-radius:100px;
+}
+
+.position-content .position-dec{
+    float:left;
+	padding-left:10px;
+	font-size:14px;
+	color:#6d6d6d;
+}
+
+.position-content .position-price{
+	float:right;
+	font-size:14px;
+	color:#ee5c54;
+}
+
+.student-msg .student-content{
+	position:relative;
+	width:100%;
+	height:45px;
+}
+
+.student-content .student-input{
+	display:block;
+	padding:13px 15px 12px 15px;
+	margin-right:20px;
+	float:left;
+	width:313px;
+	height:45px;
+	border:1px solid #c3c3c3;
+	font-size:14px;
+	color:#333;
+	font-weight:500;
+	text-align:left;
+	border-radius:1px;
+	outline:none;
+	resize:none;
+}
+
+.student-input:focus{
+	border: solid 1px #0099e5;
+}
+
+.student-content .student-tip{
+	position:absolute;
+	top:45px;
+	line-height: 20px;
+    font-size: 12px;
+    text-align: left;
+    color: #ee5c54;
+}
+
+.student-content .name-tip{
+	left:0;
+}
+
+.student-content .phone-tip{
+	left:333px;
+}
+
+.student-content .email-tip{
+	left:666px;
+}
+
+.seller-content .seller-item{
+	margin-bottom:10px;
+	width:337px;
+	height:20px;
+	line-height:20px;
+	color:#6d6d6d;
+	font-size:14px;
+	text-align:left;
+}
+
+.seller-content .seller-item i{
+	display:inline-block;
+	font-size:18px;
+	color:#6d6d6d;
+}
+
+.seller-content .contact-address i{
+	font-size:18px;
+	padding-right:10px;
+}
+
+.seller-content .contact-phone i{
+	font-size:18px;
+	padding-right:3px;
+}
+
+.seller-content .contact-phone span{
+	display:inline-block;
+	padding-left:3px;
+}
+
+.seller-content .contact-email i{
+	font-size:15px;
+	padding-right:5px;
+}
+
+.buy-container .pay-box{
+	padding-top:30px;
+}
+
+.pay-box .pay-left{
+	width:400px;
+	float:left;
+}
+
+.pay-box .pay-right{
+	width:400px;
+	float:right;
+}
+
+.pay-box .pay-msg{
+	padding-left:10px;
+	position:relative;
+	font-size:14px;
+	line-height:22px;
+	color:#6d6d6d;
+}
+
+.pay-box .pay-msg:before{
+	position:absolute;
+	top:0;
+	left:-1px;
+	content:"*";
+	font-size:14px;
+	font-weight:bold;
+	color:#ee5c54;
+}
+
+.pay-box .pay-right .pay-item{
+	margin-bottom:7px;
+	line-height:24px;
+	font-size:16px;
+	color:#333;
+}
+
+.pay-box .pay-right .pay-item span{
+	display:inline-block;
+	float:right;
+}
+
+.pay-box .pay-right .pay-item .pay-item-right{
+	width:116px;
+	text-align:right;
+}
+
+.pay-box .pay-right .pay-item-total .pay-item-right{
+	font-size:20px;
+	color:#ee5c54;
+	font-weight:500;
+}
+
+.pay-box .pay-right .pay-item-num{
+	font-size:14px;
+	color:#6d6d6d;
+}
+
+.pay-box .pay-right .pay-btn-box{
+	margin-top:30px;
+}
+
+.pay-box .pay-right .pay-btn-box .pay-btn{
+	float:right;
+	width:120px;
+	height:45px;
+	line-height:45px;
+	background:#0099e5;
+	font-size:16px;
+	color:#fff;
+	text-align:center;
+	font-weight:500;
+	cursor:pointer;
+}
+
+.pay-box .pay-right .pay-btn-box .pay-btn button{
+    display:block;
+    width:100%;
+    height:100%;
+    background:#0099e5;
+    border:none;
+    
+    transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+}
+
+.pay-box .pay-right .pay-btn-box .pay-btn a{
+    display:block;
+    font-size:16px;
+    color:#fff;
+	text-align:center;
+	font-weight:500;
+	cursor:pointer;
+}
+
+.pay-box .pay-right .pay-btn-box .pay-btn:hover{
+	background:#0099ff;
+}
+
+.pay-box .pay-right .pay-btn-box .pay-btn button:hover{
+    background:#0099ff;
+}
+
+.pay-box .pay-right .pay-btn-box .pay-print-btn{
+	margin-right:30px;
+}
+
+.pay-box .pay-right .pay-agreement{
+	margin-top:30px;
+	float:right;
+}
+
+.pay-box .pay-right .pay-agreement .pay-agreement-text{
+	display:block;
+	float:right;
+}
+
+.pay-box .pay-right .pay-agreement .pay-checkbox{
+	display:block;
+	float:right;
+	margin-right:5px;
+	margin-top:3px;
+}
+
+input[type=checkbox]{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 14px;
+    height: 14px;
+    outline: 0 !important;
+    cursor: pointer;
+    border: 1px solid #20a0ff;
+    
+    -webkit-appearance: none;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+input[type=checkbox]:checked {
+    background-color: #20a0ff;
+}
+
+input[type=checkbox]:checked:before {
+	position: absolute;
+    top: 3px;
+    left: 2px;
+    width: 8px;
+    height: 4px;
+    content: '';
+    color: #fff;
+    border-bottom: solid 2px #fff;
+    border-left: solid 2px #fff;
+    
+    -ms-transform:rotate(-45deg); 	/* IE 9 */
+	-moz-transform:rotate(-45deg); 	/* Firefox */
+	-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(-45deg); 	/* Opera */
+    transform: rotate(-45deg);
+}
+
+
+/************************订单支付弹窗**********************************/
+.flo-order{
+    display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:9999;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.5);
+}
+
+.flo-order .flo-order-container{
+    position:relative;
+	margin:0 auto;
+	margin-top:100px;
+	margin-bottom:116px;
+	width:400px;
+	height:230px;
+	background:#fff;
+}
+
+.flo-order-container .flo-order-top{
+    width:100%;
+    height:40px;
+    line-height:40px;
+    background:#f2f2f2;
+}
+
+.flo-order-container .flo-order-top .flo-order-title{
+    display:inline-block;
+    float:left;
+    height:40px;
+    padding-left:20px;
+    line-height:40px;
+    color:#333;
+    font-size:16px;
+}
+
+.flo-order-container .flo-order-top .flo-order-close{
+    display:inline-block;
+    float:right;
+    width:40px;
+    height:40px;
+    margin-right:10px;
+    padding-top:5px;
+    line-height:40px;
+    text-align:center;
+    color:#ccc;
+    cursor:pointer;
+}
+
+.flo-order-container .flo-order-top .flo-order-close i{
+    font-size:16px;
+    font-weight:bold;
+}
+
+.flo-order-container .flo-order-top .flo-order-close:hover{
+    color:#666;
+}
+
+.flo-order-container .flo-order-tips{
+    padding:30px;
+    background:#fff;
+}
+
+.flo-order-container .flo-order-tips .flo-order-warn{
+    float:left;
+    width:50px;
+    height:50px;
+    text-align:center;
+    color:#ff6060;
+}
+
+.flo-order-container .flo-order-tips .flo-order-warn i{
+    font-size:45px;
+}
+
+.flo-order-container .flo-order-tips .flo-order-text{
+    width:270px;
+    margin-left:65px;
+    text-align:left;
+}
+
+.flo-order-container .flo-order-tips .flo-order-text .flo-order-one{
+    padding:10px 0 8px 0;
+    font-size:14px;
+    color:#333;
+}
+
+.flo-order-container .flo-order-tips .flo-order-text .flo-order-two{
+    line-height:16px;
+    font-size:12px;
+    color:#999;
+}
+
+.flo-order-container .flo-order-btn{
+    width:100%;
+    height:40px;
+    padding:0 20px;
+}
+
+.flo-order-container .flo-order-btn .order-btn{
+    width:100px;
+    height:40px;
+    line-height:40px;
+    font-size:14px;
+    text-align:center;
+    border:1px solid #ffbf00;
+    cursor:pointer;
+}
+
+.flo-order-container .flo-order-btn .flo-order-reset{
+    float:right;
+    margin-right:15px;
+    background:#fff;
+    color:#ffbf00;
+}
+
+.flo-order-container .flo-order-btn .flo-order-success{
+    float:right;
+    background:#ffbf00;
+    color:#fff;
+}
+
+.flo-order-container .flo-order-btn .flo-order-success:hover{
+    background:#ffb400;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <title>智慧生涯--职业测评</title>
+
+    <!-- Public Header -->
+	<link rel="stylesheet" href="../../Content/lib/bootstrap.min.css" />
+	<link rel="stylesheet" href="../../Content/lib/font-awesome.min.css"/>
+	<link rel="stylesheet" href="../../Content/css/Template.css?v=20180122"/>
+    <link rel="stylesheet" href="../../Content/iconfont/material-icons.css"/>
+
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+	<script src="../../Scripts/lib/vue.min.js"></script>
+    <script src="../../Scripts/lib/communication.js"></script>
+	<script src="../../Scripts/js/Template.js?v=20180301"></script>
+	<script src="../../Scripts/lib/babel.min.js"></script>
+
+	<!--[if lt IE 9]>
+	    <script src="../../Scripts/lib/html5shiv.min.js"></script>
+	    <script src="../../Scripts/lib/respond.min.js"></script>
+	<![endif]-->
+
+    <!-- Private Header -->
+    
+	<link rel="stylesheet" href="../../Content/css/AssessmentIndex.css?v=20180205"/>
+
+</head>
+<body>
+    <!--Page Public -->
+	<div class="container-fluid" id="app">
+        <!-- Top -->
+		<header class="row">
+			<div class="row top-box top-width">
+				<div class="top-logo"><a href="../Home/Index.html"></a></div>
+				<ul class="top-nav clearbox">
+					<li class="top-nav-item"><a href="../Assessment/Index.html">职位兴趣</a></li>
+					<li class="top-nav-item"><a href="../Job/List.html">我的职位</a></li>
+					<li class="top-nav-item"><a href="../Home/Serve.html">服务内容</a></li>
+					<li class="top-nav-item"><a href="../Home/About.html">关于我们</a></li>
+                        <li class="top-nav-item lr-success">
+                            <a href="../Resume/Index.html">
+                            <img src="/UserPhoto/aa1517577133806.png" class="success-img" onerror="nofind();"/>
+                            </a>
+                            <div class="backstage-entrance-container">
+							    <div class="backstage-entrance">
+								    <div class="entrance-wrapper">
+									    <div class="entrance-top clearbox">
+										    <img src="/UserPhoto/aa1517577133806.png" class="entrance-img" onerror="nofind();"/>
+										    <div class="entrance-name overflow-text">13761646494</div>
+										    <div class="entrance-edit-btn"><a href="../Resume/Index.html" id="entrance-edit-href">修改资料</a></div>
+									    </div>
+									    <ul class="entrance-href-box clearbox">
+										    <li class="entrance-href-item"><a href="../My/MyCollection.html">收藏职位</a></li>
+										    <li class="entrance-href-item"><a href="../My/MyJob.html">投递职位</a></li>
+										    <li class="entrance-href-item"><a href="../Resume/Index.html">我的简历</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyAssessment.html">我的测评</a></li>
+                                            <li class="entrance-href-item"><a href="../My/MyOrder.html">我的订单</a></li>
+									    </ul>
+									    <div class="entrance-back-btn login-exit">安全退出</div>
+								    </div>
+							    </div>
+						    </div>
+                        </li>
+                    <li class="top-nav-item top-nav-call" style="display:block;">
+						<div class="top-call-msg top-call-text">求职小助手</div>
+						<div class="top-call-num top-call-text">+86 400 123 4567</div>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+        <!--********************************************Page Private************************************-->
+        
+<!-- Banner-->
+<div class="row top-banner">
+	<div class="banner-content">
+		<div class="assessment-name">职业兴趣测评</div>
+		<div class="assessment-msg">本测评旨在了解您在工作中的职业兴趣不水电费，描述文字文字文字文字描述文字文字文字文字。请根据题目描述与自己实际情况的符合程度作答。</div>
+		<div class="assessment-begin-btn">立即开始</div>
+		<div class="banner-icon"></div>
+		<div class="assessment-num-box">已有 <span class="assessment-num">33853</span> 名留学生做过此测评</div>
+	</div>
+</div>
+		
+<!-- Content -->
+<section class="row">
+	<!-- 测评简介 -->
+	<div class="row content-top">
+		<div class="top-container">
+			<div class="tip-item">
+				<span class="tip-text">极高的测评准确率</span></div>
+			<div class="tip-item">
+				<span class="tip-text">基于近况而非未来的判断</span>
+			</div>
+			<div class="tip-item">
+				<span class="tip-text">给予专业建议与资料</span>
+			</div>
+		</div>
+	</div>
+	<!-- 测评题目进度导航 -->
+	<div class="row content-nav" style="display:none;" v-show="examShow">
+		<div class="assessment-nav-container">
+			<span class="assessment-nav-title">职业兴趣测评</span>
+			<div id="indicatorContainer"></div>
+			<span class="assessment-back-btn"><a href="../Home/Index.html">返回首页</a></span>
+		</div>
+	</div>
+	<!-- 测评内容 -->
+	<div class="content-box clearbox">
+		<div class="content-wrapper" v-bind:class="{'content-wrapper-width':!examShow}">
+		<!-- 测评题目 -->
+			<div class="content-container" style="display:none;" v-show="examShow">
+				<div class="content-header">
+					<span>您喜欢从事下列活动吗？（请选择是或否）</span>
+					<span class="question-num">共60题</span>
+					<span class="notice-btn" v-on:click="openTip">注意事项</span>
+				</div>
+				<ul class="asssessment-list-total">
+					<li class="assessment-list-page" v-for="(page,index) in assessmentList" v-bind:key="index" v-bind:index="index" style="display:none;" v-show="currentPage===index">
+						<ul class="assessment-list">
+							<li class="assessment-item"  v-for="(item,num) in page" v-bind:key="num" v-bind:index="item.ID">
+								<span class="assessment-index" v-html="(item.Num+1)+'.'"><!--1.--></span>
+								<span class="assessment-text" v-html="item.SubjectName"><!--装配、修理电器或玩具。--></span>
+								<input type="radio" name="radio1" class="assessment-no assessment-radio" v-bind:typeid="item.TypeID" v-bind:name="item.ID" value='0' v-on:click="radioCheck(item.ID,item.TypeID)"/>
+								<div class="radio-text no-text">否</div>
+								<input type="radio" name="radio1" class="assessment-yes assessment-radio" v-bind:typeid="item.TypeID" v-bind:name="item.ID" value='1' v-on:click="radioCheck(item.ID,item.TypeID)"/>
+								<div class="radio-text yes-text">是</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+					
+				<div class="tcdPageCode"></div>
+				<div class="assessment-btn assessment-submit-btn" v-on:click="submitBtn">提交</div>
+				<div class="assessment-btn assessment-reset-btn" v-on:click="resetBtn">重置</div>
+			</div>
+					
+		    <!-- 引导登录 -->
+			<div class="prompt-login" style="display:none;" v-show="guideShow">
+				<div class="prompt-title">恭喜您完成职业兴趣测评！</div>
+				<div class="prompt-bg"></div>
+				<div class="prompt-msg">您尚未登录，登录后系统将根据您的测评结果，为您推荐合适职位。</div>
+				<div class="prompt-login-btn">立即登录</div>
+				<div class="prompt-back-btn" v-on:click="backAssessment">返回测评</div>
+			</div>
+					
+		    <!-- 测评结果报告 -->
+			<div class="assessment-report" style="display:none;" v-show="resultShow">
+				<div class="report-title">职业兴趣测评结果</div>
+				<div class="report-msg">有关资料表明，如果一个人对某个工作有兴趣，就能够发挥他全部才能的80%-90%，并且能较长时间保持高效率而不感到疲劳；而对工作缺乏兴趣的人，只能发挥其全部才能的20%-30%，也容易疲劳、厌倦。查看以下结果，看看你的职业兴趣是什么。</div>
+				<div class="report-box clearbox">
+					<ul class="report-left">
+						<li class="report-item">
+							<div class="item-title">测评得分：</div>
+							<div class="item-content" v-html="Score"><!--100分--></div>
+						</li>
+						<li class="report-item">
+							<div class="item-title">职业兴趣类型：</div>
+							<div class="item-content" v-html="TypeName"><!--现实型--></div>
+						</li>
+						<li class="report-item">
+							<div class="item-title">霍兰德职业代码：</div>
+							<div class="item-content" v-html="Code"><!--ERI--></div>
+						</li>
+					</ul>
+					<div class="report-right">
+						<div id="container" style="min-width: 400px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+					</div>
+				</div>
+				<div class="report-theme">
+					<div class="theme-title" v-html="TypeName"><!--现实型--></div>
+					<div class="theme-content" v-html="TypeDescribe">
+						<!--现实型的人是栽培者，乐于促进事物的增长和繁荣。现实型的人对成功所带来的名望或金钱奖励兴趣不大，他们只是单纯的喜欢把事完成。
+						<br>
+						他们对创新和尝试理解复杂信息缺乏兴趣。而且，他们享受于容易被感觉、品尝、听到或闻到的事物。现实型的人在职场上追求稳定和安全感。他们可靠、固执、自觉且不食言。-->
+					</div>
+				</div>
+				<div class="report-theme">
+					<div class="theme-title" v-html="Code"><!--ERI--></div>
+					<div class="theme-msg">根据您的兴趣匹配，您适合的典型职业有：</div>
+					<div class="theme-content" v-html="CodeDescribe"><!--建筑物管理员、工业工程师、农场管理员、护士长、农业经营管理人员、化学设备销售工程师、机械设备销售工程师、设备保养工程师、油库经理、税务代理、钻井或生产班组长、土木工程队工头、伐木工头、电厂主管、测绘主管、维护保养主管、彩陶主管、现场工程师、燃料系统维护主管、业务评估经理、洗衣店经理、路况检测官、调度员、日程业务员、菜蔬生产主管、机器运作监察员、碳电极监察员、胶合板工等。--></div>
+				</div>
+				<div class="report-back-btn"><a href="../Home/Index.html">返回首页</a></div>
+			</div>
+							
+			<div class="flo-piece line five"></div>
+			<div class="flo-piece square six"></div>
+			<div class="flo-piece square seven"></div>
+			<div class="flo-piece circle eight"></div>
+			<div class="flo-piece line nine"></div>
+		</div>
+		
+		<!-- 测评注意事项 -->
+		<div class="content-tip" style="display:none;" v-show="tipShow">
+			<div class="tip-header">
+				<span>注意事项</span>
+				<span class="tip-cancel" v-on:click="closeTip"></span>
+			</div>
+			<ul class="tip-list">
+				<li class="tip-text">1.请根据您的实际情况作答，并以最快速度完成每道试题。</li>
+				<li class="tip-text">2.选项没有对与错之分。</li>
+				<li class="tip-text">3.请选择更接近你平时感受或行为的那项。</li>
+				<li class="tip-text">4.请选择你是怎么样的，而不要选择你想要怎样、以为会怎样、或者认为哪样更好。</li>
+			</ul>
+		</div>
+						
+		<div class="flo-piece line one"></div>
+		<div class="flo-piece square two"></div>
+		<div class="flo-piece line three"></div>
+		<div class="flo-piece circle four"></div>
+						
+	</div>
+</section>
+
+        <!--********************************************Page Private End*********************************-->
+        
+        <!-- aside -->
+		<aside>
+			<div class="aside-container">
+				<div class="aside-back-top aside-item">TOP</div>
+				<div class="aside-call aside-item">
+					<i class="material-icons">&#xE0B0;</i>
+				</div>
+				<div class="aside-weixin aside-item">
+					<i class="fa fa-weixin" aria-hidden="true"></i>
+				</div>
+				<div class="aside-share aside-item">
+					<i class="material-icons">&#xE80D;</i>
+				</div>
+			</div>
+		</aside>
+
+        <!-- Login and Register Dialog -->
+		<div class="lr-container">
+			<div class="lr-wrapper">
+				<div class="lr-box">
+					<div class="lr-cancel"></div>
+					<div class="lr-btn-box clearbox">
+						<div class="login-btn lr-btn">
+							登录
+							<div class="btn-line"></div>
+						</div>
+						<div class="register-btn lr-btn">
+							注册
+							<div class="btn-line"></div>
+						</div>
+					</div>
+					<div class="login-box">
+						<div class="login-title">欢迎登录Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item login-phone" placeholder="请输入登录手机号" maxlength="11"/>
+							</div>
+							<div class="login-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item login-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="28"/>
+							</div>
+							<div class="login-password-tips lr-tips"></div>
+							<div class="rf-box clearbox">
+								<div class="remember-password-box lr-checkbox-box">
+									<div class="yes rp-yes lr-checkbox"></div>
+									<div class="no rp-no lr-checkbox"></div>
+									<div class="rp-text lr-text">记住密码</div>
+								</div>
+								<div class="forget-password-box lr-text">忘记密码？</div>
+							</div>
+							<div class="lr-login-btn lr-confirm-btn">登录</div>
+						</div>
+					</div>
+					<div class="register-box">
+						<div class="register-title">欢迎注册Career Success</div>
+						<div class="form-box">
+							<div class="input-box">
+								<input type="text" class="input-item register-username" placeholder="请输入用户名" maxlength="20"/>
+							</div>
+							<div class="register-username-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item register-phone" placeholder="请输入注册手机号" maxlength="11"/>
+							</div>
+							<div class="register-phone-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="text" class="input-item test-code" placeholder="请输入您收到的验证码" maxlength="6"/>
+								<div class="get-code-btn">获取验证码</div>
+							</div>
+							<div class="code-tips lr-tips"></div>
+							<div class="input-box">
+								<input type="password" class="input-item register-password" placeholder="6-16位密码，区分大小写，不能用空格" maxlength="20"/>
+							</div>
+							<div class="register-password-tips lr-tips"></div>
+							<div class="protocol-box lr-checkbox-box">
+								<div class="yes protocol-yes lr-checkbox"></div>
+								<div class="no protocol-no lr-checkbox"></div>
+								<div class="lr-text">同意《<a href="../../Registration.html" target="_blank">Career Success注册协议</a>》</div>
+							</div>
+                            <div class="register-protocol-tips lr-tips"></div>
+							<div class="lr-register-btn-box clearbox">
+								<div class="complate-msg-btn">注册</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+		<!-- Bottom -->
+		<footer class="row">
+			<div class="foot-box">
+				<div class="foot-left">
+					<ul class="foot-href">
+						<li class="foot-href-item"><a href="">网站首页</a></li>
+						<li class="foot-href-item"><a href="">企业合作</a></li>
+						<li class="foot-href-item"><a href="">人才招聘</a></li>
+						<li class="foot-href-item"><a href="">联系我们</a></li>
+						<li class="foot-href-item"><a href="">讲师招募</a></li>
+						<li class="foot-href-item"><a href="">常见问题</a></li>
+						<li class="foot-href-item"><a href="">意见反馈</a></li>
+						<li class="foot-href-item"><a href="">友情链接</a></li>
+					</ul>
+					<div class="about-other">©肯耐珂萨 2018 | 沪ICP备09051952号-2</div>
+				</div>
+				<ul class="foot-right">
+					<li class="foot-right-item foot-weixin">
+						<i class="fa fa-weixin" aria-hidden="true"></i>
+					</li>
+					<li class="foot-right-item foot-recommend">
+						<i class="material-icons">&#xE0BF;</i>
+					</li>
+					<li class="foot-right-item foot-call">
+						<i class="material-icons">&#xE0B0;</i>
+					</li>
+				</ul>
+			</div>
+		</footer>   
+	</div>
+    <!-- Public JS -->
+    <script type="text/javascript">
+        //注册登陆key值
+        var isLogin = "True";
+        if (isLogin === 'True') {
+            isLogin = true;
+        } else {
+            isLogin = false;
+        }
+    </script>
+	
+    <!-- Private JS -->
+    
+    <script type="text/javascript">
+        var SubjectList = JSON.parse('[]');
+        var UserExam = '{"TypeName":"艺术型","CodeDescribe":"手工艺人、园艺师、动漫设计师、舞蹈家、文物收藏家、模具师等。","TypeDescribe":"艺术型的人倾向于通过一个整体的角度来看待生活中的事物。这使得他们善于对已有的服务、产品和项目进行新创造。他们会持续寻找新兴趣，花费长时间去想象而非行动。<br/>艺术型的人希望通过他们的创造力把世界变得更美好。他们的审美感较高，并且通常被请求为旧问题寻找新方法。他们通常害羞内向，因此，在传统职场环境中常常感到不舒服。朝九晚五的工作对于他们来说太严格了，他们不喜欢听从他人的指令。因此，这类人通常喜欢一个人工作，不知疲倦的将他们的创造力转化为成功的果实。","ID":3,"UserID":5,"ExaminationsResult":"","Score":26,"Remarks":null,"CreatedUser":5,"CreatedTime":"2018-02-05T18:54:48.823","GUID":null,"TypeID":18,"Code":"ARC"}';
+        var ResultPictrue = '{"A":7,"R":6,"C":5,"I":4,"E":3,"S":1}';
+		var AssessmentCount = '4';
+    </script>
+    <script src="../../Scripts/lib/radialIndicator.js"></script>
+	<script src="../../Scripts/lib/jquery.page.js"></script>
+	<script src="../../Scripts/lib/highcharts.js"></script>
+	<script src="../../Scripts/lib/highcharts-more.js"></script>
+	<script src="../../Scripts/lib/exporting.js"></script>
+	<script src="../../Scripts/lib/highcharts-zh_CN.js"></script>
+	<script src="../../Scripts/js/AssessmentIndex.js?v=20171226" type="text/babel"></script>
+    
+
+
+</body>
+</html>

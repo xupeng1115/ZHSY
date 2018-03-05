@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>职位详情</title>
+
+    <link rel="stylesheet" href="../../Content/css/m_Detail.css">
+
+</head>
+<body>
+    <div class="m-container" id="app">
+        <div class="header">
+            <div class="logo"></div>
+        </div>
+        <div class="top">
+            <div class="title" v-html="positionDetail.Company"><!--苹果公司--></div>
+            <div class="position-name" v-html="positionDetail.Name"><!--Java开发工程师--></div>
+            <div class="company-logo-box">
+                <img v-bind:src="positionDetail.ImgUrl" class="company-logo" onerror="noFindLogo();"/>
+            </div>
+            <div class="demand-list">
+                <span class="demand-experience" v-html="positionDetail.Experience"><!--经验3-5年--></span>
+                <span class="demand-education" v-html="positionDetail.Education?'/ '+positionDetail.Education:''"><!--/本科--></span>
+                <span class="demand-area" v-html="positionDetail.Area?'/ '+positionDetail.Area:''"><!--/北京-丰台区--></span>
+            </div>
+            <ul class="tags clearbox">
+                <li class="tag-item" v-for="(item,index) in positionTags" v-bind:key="index" v-bind:index="index" v-html="item.TagName"><!--研发类--></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="item">
+                <div class="item-title">职位诱惑</div>
+                <div class="item-content" v-html="positionDetail.Advantage">扁平化管理、高成长互联网企业</div>
+            </div>
+            <div class="item">
+                <div class="item-title">职位描述</div>
+                <div class="item-content" v-html="positionDetail.Dec"></div>
+            </div>
+            <div class="item demand">
+                <div class="item-title">岗位要求</div>
+                <div class="item-content" v-html="positionDetail.Demand"></div>
+            </div>
+            <div class="item address">
+                <div class="item-title">工作地址</div>
+                <div class="item-content" v-html="positionDetail.Address"></div>
+                <div id="address-container"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var str="BMap_Marker";
+        var positionID = '1';
+		var resumeDetail = '{"Tag":[{"ID":1,"PositionID":1,"TagName":"助理"}],"Like":2,"Company":"上海航阳国际旅行社有限公司","ImgUrl":"/PositionLogo/海航.jpg","Name":"行政助理兼前台-实习生","Address":"上海长宁区","Demand":"能力要求：1、*声音甜美，形象气质佳。 <br/>2、1年以上前台工作经验 <br/>3、较强沟通、协调、执行能力，具团队合作精神 <br/>4、思维灵活，处事变通，工作态度积极 <br/>5、熟练操作各样办公室设备 <br/>6、熟悉Word Excel等办公Office软件操作和应用 <br/>7、能承受一定的工作压力。<br/>职位描述：1，记载员工出勤情况 2，记载工作时间和加班时间 3，考核计算扣假工资和加班工资等 4、处理和维护主管日程，准备和完成各类文件报表 5、阅读和分析各类信息，制定工作计划，做好时间分配 6、协助审核、修订行政管理规章制度，执行日常行政工作 7、传达通知、分发文件 8、安排公司各种会务和组织员工各种活动 9、接待访客并决定是否让主管或其他工作人员与之会谈 10、对公司各种文件和档案进行整理、归档 11、履行办公日常职责，如办公用品采买、管理和分发，维护记录管理系统和执行基本的簿记工作等 12、办理各种行政事务和手续，比如填报报表、公司年检、复印打印等<br/><br/>   职能类别： 前台接待/总机/接待生 行政专员/助理   关键字： 行政助理 前台 助理    分享   微信 邮件","Dec":"","Match":91,"IsLike":0,"IsMailings":0,"ID":1,"Title":null,"PositionName":"前台接待/总机/接待生","CompanyName":null,"CompanyLogo":null,"AddressID":0,"Area":null,"AddressInfo":null,"Experience":"无工作经验","Advantage":"五险一金 出国旅游 年底8薪","Industry":"酒店/旅游,航天/航空","CompanySize":"少于50人","Salary":"2-3千/月","RecruitNumber":"招1人","Description":null,"Email":null,"Education":"中专","IsInternship":null,"IsFresh":null,"IsEnglish":null,"CreatedUser":0,"CreatedTime":"0001-01-01T00:00:00"}';     
+    </script>
+    <script src="../../Scripts/lib/jquery-1.11.3.min.js"></script>
+    <script src="../../Scripts/lib/vue.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=khDnnd3LfRWzjhKw8LFgsy1baLht7ssl"></script>
+    <!-- <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.4&key=86c9f221154b1b17e9341474fc967f8e"></script> -->
+    <script src="../../Scripts/js/m_Detail.js"></script>
+
+    
+</body>
+</html>
+
+
+

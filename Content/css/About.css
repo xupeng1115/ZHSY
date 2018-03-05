@@ -1,0 +1,710 @@
+@charset "utf-8";
+/***************************banner***********************/
+.top-banner{
+	position:relative;
+	width:100%;
+	height:280px;
+	background:url(../img/about_banner.png)no-repeat center center;
+	background-size:cover;
+}
+
+.top-banner .top-title{
+	margin-top:117px;
+	line-height:47px;
+	font-family:"NotoSansCJKsc-Light";
+  	font-size: 32px;
+  	text-align: center;
+  	color: #fff;
+}
+
+/***************************中间内容区content***********************/
+section{
+	position:relative;
+}
+
+section .module-title{
+	padding-top:60px;
+  	font-size: 24px;
+  	letter-spacing: 0.9px;
+  	text-align: center;
+  	color: #333;
+}
+
+section .module-msg{
+	padding-top:10px;
+  	font-size: 12px;
+  	letter-spacing: 0.4px;
+  	text-align: center;
+  	color: #6d6d6d;
+}
+
+/****************************导航************************/
+section .nav-wrapper{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	width:100%;
+	height:45px;
+	background:#fff;
+	box-shadow: 0 2px 5px 0 rgba(227, 227, 227, 0.5);
+}
+
+section .nav-scroll {
+    position: fixed;
+}
+
+.nav-wrapper .nav-container{
+	margin:0 auto;
+	padding-top:8px;
+	width:817px;
+	height:38px;
+}
+
+.nav-container .nav-item{
+	float:left;
+	padding:0 15px;
+	margin-right:100px;
+	height:30px;
+	line-height:30px;
+	background:#fff;
+	letter-spacing: 0.5px;
+	font-size:14px;
+	text-align:center;
+	color:#6d6d6d;
+	border-radius: 15px;
+	cursor:pointer;
+}
+
+.nav-container .nav-item a{
+	display:block;
+	padding:0 15px;
+	width:100%;
+	height:100%;
+	border-radius: 15px;
+}
+.nav-container .nav-item a{
+	color:#6d6d6d;
+}
+
+.nav-container .active-nav-item a{
+	color:#fff;
+	background:#ffbf00;
+}
+
+.nav-container .nav-item:last-child{
+	margin-right:0;
+}
+
+/******************关于我们*******************/
+section .about-us{
+	position:relative;
+	padding-top:105px;
+	margin:0 auto;
+	margin-bottom:80px;
+}
+
+.about-us .us-title{
+	font-family:"NotoSansCJKsc-Light";
+	font-size:24px;
+	font-weight: 300;
+  	letter-spacing: 0.9px;
+  	text-align:center;
+  	color: #0099e5;
+}
+
+.about-us .us-list{
+	position:relative;
+	margin:0 auto;
+	padding:30px 0 0 20px;
+	width:800px;
+}
+
+.us-list .us-item{
+	position:relative;
+	padding-bottom:30px;
+	font-size: 14px;
+	line-height: 1.71;
+  	letter-spacing: 1.2px;
+  	text-align: left;
+  	color: #6d6d6d;
+}
+
+.us-list .us-item:last-child{
+	padding-bottom:30px;
+}
+
+.us-list .us-item:before{
+	position:absolute;
+	top: 5px;
+    left: -20px;
+    content: "";
+    width: 13px;
+    height: 13px;
+	border:2px dotted #0099e5;
+	border-radius:100%;
+}
+
+.us-list .us-item:after{
+	position:absolute;
+	top: 10px;
+    left: -15px;
+    content: "";
+    width: 3px;
+    height: 3px;
+	border-radius:100%;
+	background:#0099e5;
+}
+
+
+/******************使命*******************/
+section .task{
+	width:100%;
+	height:256px;
+	background:url(../img/about_task_bg.png)no-repeat center center;
+	background-size:cover;
+}
+
+.task .task-title{
+	padding-top:45px;
+	font-size: 24px;
+  	letter-spacing: 1.5px;
+  	text-align: center;
+  	color: #ffffff;
+}
+
+.task .task-content{
+	margin:0 auto;
+	width:1000px;
+	padding:50px 0 40px 530px;
+}
+
+.task-content .task-item{
+	padding-bottom:12px;
+	font-size: 14px;
+  	letter-spacing: 0.5px;
+  	color:#fff;
+}
+
+.task-content .task-item:first-child{
+  	letter-spacing: 0.6px;
+	font-size: 18px;
+  	font-weight: 500;
+}
+
+/*******************我们的优势**********************/
+section .advantage{
+	position:relative;
+	width:100%;
+}
+
+.advantage .advantage-title{
+	padding:60px 0 45px 0;
+	font-size:24px;
+	color:#333;
+	text-align:center;
+}
+
+.advantage .advantage-list{
+	margin:0 auto;
+	padding-bottom:60px;
+	width:860px;
+}
+
+.advantage-list .advantage-item{
+	float:left;
+	margin-right:60px;
+	width:245px;
+}
+
+.advantage-list .advantage-item:last-child{
+	margin-right:0;
+}
+
+.advantage-list .advantage-item .advantage-bg{
+	margin:0 auto;
+	margin-bottom:20px;
+	width:48px;
+	height:60px;
+}
+
+.advantage-list .advantage-item:nth-child(1) .advantage-bg{
+	background:url(../img/about_advantage_icon01.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.advantage-list .advantage-item:nth-child(2) .advantage-bg{
+	width:60px;
+	background:url(../img/about_advantage_icon02.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.advantage-list .advantage-item:nth-child(3) .advantage-bg{
+	width:60px;
+	background:url(../img/about_advantage_icon03.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.advantage-list .advantage-item .advantage-msg{
+	padding-bottom:20px;
+	font-size:16px;
+	color:#333;
+	text-align:center;
+}
+
+.advantage-list .advantage-item .advantage-text{
+	font-size:12px;
+	color:#6d6d6d;
+	letter-spacing: 1px;
+	text-align:center;
+}
+
+
+
+
+/******************专家团队*******************/
+section .team{
+	margin:0 auto;
+	margin-bottom:80px;
+	height:610px;
+	background:url(../img/about_team_bg.png)no-repeat center center;
+	background-size:cover;
+}
+
+section .team .team-box{
+	position:relative;
+	margin:0 auto;
+	width:1200px;
+}
+
+.team-box .team-title{
+	padding-top:50px;
+  	font-size: 24px;
+  	text-align: center;
+  	color: #fff;
+}
+
+.team-box .team-msg-list{
+	position:relative;
+	margin:35px auto;
+	width:208px;
+	height:115px;
+	white-space :nowrap;
+	background:url(../img/about_team_icon.png)no-repeat center center;
+	background-size:100% 100%;
+}
+
+.team-msg-list .team-msg-item{
+	display:inline-block;
+	position:absolute;
+	font-size:12px;
+	color:#fff;
+}
+
+.team-msg-list .team-msg-item:nth-child(1){
+	top:-7px;
+	left:-160px;
+}
+
+.team-msg-list .team-msg-item:nth-child(2){
+	top:-7px;
+	left:165px;
+}
+
+.team-msg-list .team-msg-item:nth-child(3){
+	top:30px;
+	left:-185px;
+}
+
+.team-msg-list .team-msg-item:nth-child(4){
+	top:30px;
+	left:190px;
+}
+
+.team-msg-list .team-msg-item:nth-child(5){
+	top:68px;
+	left:-180px;
+}
+
+.team-msg-list .team-msg-item:nth-child(6){
+	top:68px;
+	left:212px;
+}
+
+.team-msg-list .team-msg-item:nth-child(7){
+	top: 105px;
+    left: -148px;
+}
+
+.team-msg-list .team-msg-item:nth-child(8){
+	top: 105px;
+    left: 165px;
+}
+
+.team-box .member-box{
+	position:relative;
+	top:20px;
+	left:50%;
+	margin-left:-500px;
+	width:1000px;
+	height: 410px;
+  	border-radius: 13px;
+  	background-color: #fff;
+  	box-shadow: 0 7px 13px 0 #e1e1e1;
+  	overflow:hidden;
+}
+.team-box .member-box .member-btn{
+	position:absolute;
+	top:50%;
+	margin-top:-25px;
+	width:50px;
+	height:50px;
+	text-align:center;
+	cursor:pointer;
+}
+
+.team-box .member-box .prev-btn{
+	left:-50px;
+}
+
+.team-box .member-box .next-btn{
+	right:-50px;
+}
+
+.team-box .member-box .member-btn i{
+	font-size:50px;
+	color:#333;
+}
+
+.team-box .member-box .member-list{
+	width:100%;
+	height:100%;
+	background-color:#fff;
+}
+
+.team-box .member-box .member-list .member-item{
+	padding:45px 60px 40px 60px;
+	width:100%;
+	height:100%;
+	background-color:#fff;
+}
+
+.member-item .item-left{
+	position:absolute;
+	top:45px;
+	left:60px;
+	width:200px;
+}
+
+.member-item .item-right{
+	position:absolute;
+	top:45px;
+	right:60px;
+	width:660px;
+}
+
+.member-item .item-left img{
+	display:block;
+	width:200px;
+	border-radius:100%;
+}
+
+.member-item .item-left .view-all-btn{
+	margin:0 auto;
+	margin-top:30px;
+	width: 120px;
+  	height: 45px;
+  	line-height:45px;
+  	border: solid 2px #979797;
+  	font-size: 14px;
+  	text-align: center;
+  	color: #333;
+  	cursor:pointer;
+}
+
+.member-item .item-left .view-all-btn:hover{
+	color:#ffbf00;
+	border-color:#ffbf00;
+}
+
+.member-item .item-right .item-title{
+	line-height:36px;
+  	font-size: 24px;
+  	text-align: left;
+  	color: #333;
+}
+
+.member-item .item-right .item-name{
+	padding-top:10px;
+	line-height:27px;
+  	font-size: 18px;
+  	text-align: left;
+  	color: #0099e5;
+}
+
+.member-item .item-right .item-msg{
+	margin-top:10px;
+}
+
+.member-item .item-right .item-msg .msg-item{
+	position:relative;
+	padding-bottom:10px;
+	padding-left:15px;
+	width:100%;
+	line-height:24px;
+  	font-size: 16px;
+  	text-align: left;
+  	color: #6d6d6d;
+}
+
+.member-item .item-right .item-msg .msg-item::before{
+	position:absolute;
+	top:7px;
+	left:0;
+	content:"";
+	width:6px;
+	height:6px;
+	background:#ffbf00;
+	border-radius:6px;
+}
+
+
+/*********************成功案例********************/
+section .case{
+	margin:180px 0 80px 0;
+}
+
+.case .case-title{
+	padding-top:0px;
+}
+
+.case .case-list-box{
+	margin-top:13px;
+	width:100%;
+	background:url(../img/case_bg.png)no-repeat center center;
+	background-size:cover;
+}
+
+.case .case-list-box .case-list-content{
+	position:relative;
+	margin:0 auto;
+	width:1110px;
+}
+
+.case .case-list-box .case-list-content .case-list{
+	width:100%;
+}
+
+.case .case-list-box .case-list-content .case-list::after{
+	display:block;
+	content:"";
+	clear:both;
+}
+
+.case .case-list-box .case-list-content .add-more-case{
+	display:inline-block;
+	position:absolute;
+	top:-33px;
+	right:15px;
+  	font-size: 14px;
+  	text-align: left;
+  	color: #6d6d6d;
+  	cursor:pointer;
+}
+
+.case .case-list-box .case-list-content .add-more-case::after{
+	position:absolute;
+	top:5px;
+	right:-10px;
+	content:"";
+	width:9px;
+	height:9px;
+	border-top:1px solid #6d6d6d;
+	border-right:1px solid #6d6d6d;
+	
+	transform:rotate(45deg);
+	-ms-transform:rotate(45deg); 	/* IE 9 */
+	-moz-transform:rotate(45deg); 	/* Firefox */
+	-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+	-o-transform:rotate(45deg); 	/* Opera */
+}
+
+
+.case .case-list-box .case-list-content .case-list .case-item{
+	margin:30px 30px 0 0;
+	float:left;
+	width:350px;
+}
+
+.case .case-list-box .case-list-content .case-list .case-item:nth-of-type(3n+0){
+	margin-right:0;
+}
+
+.case .case-list-box .case-list-content .case-list .case-item ul{
+	background-color:transparent;
+}
+
+.case .case-list-box .case-list-content .case-list .case-item ul li{
+	position:relative;
+  	padding:30px;
+  	width:100%;
+	background-color: #ffffff;
+	border-radius: 4px;
+	box-shadow: 0 12px 42px 12px rgba(0, 0, 0, 0.08);
+	margin-bottom:30px;
+}
+
+.case .case-list-box .case-list-content .case-list .case-item .item-top{
+	position:relative;
+	width:100%;
+	height:80px;
+}
+
+.case .case-list-box .case-list-content .case-list .case-item .item-top img{
+	display:block;
+	float:left;
+	width:80px;
+	border-radius:100%;
+}
+
+.case .case-list-box .case-list-content .case-list .case-item .item-top .item-top-msg{
+	display:block;
+	float:right;
+	width:190px;
+	height:100%;
+}
+
+.case .case-list-box .case-list-content .case-list .case-item .item-top .item-top-msg .msg-name{
+  	font-size: 14px;
+  	font-weight:bold;
+  	line-height: 1.71;
+  	text-align: left;
+  	color: #333;
+}
+
+.case .case-list-box .case-list-content .case-list .case-item .item-top .item-top-msg .msg-address{
+	padding-top:5px;
+  	font-size: 14px;
+  	line-height: 1.71;
+  	text-align: left;
+  	color: #6d6d6d;
+}
+
+.case .case-list-box .case-list-content .case-list .case-item .item-top .item-top-msg .msg-position{
+	padding-top:5px;
+  	font-size: 14px;
+  	line-height: 1.71;
+  	text-align: left;
+}
+
+.case .case-list-box .case-list-content .case-list .case-item .item-dec{
+	padding:20px 0;
+  	font-size: 14px;
+  	line-height: 1.71;
+  	text-align: left;
+  	color: #6d6d6d;
+}
+
+/******************合作企业******************/
+section .cooperation{
+	position:relative;
+	margin:0 auto;
+	padding-bottom:100px;
+	background-color:#f1f5f9;
+}
+
+.cooperation .cooperation-title{
+	padding-top:80px;
+}
+
+.cooperation .cooperation-msg{
+	padding-bottom:45px;
+}
+
+.cooperation .cooperation-box{
+	position:relative;
+	margin:0 auto;
+	width:948px;
+	height:255px;
+	overflow:hidden;
+}
+
+.cooperation-box .company-list{
+	position:relative;
+	width:100%;
+	height:100%;
+}
+
+.cooperation-box .company-list .company-list-item{
+	position:relative;
+	width:100%;
+	height:100%;
+}
+
+.company-list-item .list-content{
+	position:relative;
+	width:100%;
+	height:100%;
+}
+
+.company-list-item .list-content .company-item{
+	position:relative;
+	float:left;
+	margin:0 25px 30px 25px;
+	width:187px;
+	height:55px;
+}
+
+.company-list-item .list-content .company-item .company-item-box{
+	width:187px;
+	height:55px;
+	background-color:#fff;
+	
+	display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.company-list-item .list-content .company-item .company-item-box img{
+	display: inline-block;
+    height:45px;
+}
+
+.company-list-item .list-content .company-item .little img{
+    height:25px;
+}
+
+/*********************************swiper轮播部分************************************/
+.swiper-button-prev {
+	width:20px;
+	height:30px;
+	background-image:url(../img/about_team_left.png);
+	background-size:100%;
+	top: 75%;
+    left: 40px;
+}
+
+.swiper-button-next {
+	width:20px;
+	height:30px;
+	background-image:url(../img/about_team_right.png);
+	background-size:100%;
+	top: 75%;
+    right: 40px;
+}
+
+.swiper-pagination2{
+	text-align: center;
+}
+
+.swiper-pagination-bullet-active {
+    width: 20px;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.swiper-pagination-bullet {
+    margin: 6px;
+}
+
+
