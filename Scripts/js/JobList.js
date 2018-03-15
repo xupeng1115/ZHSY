@@ -16,12 +16,10 @@ var app=new Vue({
 		PostList:positions,
 		
 		positionName:PositionTitle,
-		searchObj:{
-			selectType:"",
-			areaValue:"",
-			positionValue:"",
-			industryValue:""
-		},
+		selectType:"",
+		areaValue:"",
+		positionValue:"",
+		industryValue:"",
 		payFrom:3000,
 		payTo:13000,
 		
@@ -32,12 +30,6 @@ var app=new Vue({
 	},
 	watch:{
 		//监听对象和对象
-		searchObj:{
-			handler(newVal){
-				this.postSearch();
-			},
-			deep:true
-		},
 		positionList:{
 			handler(newVal){
 				this.pageKey=true;
@@ -45,7 +37,12 @@ var app=new Vue({
 			deep:true
 		},
 		pageCount:function(val){
+			//重新生成分页UI
 			this.getPage(val);
+		},
+		selectType:function(val){
+			this.selectType=val;
+			this.getList(1,1);
 		}
 	},
 	mounted:function(){
@@ -184,13 +181,22 @@ var app=new Vue({
 			}
 		},
 		areaItem:function(item){
-			this.searchObj.areaValue=item.Name;
+			if(item.Name!==this.areaValue){
+				this.areaValue=item.Name;
+				app.getList(1,1);
+			}
 		},
 		industryItem:function(item){
-			this.searchObj.industryValue=item.Name;
+			if(item.Name!==this.industryValue){
+				this.industryValue=item.Name;
+				app.getList(1,1);
+			}
 		},
 		positionItem:function(item){
-			this.searchObj.positionValue=item.Name;
+			if(item.Name!==this.positionValue){
+				this.positionValue=item.Name;
+				app.getList(1,1);
+			}
 		},
 		getCircle:function(list){
 			if(app.loginKey){
@@ -226,17 +232,10 @@ var app=new Vue({
 			})
 			return arr;
 		},
-        postSearch:function(){
-            app.getList(1,1);
-		},
 		getPage:function(count){
 			$(".tcdPageCode").createPage({
 		        pageCount:count,
-		        current:1,
-		        //切换页码时列表刷新
-		        backFn:function(p){
-                    app.getList(p,1);
-		        }
+		        current:1
 		    });
 		},
         getList:function(p,type){
@@ -323,10 +322,22 @@ $(function(){
 			app.getCircle(app.positionList);
 		}
 		
-		//生成分页
+		//初始生成分页
+		$(".tcdPageCode").createPage({
+	        pageCount:app.pageCount,
+	        current:1,
+	        //切换页码时列表刷新
+	        backFn:function(p){
+                app.getList(p,1);
+	        }
+	    });
+
+		//重新生成分页
 		if(app.pageCount>1){
 			app.getPage(app.pageCount);
 		}
+
+
 	}());
 	
 	//jQuery事件注册
@@ -353,7 +364,7 @@ $(function(){
 		//鼠标抬起获取价钱区间
 		$("body").on("mouseup",".irs-slider",function(){
 			if(payFromVal!==app.payFrom||payToVal!==app.payTo){
-				app.postSearch();
+				app.getList(1,1);
 			}
 		})
 
