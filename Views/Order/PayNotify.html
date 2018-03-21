@@ -94,8 +94,8 @@
                         <div class="order-msg">请谨防钓鱼链接与诈骗电话</div>
                     </div>
                     <div class="order-right">
-                        <div class="order-item" v-html="OrderPrice!==''?'支付金额: ¥'+OrderPrice:'支付金额:'"></div>
-                        <div class="order-item" v-html="OrderNo!==''?'订单编号：'+OrderNo:'订单编号：'"></div>
+                        <div class="order-item clearbox"><span class="order-text">支付金额：</span><span v-html="' ¥ '+OrderPrice" class="order-content"></span></div>
+						<div class="order-item clearbox"><span class="order-text">订单编号：</span><span v-html="' '+OrderNo" class="order-content"></span></div>
                         <div class="order-btn-box clearbox">
                             <div class="order-btn order-back"><a href="../Home/Index.html">返回首页</a></div>
                             <div class="order-btn order-view">查看订单</div>

@@ -80,7 +80,7 @@ section .success-container{
 }
 
 .order-box .order-right{
-	width:400px;
+	width:340px;
 	float:right;
 }
 
@@ -103,10 +103,24 @@ section .success-container{
 }
 
 .order-box .order-right .order-item{
+    width:100%;
 	line-height:24px;
 	font-size:16px;
 	color:#6d6d6d;
-	text-align:right;
+	text-align:left;
+}
+
+.order-box .order-right .order-item span{
+    display:inline-block;
+    padding:0 5px;
+}
+
+.order-box .order-right .order-item .order-text{
+    float:left;
+}
+
+.order-box .order-right .order-item .order-content{
+    float:right;
 }
 
 .order-box .order-right .order-btn-box{
