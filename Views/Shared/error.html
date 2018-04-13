@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width" />
+    <title>错误页面</title>
+    <style type="text/css">
+        body,div{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background:url("../../Content/img/error_bg.jpg") repeat-x scroll 0 0 #67ACE4;
+        }
+        #container{
+            margin:0 auto;
+            padding-top:50px;
+            text-align:center;
+            width:560px;
+        }
+        #container img{
+            border:medium none;
+            margin-bottom:50px;
+        }
+        #container .error{
+            height:200px;
+            position:relative;
+        }
+        #container .error img{
+            bottom:-50px;
+            position:absolute;
+            right:-50px;
+        }
+        #container .msg{
+            margin-bottom:65px;
+        }
+        #cloud{
+            width:100%;
+            height:170px;
+            background:url("../../Content/img/error_cloud.png")repeat-x scroll 0 0 transparent;;
+            position:absolute;
+            bottom:0;
+            left:0;
+        }
+        .flo{
+            position:relative;
+            margin:100px auto;
+            width:50px;
+            height:30px;
+            background:#fff;    
+        }
+        .flo img{
+            position:absolute;
+            top:-38px;
+            left:-62px;
+        }
+        .dec{
+            font-size:25px;
+            letter-spacing:1.8px;
+            color:#fff;
+            padding-top:10px;
+            padding-bottom:20px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="flo">
+            <img class="png" src="../../Content/img/error.png" />
+        </div>
+        <div class="dec">:（很抱歉，您所访问的链接有误！</div>
+        <p>
+            <a href="/Home/Index" target="_blank">
+                <img class="png" src="../../Content/img/404_index.png" />
+            </a>
+        </p>
+    </div>
+    <div id="cloud" class="png"></div>
+</body>
+</html>
